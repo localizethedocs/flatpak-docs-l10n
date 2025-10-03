@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 07:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/single-file-bundles.rst:2
+msgid "Single-file bundles"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:4
+msgid ""
+"Hosting a repository is the preferred way to distribute an application, "
+"since repositories allow applications to be updated. However, sometimes it "
+"can be appropriate to use a single-file bundle. These can be used to provide "
+"a direct download of the application, to distribute applications using "
+"removable media, or to send them as email attachments."
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:12
+msgid ""
+"Since single-file bundles don't include dependencies or AppStream data, the "
+"preferred way of distributing applications offline is with the create-usb "
+"command; see :doc:`usb-drives`."
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:16
+msgid ""
+"Flatpak allows single file bundles to be created with the ``build-bundle`` "
+"and ``build-import-bundle`` commands, which allow an application in a "
+"repository to be converted into a bundle and back again::"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:20
+msgid ""
+"$ flatpak build-bundle [OPTION...] LOCATION FILENAME NAME [BRANCH]\n"
+"$ flatpak build-import-bundle [OPTION...] LOCATION FILENAME"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:23
+msgid ""
+"For example, to create a bundle named `dictionary.flatpak` containing the "
+"GNOME dictionary app from the repository at ~/repositories/apps, run::"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:26
+msgid ""
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
+"Dictionary"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:28
+msgid "You can also set a runtime repo in the bundle::"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:30
+msgid ""
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
+"Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:32
+msgid "To import the bundle into a repository on another machine, run::"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:34
+msgid "$ flatpak build-import-bundle ~/my-apps dictionary.flatpak"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:36
+msgid ""
+"Alternatively, bundles can also be installed directly without importing "
+"them::"
+msgstr ""
+
+#: ../../../docs/single-file-bundles.rst:38
+msgid "$ flatpak install dictionary.flatpak"
+msgstr ""
