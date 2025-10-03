@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:2
 msgid "Flatpak as a developer platform"
-msgstr ""
+msgstr "Flatpak 作為開發者平臺"
 
 #: ../../../docs/flatpak-devel.rst:4
 msgid ""

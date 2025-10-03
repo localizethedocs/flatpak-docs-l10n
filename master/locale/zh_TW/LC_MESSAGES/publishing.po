@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/publishing.rst:2
 msgid "Publishing"
-msgstr ""
+msgstr "發布"
 
 #: ../../../docs/publishing.rst:4
 msgid ""

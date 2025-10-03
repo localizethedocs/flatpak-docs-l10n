@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/debugging.rst:2
 msgid "Debugging"
-msgstr ""
+msgstr "除錯"
 
 #: ../../../docs/debugging.rst:4
 msgid "This section includes documentation on how to debug Flatpak apps."
@@ -60,6 +60,8 @@ msgid ""
 "$ flatpak info --show-runtime $FLATPAK_ID\n"
 "org.freedesktop.Platform/x86_64/24.08"
 msgstr ""
+"$ flatpak info --show-runtime $FLATPAK_ID\n"
+"org.freedesktop.Platform/x86_64/24.08"
 
 #: ../../../docs/debugging.rst:26
 msgid ""

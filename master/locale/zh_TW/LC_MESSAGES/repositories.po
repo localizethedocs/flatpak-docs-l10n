@@ -134,7 +134,7 @@ msgstr ""
 
 #: ../../../docs/repositories.rst:75
 msgid "Publishing updates"
-msgstr ""
+msgstr "發布更新"
 
 #: ../../../docs/repositories.rst:77
 msgid ""

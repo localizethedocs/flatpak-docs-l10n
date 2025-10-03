@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/index.rst:2
 msgid "Welcome to Flatpak's documentation!"
-msgstr ""
+msgstr "歡迎來到 Flatpak 文件！"
 
 #: ../../../docs/index.rst:4
 msgid ""
@@ -29,6 +29,9 @@ msgid ""
 "line interface. Later sections provide detailed information on building and "
 "distributing applications."
 msgstr ""
+"這些文件涵蓋了您使用 Flatpak 建置和散布應用程式所需了解的一切。它們從 "
+"Flatpak 的基本介紹、基本概念的背景資訊，以及 Flatpak 命令行介面的指南開始。後"
+"續章節提供了建置和散布應用程式的詳細資訊。"
 
 #: ../../../docs/index.rst:10
 msgid ""
@@ -46,4 +49,4 @@ msgstr ""
 
 #: ../../../docs/index.rst:18
 msgid "Contents"
-msgstr ""
+msgstr "目次"

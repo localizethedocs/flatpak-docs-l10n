@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/getting-started.rst:2
 msgid "Getting Started"
-msgstr ""
+msgstr "開始使用"
 
 #: ../../../docs/getting-started.rst:4
 msgid ""

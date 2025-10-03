@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/building.rst:2
 msgid "Building"
-msgstr ""
+msgstr "建置"
 
 #: ../../../docs/building.rst:4
 msgid ""

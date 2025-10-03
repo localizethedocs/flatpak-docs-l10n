@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/introduction.rst:2
 msgid "Introduction to Flatpak"
-msgstr ""
+msgstr "Flatpak 簡介"
 
 #: ../../../docs/introduction.rst:4
 msgid ""
@@ -151,7 +151,7 @@ msgstr ""
 
 #: ../../../docs/introduction.rst:64
 msgid "Reasons to use Flatpak"
-msgstr ""
+msgstr "使用 Flatpak 的原因"
 
 #: ../../../docs/introduction.rst:66
 msgid "Flatpak offers major advantages over most system package managers:"
