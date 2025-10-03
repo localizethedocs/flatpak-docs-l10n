@@ -1,0 +1,704 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 08:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/conventions.rst:2
+msgid "Requirements & Conventions"
+msgstr ""
+
+#: ../../../docs/conventions.rst:4
+msgid ""
+"Flatpak deliberately imposes very few requirements on applications. However, "
+"a small number of standard Linux desktop conventions are expected, primarily "
+"to ensure that applications integrate with Linux desktops and app centers. "
+"Developers might also encounter a small number of Linux technical "
+"conventions."
+msgstr ""
+
+#: ../../../docs/conventions.rst:10
+msgid ""
+"Information on additional desktop integration options can be found in :doc:"
+"`desktop-integration`."
+msgstr ""
+
+#: ../../../docs/conventions.rst:14
+msgid "Expected Standards"
+msgstr ""
+
+#: ../../../docs/conventions.rst:16
+msgid ""
+"Applications using Flatpak are generally expected to comply with the "
+"following standards. Applications that have previously targeted the Linux "
+"desktop will typically need to make very few (if any) changes to meet these "
+"requirements."
+msgstr ""
+
+#: ../../../docs/conventions.rst:21
+msgid "Application IDs"
+msgstr ""
+
+#: ../../../docs/conventions.rst:23
+msgid ""
+"As described in :doc:`using-flatpak`, Flatpak requires each application to "
+"have a unique identifier, which follows a format such as ``org.example.app``."
+msgstr ""
+
+#: ../../../docs/conventions.rst:26
+msgid ""
+"The format is in reverse-DNS style, meaning the first section should be a "
+"domain controlled by the project, while the trailing section represents the "
+"specific project. There are exceptions to this, such as extensions, which "
+"use the base application-id of the project they extend rather than their own."
+msgstr ""
+
+#: ../../../docs/conventions.rst:31
+msgid ""
+"As will be seen below and in future sections, this ID is expected to be used "
+"in a number of places. Developers must follow the standard `D-Bus naming "
+"conventions for bus names <https://dbus.freedesktop.org/doc/dbus-"
+"specification.html#message-protocol-names>`_ when creating their own IDs. "
+"This format is already recommended by the `Desktop File specification "
+"<https://specifications.freedesktop.org/desktop-entry-spec/latest/file-"
+"naming.html>`_ and also the `Appstream specification <https://www."
+"freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-"
+"GenericComponent>`_."
+msgstr ""
+
+#: ../../../docs/conventions.rst:40
+msgid "Here are some practical examples of poor ID choices:"
+msgstr ""
+
+#: ../../../docs/conventions.rst:42
+msgid "``org.example.desktop``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:44
+msgid ""
+"This ID is problematic because the Appstream standard, for legacy reasons, "
+"treats IDs ending with ``.desktop`` as a special case, leading to "
+"inconsistency. For the same reason, ``.Desktop`` suffixes should not be used "
+"for newly named applications. Don't hesitate to repeat the application name "
+"even if it is already part of the domain name section of the identifier (e."
+"g. ``org.example.Example``)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:49
+msgid "``io.github.foo``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:51
+msgid ""
+"This is problematic because while ``foo.github.io`` may be unique to your "
+"project, it does not include a project-specific identifier. For instance, if "
+"another project creates ``io.github.foo-bar``, issues can arise since the "
+"two IDs would then be treated as similar by ``flatpak`` (even though they "
+"deserve to be treated as different namespaces). A better ID would be ``io."
+"github.foo.foo``, even if the second ``foo`` seems redundant."
+msgstr ""
+
+#: ../../../docs/conventions.rst:58
+msgid "``org.example-site.foo``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:60
+msgid ""
+"This ID is not valid according to the D-Bus specification, as the dash ``-`` "
+"isn't allowed except in the last component. You should replace the dash with "
+"an underscore ``_``, and thus use ``org.example_site.Foo`` instead."
+msgstr ""
+
+#: ../../../docs/conventions.rst:65
+msgid "``com.github.foo.bar`` or ``com.gitlab.foo.bar``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:67
+msgid ""
+"While a project may be hosted on GitHub or GitLab, it does not have control "
+"over the ``github.com`` or ``gitlab.com`` domains. Instead, you should use "
+"``io.github`` or ``io.gitlab`` as shown above."
+msgstr ""
+
+#: ../../../docs/conventions.rst:72
+msgid "``Org.Example.App``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:74
+msgid ""
+"The domain portion of the ID must be in lowercase, and while not required, "
+"the application portion is recommended to be in lowercase as well. "
+"Therefore, you should use ``org.example.app``."
+msgstr ""
+
+#: ../../../docs/conventions.rst:79
+msgid "MetaInfo files"
+msgstr ""
+
+#: ../../../docs/conventions.rst:81
+msgid ""
+"MetaInfo files provide metadata about applications, which is used by "
+"application stores (such as Flathub, GNOME Software and KDE Discover)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:85
+msgid ""
+"The `Freedesktop AppStream specification <https://www.freedesktop.org/"
+"software/appstream/docs/>`_ provides a complete reference for providing "
+"MetaInfo. You can use the online `AppStream MetaInfo Creator <https://www."
+"freedesktop.org/software/appstream/metainfocreator/>`_ to generate a basic "
+"file."
+msgstr ""
+
+#: ../../../docs/conventions.rst:91
+msgid ""
+"MetaInfo files should be named using the application ID, must end with the "
+"``.metainfo.xml`` file extension, and must be placed in ``/app/share/"
+"metainfo/``. For example::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:94
+msgid "/app/share/metainfo/org.gnome.Dictionary.metainfo.xml"
+msgstr ""
+
+#: ../../../docs/conventions.rst:96
+msgid ""
+"A legacy convention allows for placing the ``.appdata.xml`` file in ``/app/"
+"share/appdata``. ``flatpak-builder`` will check either directory for its "
+"respective extension."
+msgstr ""
+
+#: ../../../docs/conventions.rst:100
+msgid ""
+"The ``appstreamcli validate --explain`` command can be used to check "
+"MetaInfo files for errors."
+msgstr ""
+
+#: ../../../docs/conventions.rst:103
+msgid ""
+"The metainfo file along with the other metadata such as icon and desktop "
+"files is composed into a catalogue by ``appstream``. Since 1.3.4, Flatpak "
+"Builder by default uses ``appstreamcli`` from `libappstream <https://github."
+"com/ximion/appstream/>`_ to compose this and executes the following command::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:108
+msgid ""
+"$ appstreamcli compose --no-partial-urls --prefix=/ --origin=${FLATPAK_ID} --"
+"media-baseurl=<repo-media-url> --media-dir=${FLATPAK_DEST}/share/app-info/"
+"media --result-root=${FLATPAK_DEST} --data-dir=${FLATPAK_DEST}/share/app-"
+"info/xmls --icons-dir=${FLATPAK_DEST}/share/app-info/icons/flatpak --"
+"components=${FLATPAK_ID} ${FLATPAK_DEST}"
+msgstr ""
+
+#: ../../../docs/conventions.rst:110
+msgid ""
+"``${FLATPAK_ID}`` is the Flatpak application ID and ``${FLATPAK_DEST}`` is "
+"set to ``/app`` for apps and ``/usr`` for runtimes. The ``media-baseurl`` "
+"controls the base URL used for mirroring screenshots. Usually each app store "
+"will have their own base URL for this. On Flathub this is set to ``https://"
+"dl.flathub.org/media/``."
+msgstr ""
+
+#: ../../../docs/conventions.rst:117
+msgid "Application icons"
+msgstr ""
+
+#: ../../../docs/conventions.rst:119
+msgid ""
+"Applications are expected to provide an application icon, which is used for "
+"their application launcher. These icons should be provided in accordance "
+"with the `Freedesktop icon specification <https://specifications.freedesktop."
+"org/icon-theme-spec/icon-theme-spec-latest.html>`_."
+msgstr ""
+
+#: ../../../docs/conventions.rst:124
+msgid ""
+"Icons must be named using the application's ID, be in either PNG or SVG "
+"format, and must be placed in the standard location::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:127
+msgid "/app/share/icons/hicolor/$size/apps/"
+msgstr ""
+
+#: ../../../docs/conventions.rst:129
+msgid ""
+"For example, the path to the 128✕128px version of GNOME Dictionary's icon "
+"is::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:132
+msgid "/app/share/icons/hicolor/128x128/apps/org.gnome.Dictionary.png"
+msgstr ""
+
+#: ../../../docs/conventions.rst:134
+msgid ""
+"Icons must be square-shaped, meaning their width and height must be the "
+"same. The maximum size allowed by the specification is 512x512px. SVG icons "
+"are of size ``scalable``::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:138
+msgid "/app/share/icons/hicolor/scalable/apps/org.gnome.Dictionary.svg"
+msgstr ""
+
+#: ../../../docs/conventions.rst:140
+msgid ""
+"Flatpak will export the following icon name patterns: ``$FLATPAK_ID``, "
+"``$FLATPAK_ID.foo``, ``$FLATPAK_ID-foo``. They may end with an extension "
+"suffix like ``.png`` or ``.svg``. Exported icons can be found in the "
+"``icons`` subfolder of either ``$HOME/.local/share/flatpak/exports/share`` "
+"or ``/var/lib/flatpak/exports/share``, depending on whether it's a system or "
+"user install."
+msgstr ""
+
+#: ../../../docs/conventions.rst:146
+msgid ""
+"The distribution usually appends those paths to ``$XDG_DATA_DIRS`` on the "
+"host when installing the ``flatpak`` package. Unless an icon is exported by "
+"Flatpak, host applications cannot access it."
+msgstr ""
+
+#: ../../../docs/conventions.rst:151
+msgid "Desktop files"
+msgstr ""
+
+#: ../../../docs/conventions.rst:153
+msgid ""
+"Desktop files are used to provide the desktop environment with information "
+"about each application. The `Freedesktop specification <https://"
+"specifications.freedesktop.org/desktop-entry-spec/latest/>`_ provides a "
+"complete reference for writing desktop files."
+msgstr ""
+
+#: ../../../docs/conventions.rst:158
+msgid ""
+"Desktop files must be named using the application's ID, followed by the ``."
+"desktop`` file extension, and must be placed in ``/app/share/applications/"
+"``. For example::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:162
+msgid "/app/share/applications/org.gnome.Dictionary.desktop"
+msgstr ""
+
+#: ../../../docs/conventions.rst:164
+msgid ""
+"A minimal desktop file should contain at least the application's *name*, "
+"*exec* command, *type*, *icon* name and *categories*::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:167
+msgid ""
+"[Desktop Entry]\n"
+"Name=Gnome Dictionary\n"
+"Exec=gnome-dictionary\n"
+"Type=Application\n"
+"Icon=org.gnome.Dictionary\n"
+"Categories=Office;Dictionary;"
+msgstr ""
+
+#: ../../../docs/conventions.rst:174
+msgid ""
+"The ``desktop-file-validate`` command can be used to check for errors in "
+"desktop files."
+msgstr ""
+
+#: ../../../docs/conventions.rst:177
+msgid ""
+"The ``Exec`` key of the desktop files is rewritten by Flatpak when "
+"installing an app. The original value of the key becomes the value of the "
+"``--command`` argument like so::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:181
+msgid ""
+"Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gnome-"
+"dictionary org.gnome.Dictionary"
+msgstr ""
+
+#: ../../../docs/conventions.rst:183
+msgid ""
+"Flatpak will export the following desktop filename patterns: ``$FLATPAK_ID."
+"desktop``, ``$FLATPAK_ID.foo.desktop``, ``$FLATPAK_ID-foo.desktop``. "
+"Exported desktop files can be found in the ``applications`` subfolder of "
+"either ``$HOME/.local/share/flatpak/exports/share`` or ``/var/lib/flatpak/"
+"exports/share``, depending on whether it's a system or user install."
+msgstr ""
+
+#: ../../../docs/conventions.rst:190
+msgid ""
+"The distribution usually appends those paths to ``$XDG_DATA_DIRS`` on the "
+"host when installing the ``flatpak`` package. Unless a desktop file is "
+"exported by Flatpak, host applications cannot access it."
+msgstr ""
+
+#: ../../../docs/conventions.rst:195
+msgid "D-Bus service files"
+msgstr ""
+
+#: ../../../docs/conventions.rst:197
+msgid ""
+"D-Bus service files are sometimes supplied by applications for automatic "
+"\"on demand\" activation of services such as when setting up an appliction "
+"for D-Bus launching."
+msgstr ""
+
+#: ../../../docs/conventions.rst:201
+msgid ""
+"The service file must be installed to ``${FLATPAK_DEST}/share/dbus-1/"
+"services`` and must end in ``.service``. The rest of the filename must match "
+"the ``$FLATPAK_ID`` or a subname of the Flatpak ID (``$FLATPAK_ID.foo``)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:206
+msgid ""
+"The value of the ``Name`` key inside the service file must match the "
+"filename without the ``.service`` part exactly. An example is provided "
+"below::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:210
+msgid ""
+"# Installed as /app/share/dbus-1/services/org.example.coolapp.service\n"
+"\n"
+"[D-BUS Service]\n"
+"Name=org.example.coolapp\n"
+"Exec=/app/bin/coolapp --gapplication-service\n"
+"\n"
+"# Installed as /app/share/dbus-1/services/org.example.coolapp.foobar."
+"service\n"
+"\n"
+"[D-BUS Service]\n"
+"Name=org.example.coolapp.foobar\n"
+"Exec=/app/bin/coolapp --arg1 --gapplication-service"
+msgstr ""
+
+#: ../../../docs/conventions.rst:223
+msgid "GNOME shell search providers"
+msgstr ""
+
+#: ../../../docs/conventions.rst:225
+msgid ""
+"A GNOME Shell search provider is a mechanism by which an application can "
+"expose its search capabilities to the GNOME Shell. Note that Flatpak will "
+"mark all search providers files as disabled when exporting them."
+msgstr ""
+
+#: ../../../docs/conventions.rst:230
+msgid ""
+"The search provider file must be installed as ``${FLATPAK_DEST}/share/gnome-"
+"shell/search-providers/$NAME-search-provider.ini``"
+msgstr ""
+
+#: ../../../docs/conventions.rst:233
+msgid ""
+"``$NAME`` can be either the ``$FLATPAK_ID`` or a subname of the Flatpak ID "
+"(``$FLATPAK_ID.foo``, ``$FLATPAK_ID-foo``)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:236 ../../../docs/conventions.rst:258
+msgid "An example is provided below::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:238
+msgid ""
+"# Installed as /app/share/gnome-shell/search-providers/org.example.coolapp-"
+"search-provider.ini\n"
+"\n"
+"[Shell Search Provider]\n"
+"DesktopId=org.example.coolapp.desktop\n"
+"BusName=org.example.coolapp.SearchProvider\n"
+"ObjectPath=/org/mozilla/coolapp/SearchProvider\n"
+"Version=2"
+msgstr ""
+
+#: ../../../docs/conventions.rst:247
+msgid "Krunner DBus plugins"
+msgstr ""
+
+#: ../../../docs/conventions.rst:249
+msgid ""
+"Krunner DBus plugins offer similar functionality in KDE as GNOME shell "
+"search providers. Flatpak supports exporting these since 1.16.0 and they are "
+"also disabled by default."
+msgstr ""
+
+#: ../../../docs/conventions.rst:253
+msgid ""
+"The plugin file must be installed as ``${FLATPAK_DEST}/share/krunner/"
+"dbusplugins/$NAME.desktop``. ``$NAME`` can be either the ``$FLATPAK_ID`` or "
+"a subname of the Flatpak ID (``$FLATPAK_ID.foo``, ``$FLATPAK_ID-foo``)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:260
+msgid ""
+"# Installed as /app/share/krunner/dbusplugins/org.example.coolapp.desktop\n"
+"\n"
+"[Desktop Entry]\n"
+"Name=Hello\n"
+"X-KDE-ServiceTypes=Plasma/Runner\n"
+"Type=Service\n"
+"Icon=org.example.coolapp\n"
+"X-KDE-ServiceTypes=Plasma/Runner\n"
+"X-KDE-PluginInfo-EnabledByDefault=true\n"
+"X-Plasma-API=DBus\n"
+"X-Plasma-DBusRunner-Service=org.example.coolapp.KRunner\n"
+"X-Plasma-DBusRunner-Path=/org/example/coolapp/KRunner"
+msgstr ""
+
+#: ../../../docs/conventions.rst:274
+msgid "MIME files"
+msgstr ""
+
+#: ../../../docs/conventions.rst:276
+msgid ""
+"MIME files define new MIME types, file extensions, and detection rules. The "
+"MIME file must be installed as ``${FLATPAK_DEST}/share/mime/packages/$NAME."
+"xml``. ``$NAME`` can be either the ``$FLATPAK_ID`` or a subname of the "
+"Flatpak ID (``$FLATPAK_ID.foo``, ``$FLATPAK_ID-foo``). It is common to use "
+"``$FLATPAK_ID-mime.xml`` as the filename."
+msgstr ""
+
+#: ../../../docs/conventions.rst:283
+msgid ""
+"Note, that Flatpak may rewrite these MIME files to remove magic mime rules "
+"and drop globs to a lower priority. An example MIME file of `Akonadi "
+"<https://github.com/KDE/akonadi/blob/master/akonadi-mime.xml>`_ is provided "
+"below::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:288
+msgid ""
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+"<!--\n"
+"SPDX-License-Identifier: GPL-2.0-or-later\n"
+"-->\n"
+"<!--\n"
+"Notes:\n"
+"- the mime types in this file are valid with the version 0.20 of the\n"
+"  shared-mime-info package.\n"
+"- the \"fdo #xxxxx\" are the wish in the freedesktop.org bug database to "
+"include\n"
+"  the mime type there.\n"
+"-->\n"
+"<mime-info xmlns=\"http://www.freedesktop.org/standards/shared-mime-info\">\n"
+"  <mime-type type=\"application/x-vnd.akonadi.calendar.event\">\n"
+"    <sub-class-of type=\"text/calendar\"/>\n"
+"    <comment>iCal Calendar Event Component</comment>\n"
+"  </mime-type>\n"
+"  <mime-type type=\"application/x-vnd.akonadi.calendar.freebusy\">\n"
+"    <sub-class-of type=\"text/calendar\"/>\n"
+"    <comment>iCal Calendar FreeBusy Component</comment>\n"
+"  </mime-type>\n"
+"  <mime-type type=\"application/x-vnd.akonadi.calendar.journal\">\n"
+"    <sub-class-of type=\"text/calendar\"/>\n"
+"    <comment>iCal Calendar Journal Component</comment>\n"
+"  </mime-type>\n"
+"  <mime-type type=\"application/x-vnd.akonadi.calendar.todo\">\n"
+"    <sub-class-of type=\"text/calendar\"/>\n"
+"    <comment>iCal Calendar TODO Component</comment>\n"
+"  </mime-type>\n"
+"  <mime-type type=\"application/x-vnd.akonadi.collection.virtual\">\n"
+"    <comment>Virtual Akonadi Collection</comment>\n"
+"  </mime-type>\n"
+"</mime-info>"
+msgstr ""
+
+#: ../../../docs/conventions.rst:321
+msgid ""
+"This is installed as ``/app/share/mime/packages/org.kde.akregator.xml`` in "
+"Akregator."
+msgstr ""
+
+#: ../../../docs/conventions.rst:325
+msgid "Technical conventions"
+msgstr ""
+
+#: ../../../docs/conventions.rst:327
+msgid ""
+"The following are standard technical conventions used by Flatpak and Linux "
+"desktops. Those with Linux experience will likely already be aware of them. "
+"However, developers who are new to Linux might find some of this information "
+"useful."
+msgstr ""
+
+#: ../../../docs/conventions.rst:333
+msgid "D-Bus"
+msgstr ""
+
+#: ../../../docs/conventions.rst:335
+msgid ""
+"D-Bus is the standard IPC framework used on Linux desktops. A lot of "
+"applications won't need to use it, but it is supported by Flatpak should it "
+"be required."
+msgstr ""
+
+#: ../../../docs/conventions.rst:339
+msgid ""
+"D-Bus can be used for application launching and communicating with some "
+"system services. Applications can also provide their own D-Bus services "
+"(when doing this, the D-Bus service name is expected to be the same as the "
+"application ID)."
+msgstr ""
+
+#: ../../../docs/conventions.rst:344
+msgid "Filesystem layout"
+msgstr ""
+
+#: ../../../docs/conventions.rst:346
+msgid ""
+"Each Flatpak sandbox, which is the environment in which an application is "
+"run, contains the filesystem of the application's runtime. This follows "
+"`standard Linux filesystem conventions <https://en.wikipedia.org/wiki/"
+"Filesystem_Hierarchy_Standard>`_."
+msgstr ""
+
+#: ../../../docs/conventions.rst:351
+msgid ""
+"For example, the root of the sandbox contains the ``/etc`` directory for "
+"configuration files and ``/usr`` for multi-user utilities and applications. "
+"In addition to these, each sandbox contains a top-level ``/app`` directory, "
+"which is where the application's own files are located."
+msgstr ""
+
+#: ../../../docs/conventions.rst:357
+msgid "XDG base directories"
+msgstr ""
+
+#: ../../../docs/conventions.rst:359
+msgid ""
+"`XDG base directories <https://specifications.freedesktop.org/basedir-spec/"
+"basedir-spec-latest.html>`_ are standard locations for user-specific "
+"application data. Popular toolkits provide convenience functions for "
+"accessing XDG base directories. These include:"
+msgstr ""
+
+#: ../../../docs/conventions.rst:364
+msgid "Electron: XDG base directories can be accessed with ``app.getPath``."
+msgstr ""
+
+#: ../../../docs/conventions.rst:365
+msgid ""
+"Glib: XDG base directories can be accessed through the "
+"``g_get_user_cache_dir ()``, ``g_get_user_data_dir ()``, "
+"``g_get_user_config_dir ()`` functions."
+msgstr ""
+
+#: ../../../docs/conventions.rst:368
+msgid ""
+"Qt: XDG base directories can be accessed with the `QStandardPaths Class "
+"<https://doc.qt.io/archives/qt-5.15/qstandardpaths.html>`_."
+msgstr ""
+
+#: ../../../docs/conventions.rst:371
+msgid ""
+"However, applications that aren't using one of these toolkits can expect to "
+"find their XDG base directories in the following locations:"
+msgstr ""
+
+#: ../../../docs/conventions.rst:375
+msgid "Base directory"
+msgstr ""
+
+#: ../../../docs/conventions.rst:375
+msgid "Usage"
+msgstr ""
+
+#: ../../../docs/conventions.rst:375
+msgid "Default location"
+msgstr ""
+
+#: ../../../docs/conventions.rst:377
+msgid "XDG_CONFIG_HOME"
+msgstr ""
+
+#: ../../../docs/conventions.rst:377
+msgid "User-specific configuration files"
+msgstr ""
+
+#: ../../../docs/conventions.rst:377
+msgid "~/.var/app/<app-id>/config"
+msgstr ""
+
+#: ../../../docs/conventions.rst:378
+msgid "XDG_DATA_HOME"
+msgstr ""
+
+#: ../../../docs/conventions.rst:378
+msgid "User-specific data"
+msgstr ""
+
+#: ../../../docs/conventions.rst:378
+msgid "~/.var/app/<app-id>/data"
+msgstr ""
+
+#: ../../../docs/conventions.rst:379
+msgid "XDG_CACHE_HOME"
+msgstr ""
+
+#: ../../../docs/conventions.rst:379
+msgid "Non-essential user-specific data"
+msgstr ""
+
+#: ../../../docs/conventions.rst:379
+msgid "~/.var/app/<app-id>/cache"
+msgstr ""
+
+#: ../../../docs/conventions.rst:380
+msgid "XDG_STATE_HOME"
+msgstr ""
+
+#: ../../../docs/conventions.rst:380
+msgid "State data such as undo history"
+msgstr ""
+
+#: ../../../docs/conventions.rst:380
+msgid "~/.var/app/<app-id>/.local/state"
+msgstr ""
+
+#: ../../../docs/conventions.rst:383
+msgid "For example, GNOME Dictionary will store user-specific data in::"
+msgstr ""
+
+#: ../../../docs/conventions.rst:385
+msgid "~/.var/app/org.gnome.Dictionary/data/gnome-dictionary"
+msgstr ""
+
+#: ../../../docs/conventions.rst:387
+msgid ""
+"These environment variables are always set by Flatpak and override any host "
+"values. However, if access to directories on the host is needed, the "
+"``$HOST_XDG_CONFIG_HOME``, ``$HOST_XDG_DATA_HOME``, "
+"``$HOST_XDG_CACHE_HOME``, and ``$HOST_XDG_STATE_HOME`` environment variables "
+"will be set if they are also available on the host."
+msgstr ""
+
+#: ../../../docs/conventions.rst:392
+msgid ""
+"Note that ``$XDG_STATE_HOME`` and ``$HOST_XDG_STATE_HOME`` are only "
+"supported by Flatpak 1.13 and later. If your application needs to work on "
+"earlier versions of Flatpak, you can use the ``--persist=.local/state`` and "
+"``--unset-env=XDG_STATE_HOME`` finish args, ensuring the app will use the "
+"correct directory, even after Flatpak is later upgraded to version >1.13."
+msgstr ""
+
+#: ../../../docs/conventions.rst:398
+msgid ""
+"Also, note that applications can be configured to use non-default base "
+"directory locations (see :doc:`sandbox-permissions`)."
+msgstr ""

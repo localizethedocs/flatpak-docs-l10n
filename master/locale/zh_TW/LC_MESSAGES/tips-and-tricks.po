@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 08:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/tips-and-tricks.rst:2
+msgid "Tips and Tricks"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:4
+msgid "This page explains a few useful features of the Flatpak CLI."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:8
+msgid "Testing an app with a different runtime"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:10
+msgid ""
+"You can (for testing) run an application with a different runtime than it "
+"typically uses.  For instance, to run stable gedit with the latest unstable "
+"gnome runtime you can do::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:14
+msgid "$ flatpak run --runtime-version=master org.gnome.gedit"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:16
+msgid ""
+"You can also use a completely different runtime (but same version number)::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:18
+msgid "$ flatpak run --runtime=org.gnome.Sdk org.gnome.gedit"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:20
+msgid ""
+"If you just want to use the sdk instead of the platform like the above, a "
+"better approach is to use ``-d``."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:25
+msgid ""
+"Running against a runtime with a completely different ABI is undefined and "
+"unsupported behavior."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:29
+msgid "Downgrading"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:31
+msgid ""
+"It is possible to downgrade an installed application (or runtime) to an "
+"older build."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:34
+msgid "First you look for the commit you are interested in::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:36
+msgid "$ flatpak remote-info --log flathub org.gnome.Recipes"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:38
+msgid "Then you deploy the commit::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:40
+msgid ""
+"$ sudo flatpak update \\\n"
+"  --commit=ec07ad6c54e803d1428e5580426a41315e50a14376af033458e7a65bfb2b64f0 "
+"\\\n"
+"  org.gnome.Recipes"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:46
+msgid ""
+"The example here uses ``sudo`` for system installations because, unlike "
+"normal updates, downgrades are considered a privileged action. If the "
+"application is installed per-user you would run it as that user."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:49
+msgid "Masking"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:51
+msgid ""
+"Flatpak 1.5.0 or later allows to mask a ref to prevent it from being "
+"automatically updated or installed."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:54
+msgid ""
+"If the Flatpak remote is configured in user location, ``flatpak mask --"
+"user`` needs to be used otherwise it defaults to system location. ``flatpak "
+"remote-list`` can be used to find the location of the Flatpak remote."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:59
+msgid "To list the currently masked patterns::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:61
+msgid ""
+"# System\n"
+"$ flatpak mask\n"
+"\n"
+"# User\n"
+"$ flatpak mask --user"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:67
+msgid "To mask a ref pattern::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:69
+msgid ""
+"# System\n"
+"$ flatpak mask org.example.brokenapp\n"
+"\n"
+"# User\n"
+"$ flatpak mask --user org.example.brokenapp\n"
+"\n"
+"# Mask only the beta branch of the ref\n"
+"$ flatpak mask org.example.brokenapp//beta"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:78
+msgid "To remove a masked pattern::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:80
+msgid ""
+"# System\n"
+"$ flatpak mask --remove org.example.brokenapp\n"
+"\n"
+"# User\n"
+"$ flatpak mask --user --remove org.example.brokenapp"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:87
+msgid "Bisecting regressions in application builds"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:89
+msgid ""
+"In case the newest builds of an application introduce regressions, you can "
+"use ``flatpak-bisect`` to discover which commit introduced the regression. "
+"It works just like ``git bisect``."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:93
+msgid ""
+"In case your distribution doesn't install the ``flatpak-bisect`` utility, "
+"you can find it distributed alongside the Flatpak source code, in https://"
+"github.com/flatpak/flatpak/blob/main/scripts/flatpak-bisect"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:97
+msgid "First you update the application and get its history::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:99
+msgid "$ flatpak-bisect org.gnome.gedit start"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:101
+msgid "Then, you should set the current commit as the first bad commit::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:103 ../../../docs/tips-and-tricks.rst:124
+msgid "$ flatpak-bisect org.gnome.gedit bad"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:105
+msgid ""
+"Now you need to find the hash of the first known good commit. For that, you "
+"can see the build history by running::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:108
+msgid "$ flatpak-bisect org.gnome.gedit log"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:110
+msgid "To start bisecting, checkout the first known good commit you find::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:112
+msgid ""
+"$ flatpak-bisect org.gnome.gedit checkout "
+"5cd2b0648618c9038fbc6830733817309ade29541cdd8383830bbb76f6accf0d"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:114
+msgid ""
+"After setting the bad commit and the first known good commit, you can launch "
+"the application to verify if the current commit in the bisecting session is "
+"a good or a bad one."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:118
+msgid "To mark a commit as good or bad, run::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:120
+msgid "$ flatpak-bisect org.gnome.gedit good"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:122
+msgid "Or::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:126
+msgid "``flatpak-bisect`` will inform you when the first bad commit is found."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:129
+msgid "Adding a custom installation"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:131
+msgid ""
+"By default Flatpak installs apps system-wide, and can also be made to "
+"install per-user with the ``--user`` option accepted by most commands. A "
+"third option is to set up a custom installation, which could be stored on an "
+"external hard drive."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:136
+msgid "First ensure that the config directory exists::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:138
+msgid "$ sudo mkdir -p /etc/flatpak/installations.d"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:140
+msgid "Then open a file in that directory as root::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:142
+msgid "$ sudoedit /etc/flatpak/installations.d/extra.conf"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:144
+msgid "And write something like this::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:146
+msgid ""
+"[Installation \"extra\"]\n"
+"Path=/run/media/mwleeds/ext4_4tb/flatpak/\n"
+"DisplayName=Extra Installation\n"
+"StorageType=harddisk"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:151
+msgid ""
+"See `flatpak-installation(5) <https://docs.flatpak.org/en/latest/flatpak-"
+"command-reference.html#flatpak-installation>`_ for the full format "
+"specification. Replace the path with the actual path you want to use. You "
+"can use ``df`` to see mounted file systems and ``mkdir`` to create a "
+"``flatpak`` directory so the path specified by ``Path=`` exists."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:157
+msgid "Then you can add a remote using a command like::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:159
+msgid ""
+"$ flatpak --installation=extra remote-add flathub https://flathub.org/repo/"
+"flathub.flatpakrepo"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:161
+msgid "And install to it with::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:163
+msgid "$ flatpak --installation=extra install flathub org.inkscape.Inkscape"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:167
+msgid ""
+"If your custom installation is the only one with the remote you're "
+"installing from, ``--installation`` can be omitted."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:170
+msgid "And run apps from it with::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:172
+msgid "$ flatpak --installation=extra run org.inkscape.Inkscape"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:176
+msgid ""
+"If your custom installation is the only one with the app you're running, ``--"
+"installation`` can be omitted."
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:180
+msgid "Configuring resource limits for apps"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:182
+msgid ""
+"When systemd is available, Flatpak tries to put app processes in a scope "
+"such as ``app-flatpak-com.brave.Browser-*.scope`` (in the case of Brave), "
+"with ``*`` replaced by an arbitrary suffix. This means you can create a file "
+"like ``~/.config/systemd/user/app-flatpak-com.brave.Browser-.scope.d/memory."
+"conf`` with contents like::"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:188
+msgid ""
+"[Scope]\n"
+"MemoryHigh=1G"
+msgstr ""
+
+#: ../../../docs/tips-and-tricks.rst:191
+msgid ""
+"Then after a ``systemctl --user daemon-reload``, those ``systemd.resource-"
+"control(5)`` parameters will apply to all instances of that app."
+msgstr ""
