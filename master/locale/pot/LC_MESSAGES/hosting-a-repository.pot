@@ -1,0 +1,652 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-03 08:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/hosting-a-repository.rst:2
+msgid "Hosting a repository"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:6
+msgid ""
+"Flathub uses flat-manager to host its Flatpak repository. See https://github."
+"com/flatpak/flat-manager"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:9
+msgid ""
+"The section on :doc:`flatpak-builder` describes how to generate "
+"repositories. The resulting repository can be hosted on a web server for "
+"consumption by users."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:14
+msgid "Important details"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:16
+msgid ""
+"Flatpak repositories use archive-z2, meaning that they contain a single file "
+"for each file in the application. This means that pull operations involve a "
+"lot of HTTP requests. Since new requests can be slow, it is important to "
+"enable HTTP keep-alive on the web server that is hosting your repository."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:21
+msgid ""
+"Flatpak supports something called static deltas. These are single files that "
+"contain all the data needed to go between two revisions (or from nothing to "
+"a revision). Creating such deltas will take up more space on the server, but "
+"will make downloads much faster. This can be done with the ``flatpak build-"
+"update-repo --generate-static-deltas`` option."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:28
+msgid ".flatpakrepo files"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:30
+msgid ""
+"``.flatpakrepo`` files are a convenient way to let users add a repository. "
+"These are simple description files which contain information about the "
+"repository. For example, the Flathub repo file looks like::"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:34
+msgid ""
+"[Flatpak Repo]\n"
+"Title=Flathub\n"
+"Url=https://dl.flathub.org/repo/\n"
+"Homepage=https://flathub.org/\n"
+"Comment=Central repository of Flatpak applications\n"
+"Description=Central repository of Flatpak applications\n"
+"Icon=https://dl.flathub.org/repo/logo.svg\n"
+"GPGKey=mQINBFlD2sABEADsiUZUO..."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:43
+msgid ""
+"Here you can see that the repo file contains descriptive metadata, such as "
+"the repository name, description, icon and website. The file also contains "
+"information that is needed to add the repository, including a download URL "
+"and the repository's GPG key."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:48
+msgid ""
+"``.flatpakrepo`` files can be used to add a repository from the command "
+"line. For example, the command to add Flathub using its repo file is::"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:51
+msgid ""
+"$ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/"
+"flathub.flatpakrepo"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:53
+msgid ""
+"The command line isn't the only way to add a repository using a ``."
+"flatpakrepo`` file - on desktops that support Flatpak, it is just a matter "
+"of clicking the repository file or a download link that points to it."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:59
+msgid ""
+"``.flatpakrepo`` files should include the base64-encoded version of the GPG "
+"key that was used to sign the repository. This can be obtained with the "
+"following command::"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:63
+msgid "$ base64 --wrap=0 < key.gpg"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:66
+msgid "Hosting a repository on Gitlab/Github pages"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:68
+msgid ""
+"A Flatpak repository can be easily hosted through Gitlab or Github pages and "
+"distributed to users."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:72
+msgid ""
+"Github or Gitlab may have pipeline quotas, storage and bandwidth limits. "
+"Please consult their documentation on this."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:76
+msgid "On Gitlab"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:78
+msgid "The instructions will use Gitlab.com."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:80
+msgid "Create a new blank repository on Gitlab"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:82
+msgid "Clone the repository locally"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:84
+msgid "git clone git@gitlab.com:your_user_name/repo_name.git && cd repo_name"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:88
+msgid "Create a ``.gitlab-ci.yml`` with the following contents."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:91
+msgid "A worflow that builds for aarch64 and x86_64 is provided below."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:94
+msgid ""
+"variables:\n"
+"  # Application id of the app, should be same as id used in flatpak manifest "
+"and MetaInfo\n"
+"  APP_ID: tld.vendor.app_name\n"
+"  # Location of the flatpak manifest, root of git repository\n"
+"  MANIFEST_PATH: $CI_PROJECT_DIR/${APP_ID}.yaml\n"
+"  # Name of flatpak bundle\n"
+"  BUNDLE: \"${APP_ID}.flatpak\"\n"
+"  # Docker image to use\n"
+"  DOCKER_IMAGE: \"ghcr.io/flathub-infra/flatpak-github-actions:"
+"freedesktop-25.08\"\n"
+"  SCHEDULE_TASK: default\n"
+"\n"
+"stages:\n"
+"  - setup\n"
+"  - build\n"
+"  - deploy\n"
+"\n"
+"# This will check for updates using external data checker and send PRs to "
+"the repo\n"
+"update-sources:\n"
+"  stage: setup\n"
+"  image:\n"
+"    # https://github.com/flathub-infra/flatpak-external-data-checker\n"
+"    name: ghcr.io/flathub/flatpak-external-data-checker\n"
+"    # Open shell rather than the bin\n"
+"    entrypoint: [\"\"]\n"
+"  before_script:\n"
+"    - git config --global user.name \"${GITLAB_USER_LOGIN}\"\n"
+"    - git config --global user.email \"${GITLAB_USER_EMAIL}\"\n"
+"  script:\n"
+"    - /app/flatpak-external-data-checker --update --commit-only "
+"$MANIFEST_PATH\n"
+"\n"
+"    # Creates a merge request targetting the default repo branch and sets up "
+"auto merge when pipeline succeeds\n"
+"    - git push -o merge_request.create -o merge_request."
+"target=${CI_DEFAULT_BRANCH} -o merge_request.merge_when_pipeline_succeeds\n"
+"      \"https://${GITLAB_USER_NAME}:${CI_GIT_TOKEN}"
+"@${CI_REPOSITORY_URL#*@}\" || true\n"
+"  artifacts:\n"
+"    paths:\n"
+"      - $MANIFEST_PATH\n"
+"    expire_in: 1 week\n"
+"  rules:\n"
+"    # Set up a pipeline schedule for this https://docs.gitlab.com/ee/ci/"
+"pipelines/schedules.html\n"
+"    - if: $CI_PIPELINE_SOURCE == \"schedule\" || $CI_PIPELINE_SOURCE == "
+"\"trigger\"\n"
+"      when: always\n"
+"    - when: never\n"
+"\n"
+"flatpak:\n"
+"  stage: build\n"
+"  image: ${DOCKER_IMAGE}\n"
+"  variables:\n"
+"    # Stable Flathub repo\n"
+"    RUNTIME_REPO: \"https://flathub.org/repo/flathub.flatpakrepo\"\n"
+"  script:\n"
+"    # Set up an user as the docker image used here comes with none\n"
+"    - |\n"
+"      cat <<EOF > /etc/passwd\n"
+"      root:x:0:0:root:/root:/bin/bash\n"
+"      EOF\n"
+"\n"
+"      cat <<EOF > /etc/group\n"
+"      root:x:0:\n"
+"      EOF\n"
+"\n"
+"    # Sets up the stable Flathub repository for dependencies\n"
+"    - flatpak remote-add --user --if-not-exists flathub ${RUNTIME_REPO}\n"
+"    # Sets up GPG signing\n"
+"    # Initialise GPG\n"
+"    - gpg --list-keys --with-keygrip\n"
+"    - echo \"allow-preset-passphrase\" >> ~/.gnupg/gpg-agent.conf\n"
+"    - gpg-connect-agent reloadagent /bye\n"
+"    - cat $GPG_PASSPHRASE | /usr/libexec/gpg-preset-passphrase --preset "
+"$GPG_KEY_GREP\n"
+"    - gpg --import --batch ${GPG_PRIVATE_KEY}\n"
+"    # Build & install build dependencies, branch can be unset too then it "
+"will default to master see man flatpak-manifest > branch\n"
+"    - flatpak-builder build --user --install-deps-from=flathub --gpg-"
+"sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-updates --force-clean --"
+"repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}\n"
+"    # Generate a Flatpak bundle for testing in MRs\n"
+"    - flatpak build-bundle --gpg-sign=${GPG_KEY_ID} repo ${BUNDLE} --runtime-"
+"repo=${RUNTIME_REPO} ${APP_ID} ${BRANCH}\n"
+"    # flatpak-builder exports contents to repo folder after building\n"
+"    # This generates summary, appstream refs and prunes the folder to keep "
+"the latest commit only in preparation for publishing\n"
+"    - flatpak build-update-repo --gpg-sign=${GPG_KEY_ID} --generate-static-"
+"deltas --prune repo/\n"
+"  artifacts:\n"
+"    paths:\n"
+"      - $BUNDLE\n"
+"      # This artifact will be used when publishing to the static site\n"
+"      - repo\n"
+"    expire_in: 1 week\n"
+"  rules:\n"
+"    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n"
+"      when: never\n"
+"    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n"
+"      when: on_success\n"
+"    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH\n"
+"      when: manual\n"
+"\n"
+"# Deploys the generated package to Gitlab pages name.gitlab.io/repo_name\n"
+"pages:\n"
+"  variables:\n"
+"    BUILD_OUTPUT_PATH: ${CI_PROJECT_DIR}/repo\n"
+"  stage: deploy\n"
+"  image: alpine:latest\n"
+"  before_script:\n"
+"    - apk add rsync\n"
+"    # replace html assets relative path with pages absolute path\n"
+"    - find $BUILD_OUTPUT_PATH \\( -type d -name .git -prune \\) -o -type f -"
+"print0 | xargs -0 sed -i -e \"s#href=\\\"\\/#href=\\\"$CI_PAGES_URL/#g\" -e "
+"\"s#src=\\\"\\/#src=\\\"$CI_PAGES_URL/#g\"\n"
+"  script:\n"
+"    - mkdir public || true\n"
+"    - rsync -av --exclude='public' --exclude='.git' $BUILD_OUTPUT_PATH/ "
+"public\n"
+"  artifacts:\n"
+"    paths:\n"
+"      - public\n"
+"    expire_in: 1 week\n"
+"  rules:\n"
+"    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n"
+"      when: never\n"
+"    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n"
+"      when: on_success"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:209
+msgid ""
+"`Create <https://www.gnupg.org/gph/en/manual/c14.html>`_ a new GPG key "
+"locally, to sign the repository."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:212
+msgid ""
+"Go to ``https://gitlab.com/-/profile/personal_access_tokens`` and create a "
+"token for ``$CI_GIT_TOKEN``. Note that the token is valid for a maximum of "
+"one year and you should renew it before it expires."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:216
+msgid ""
+"Go to ``https://gitlab.com/your_user_name/repo_name/-/settings/ci_cd``. "
+"Expand `General` and disable public pipeline. Click Save. Expand "
+"`variables`. Add the following `variables <https://docs.gitlab.com/ci/"
+"variables/#define-a-cicd-variable-in-the-gitlab-ciyml-file>`_ necessary for "
+"the pipeline to run:"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:226
+msgid "Type"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:227
+msgid "Key"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:228
+msgid "Value"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:229
+msgid "Protected"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:230
+msgid "Masked"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:231
+#: ../../../docs/hosting-a-repository.rst:236
+#: ../../../docs/hosting-a-repository.rst:251
+msgid "Variable"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:232
+msgid "GPG_KEY_GREP"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:233
+msgid "Keygrip of GPG key"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:234
+#: ../../../docs/hosting-a-repository.rst:239
+#: ../../../docs/hosting-a-repository.rst:244
+#: ../../../docs/hosting-a-repository.rst:249
+#: ../../../docs/hosting-a-repository.rst:254
+msgid "Yes"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:235
+#: ../../../docs/hosting-a-repository.rst:240
+#: ../../../docs/hosting-a-repository.rst:245
+#: ../../../docs/hosting-a-repository.rst:250
+#: ../../../docs/hosting-a-repository.rst:255
+msgid "Optional"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:237
+msgid "GPG_KEY_ID"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:238
+msgid "Keyid of GPG key"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:241
+#: ../../../docs/hosting-a-repository.rst:246
+msgid "File"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:242
+msgid "GPG_PASSPHRASE"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:243
+msgid "Passphrase of GPG Key"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:247
+msgid "GPG_PRIVATE_KEY"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:248
+msgid "ASCII armoured private key"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:252
+msgid "CI_GIT_TOKEN"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:253
+msgid "Token"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:257
+msgid ""
+"To get the keygrip of the GPG key generated in step 4, run the following in "
+"your terminal and look at the ``Keygrip`` section:"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:260
+msgid "gpg --list-secret-keys --with-keygrip"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:264
+msgid ""
+"To find the keyid of the GPG key run the following in the terminal. The "
+"keyid should be in the first line starting with ``sec`` and ``algorithm/"
+"id``. The ``id`` part is the required keyid."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:268
+msgid "gpg --list-secret-keys --keyid-format=long"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:272
+msgid ""
+"The following will generate an ASCII armoured private key. Then paste the "
+"contents of that file in the CI variable settings."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:275
+msgid "gpg --output private.pgp --armor --export-secret-key <keyid or email>"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:279
+msgid ""
+"Create a ``app_name.flatpakref`` in the root of the git repo with the "
+"following contents."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:284
+msgid ""
+"[Flatpak Ref]\n"
+"Title=<A pretty application or repo name>\n"
+"Name=<Application id in tld.vendor.app_name format>\n"
+"Branch=< branch of generated ostree refs, defaults to master>\n"
+"Url=<Url of Gitlab page>\n"
+"SuggestRemoteName=<A name for the flatpak remote>\n"
+"Homepage=<URL of the homepage>\n"
+"Icon=<Direct link to an icon>\n"
+"RuntimeRepo=< Link to repo where runtime and other dependencies are eg. "
+"https://dl.flathub.org/repo/flathub.flatpakrepo>\n"
+"IsRuntime=false\n"
+"GPGKey=<base64 encoded GPG key>"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:296
+msgid ""
+"You can find the Gitlab page in ``https://gitlab.com/your_user_name/"
+"repo_name/pages``. Disable `Use unique domain` there and hit save. To "
+"generate the base64 encoded ``GPGKey``, run the following and paste the "
+"string:"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:301
+msgid ""
+"gpg --export <keyid> > example.gpg\n"
+"base64 example.gpg | tr -d '\\n'"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:306
+msgid ""
+"The root of the repository should contain the following files: ``.gitlab-ci."
+"yml``, ``app_name.flatpakref``, the flatpak manifest ``tld.vendor.app_name."
+"yaml`` and any other files/folders referenced in the manifest. ``git add`` "
+"these files, ``git commit`` and ``git push``."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:312
+msgid ""
+"If everything was set up correctly, the push will trigger the pipeline to "
+"build and deploy your application with flatpak."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:315
+msgid "To install the build, you can run:"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:317
+msgid ""
+"flatpak install --user https://gitlab.com/your_user_name/repo_name/-/raw/"
+"branch/app_name.flatpakref"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:321
+msgid ""
+"This will set up a flatpak remote userwide, install the dependencies and the "
+"application. Updates will be fetched when running ``flatpak update`` if they "
+"are available."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:325
+msgid ""
+"You can set up a `pipeline schedule <https://docs.gitlab.com/ci/pipelines/"
+"schedules/>`_, optionally to automatically check for updates using `flatpak-"
+"x-checker <https://github.com/flathub-infra/flatpak-external-data-checker>`_ "
+"and send PRs to the repo."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:332
+msgid "Multi-architecture workflow"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:334
+msgid ""
+"This uses Gitlab.com's `hosted aarch64 runners <https://docs.gitlab.com/ci/"
+"runners/hosted_runners/linux/#machine-types-available-for-linux---arm64>`_ "
+"for building on aarch64."
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:336
+msgid ""
+"variables:\n"
+"  MANIFEST_PATH: $CI_PROJECT_DIR/${APP_ID}.yaml\n"
+"  DOCKER_IMAGE: \"ghcr.io/flathub-infra/flatpak-github-actions:"
+"freedesktop-23.08\"\n"
+"  SCHEDULE_TASK: default\n"
+"\n"
+"stages:\n"
+"  - setup\n"
+"  - build-x86_64\n"
+"  - build-aarch64\n"
+"  - update-repo\n"
+"  - deploy\n"
+"\n"
+".setup:\n"
+"  stage: setup\n"
+"  image: ${DOCKER_IMAGE}\n"
+"  variables:\n"
+"    RUNTIME_REPO: \"https://flathub.org/repo/flathub.flatpakrepo\"\n"
+"  before_script:\n"
+"    # Set up an user as the docker image used here comes with none\n"
+"    - |\n"
+"      cat <<EOF > /etc/passwd\n"
+"      root:x:0:0:root:/root:/bin/bash\n"
+"      EOF\n"
+"\n"
+"      cat <<EOF > /etc/group\n"
+"      root:x:0:\n"
+"      EOF\n"
+"\n"
+"    # Add the flathub repository for installing build dependencies\n"
+"    - flatpak remote-add --user --if-not-exists flathub ${RUNTIME_REPO}\n"
+"    - gpg --list-keys --with-keygrip\n"
+"    - echo \"allow-preset-passphrase\" >> ~/.gnupg/gpg-agent.conf\n"
+"    - gpg-connect-agent reloadagent /bye\n"
+"    - cat $GPG_PASSPHRASE | /usr/libexec/gpg-preset-passphrase --preset "
+"$GPG_KEY_GREP\n"
+"    - gpg --import --batch ${GPG_PRIVATE_KEY}\n"
+"  rules:\n"
+"    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n"
+"      when: never\n"
+"    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n"
+"      when: on_success\n"
+"    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH\n"
+"      when: manual\n"
+"  artifacts:\n"
+"    paths:\n"
+"      - repo\n"
+"    expire_in: 1 week\n"
+"\n"
+"build-x86_64:\n"
+"  variables:\n"
+"    ARCH: x86_64\n"
+"  extends: .setup\n"
+"  script:\n"
+"    # Build the app, ARCH should be host arch, BRANCH can be specified or if "
+"not it will default to master, see man flatpak-manifest > branch\n"
+"    - flatpak-builder build --arch=${ARCH} --user --install-deps-"
+"from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-"
+"updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} "
+"${MANIFEST_PATH}\n"
+"  stage: build-x86_64\n"
+"\n"
+"build-aarch64:\n"
+"  variables:\n"
+"    ARCH: aarch64\n"
+"  extends: .setup\n"
+"  script:\n"
+"    - flatpak-builder build --arch=${ARCH} --user --install-deps-"
+"from=flathub --gpg-sign=${GPG_KEY_ID} --disable-rofiles-fuse --disable-"
+"updates --force-clean --repo=repo ${BRANCH:+--default-branch=$BRANCH} "
+"${MANIFEST_PATH}\n"
+"  stage: build-aarch64\n"
+"  # https://docs.gitlab.com/ee/ci/runners/hosted_runners/linux.html#machine-"
+"types-available-for-linux---arm64\n"
+"  tags:\n"
+"    - saas-linux-large-arm64\n"
+"  dependencies:\n"
+"    - \"build-x86_64\"\n"
+"\n"
+"update-repo:\n"
+"  stage: update-repo\n"
+"  image: ${DOCKER_IMAGE}\n"
+"  dependencies:\n"
+"    - \"build-aarch64\"\n"
+"  extends: .setup\n"
+"  script:\n"
+"    # The repo folder must have contents for both arches present, so they "
+"are chained one after another through dependencies\n"
+"    # prune is run to keep the latest commit only\n"
+"    - flatpak build-update-repo --gpg-sign=${GPG_KEY_ID} --generate-static-"
+"deltas --prune repo\n"
+"\n"
+"pages:\n"
+"  variables:\n"
+"    BUILD_OUTPUT_PATH: ${CI_PROJECT_DIR}/repo\n"
+"  stage: deploy\n"
+"  image: alpine:latest\n"
+"  dependencies:\n"
+"    - \"update-repo\"\n"
+"  script:\n"
+"    - apk add rsync\n"
+"    - find $BUILD_OUTPUT_PATH \\( -type d -name .git -prune \\) -o -type f -"
+"print0 | xargs -0 sed -i -e \"s#href=\\\"\\/#href=\\\"$CI_PAGES_URL/#g\" -e "
+"\"s#src=\\\"\\/#src=\\\"$CI_PAGES_URL/#g\"\n"
+"    - mkdir public || true\n"
+"    - rsync -av --exclude='public' --exclude='.git' $BUILD_OUTPUT_PATH/ "
+"public\n"
+"  artifacts:\n"
+"    paths:\n"
+"      - public\n"
+"    expire_in: 1 week\n"
+"  rules:\n"
+"    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n"
+"      when: never\n"
+"    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH\n"
+"      when: on_success"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:441
+msgid "Credits"
+msgstr ""
+
+#: ../../../docs/hosting-a-repository.rst:442
+msgid ""
+"The CI template is based on the `work <https://gitlab.com/accessable-net/"
+"gitlab-ci-templates>`_ of Flatpak community member `proletarius101 <https://"
+"gitlab.com/proletarius101>`_."
+msgstr ""
