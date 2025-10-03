@@ -13,22 +13,22 @@
     },
     "zh_CN" : 
     {
-      "branch" : "",
+      "branch" : "master",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2025-10-01 07:26:35 +0530",
+        "hash" : "004cb8dec5f914be54e7808b731d0f442714017c",
+        "title" : "(Automated) Update Flatpak Builder docs"
       }
     },
     "zh_TW" : 
     {
-      "branch" : "",
+      "branch" : "master",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2025-10-01 07:26:35 +0530",
+        "hash" : "004cb8dec5f914be54e7808b731d0f442714017c",
+        "title" : "(Automated) Update Flatpak Builder docs"
       }
     }
   },
