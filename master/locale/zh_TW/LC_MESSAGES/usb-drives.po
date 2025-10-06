@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../../../docs/usb-drives.rst:42
 msgid "$ flatpak create-usb /media/user/FLATPAKS org.gnome.gedit"
-msgstr ""
+msgstr "$ flatpak create-usb /media/user/FLATPAKS org.gnome.gedit"
 
 #: ../../../docs/usb-drives.rst:44
 msgid ""
@@ -106,7 +106,7 @@ msgstr ""
 
 #: ../../../docs/usb-drives.rst:49
 msgid "$ umount /media/user/FLATPAKS"
-msgstr ""
+msgstr "$ umount /media/user/FLATPAKS"
 
 #: ../../../docs/usb-drives.rst:52
 msgid ""
@@ -118,7 +118,7 @@ msgstr ""
 
 #: ../../../docs/usb-drives.rst:57
 msgid "$ flatpak install flathub org.gnome.gedit"
-msgstr ""
+msgstr "$ flatpak install flathub org.gnome.gedit"
 
 #: ../../../docs/usb-drives.rst:59
 msgid ""
@@ -134,6 +134,8 @@ msgid ""
 "$ flatpak install --sideload-repo=/media/user/FLATPAKS/.ostree/repo flathub "
 "org.gnome.gedit"
 msgstr ""
+"$ flatpak install --sideload-repo=/media/user/FLATPAKS/.ostree/repo flathub "
+"org.gnome.gedit"
 
 #: ../../../docs/usb-drives.rst:67
 msgid ""

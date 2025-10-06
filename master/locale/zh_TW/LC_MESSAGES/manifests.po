@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:2
 msgid "Manifests"
-msgstr ""
+msgstr "清單"
 
 #: ../../../docs/manifests.rst:4
 msgid ""
@@ -84,7 +84,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:43
 msgid "File renaming"
-msgstr ""
+msgstr "檔案重新命名"
 
 #: ../../../docs/manifests.rst:45
 msgid ""
@@ -109,15 +109,15 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:57
 msgid "``rename-icon`` - rename the application icon"
-msgstr ""
+msgstr "``rename-icon`` - 重新命名應用程式圖示"
 
 #: ../../../docs/manifests.rst:58
 msgid "``rename-desktop-file`` - rename the ``.desktop`` filename"
-msgstr ""
+msgstr "``rename-desktop-file`` - 重新命名 ``.desktop`` 檔名"
 
 #: ../../../docs/manifests.rst:59
 msgid "``rename-appdata-file`` - rename the MetaInfo file"
-msgstr ""
+msgstr "``rename-appdata-file`` - 重新命名 MetaInfo 檔案"
 
 #: ../../../docs/manifests.rst:61
 msgid ""
@@ -236,7 +236,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:137
 msgid "Modules"
-msgstr ""
+msgstr "模組"
 
 #: ../../../docs/manifests.rst:139
 msgid ""
@@ -367,11 +367,11 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:241
 msgid "``git`` - Git repositories"
-msgstr ""
+msgstr "``git`` - Git 儲存庫"
 
 #: ../../../docs/manifests.rst:242
 msgid "``bzr`` - Bazaar repositories"
-msgstr ""
+msgstr "``bzr`` - Bazaar 儲存庫"
 
 #: ../../../docs/manifests.rst:243
 msgid ""
@@ -430,14 +430,15 @@ msgstr ""
 #: ../../../docs/manifests.rst:262
 msgid "`cmake-ninja <https://cmake.org/cmake/help/v3.0/generator/Ninja.html>`_"
 msgstr ""
+"`cmake-ninja <https://cmake.org/cmake/help/v3.0/generator/Ninja.html>`_"
 
 #: ../../../docs/manifests.rst:263
 msgid "`meson <https://mesonbuild.com/>`_"
-msgstr ""
+msgstr "`meson <https://mesonbuild.com/>`_"
 
 #: ../../../docs/manifests.rst:264
 msgid "`qmake <https://doc.qt.io/archives/qt-5.15/qmake-overview.html>`_"
-msgstr ""
+msgstr "`qmake <https://doc.qt.io/archives/qt-5.15/qmake-overview.html>`_"
 
 #: ../../../docs/manifests.rst:266
 msgid ""
@@ -537,7 +538,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:344
 msgid "Flatpak Builder Tools"
-msgstr ""
+msgstr "Flatpak 建置器工具"
 
 #: ../../../docs/manifests.rst:346
 msgid ""
@@ -549,7 +550,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:349
 msgid "Example manifests"
-msgstr ""
+msgstr "範例清單"
 
 #: ../../../docs/manifests.rst:351
 msgid ""

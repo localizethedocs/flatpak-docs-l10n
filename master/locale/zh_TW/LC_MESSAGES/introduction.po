@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../../../docs/introduction.rst:21
 msgid "Target audience"
-msgstr ""
+msgstr "目標受眾"
 
 #: ../../../docs/introduction.rst:23
 msgid ""

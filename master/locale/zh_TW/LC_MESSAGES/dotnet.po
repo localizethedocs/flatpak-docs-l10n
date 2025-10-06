@@ -49,11 +49,11 @@ msgstr ""
 
 #: ../../../docs/dotnet.rst:11
 msgid "`GTKSharp <https://github.com/GtkSharp/GtkSharp>`_"
-msgstr ""
+msgstr "`GTKSharp <https://github.com/GtkSharp/GtkSharp>`_"
 
 #: ../../../docs/dotnet.rst:12
 msgid "`Gir.Core <https://gircore.github.io/>`_"
-msgstr ""
+msgstr "`Gir.Core <https://gircore.github.io/>`_"
 
 #: ../../../docs/dotnet.rst:13
 msgid ""
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ../../../docs/dotnet.rst:32
 msgid "Creating the Flatpak"
-msgstr ""
+msgstr "建立 Flatpak"
 
 #: ../../../docs/dotnet.rst:34
 msgid ""
@@ -187,6 +187,8 @@ msgid ""
 "wget https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/"
 "dotnet/flatpak-dotnet-generator.py"
 msgstr ""
+"wget https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/"
+"dotnet/flatpak-dotnet-generator.py"
 
 #: ../../../docs/dotnet.rst:100
 msgid "Clone down your project repository to the folder"
@@ -194,17 +196,19 @@ msgstr ""
 
 #: ../../../docs/dotnet.rst:102
 msgid "git clone <git-url>"
-msgstr ""
+msgstr "git clone <git-url>"
 
 #: ../../../docs/dotnet.rst:106
 msgid "Install dependencies from Flathub"
-msgstr ""
+msgstr "從 Flathub 安裝相依項"
 
 #: ../../../docs/dotnet.rst:108
 msgid ""
 "flatpak-builder build-dir --user --install-deps-from=flathub --download-only "
 "<app-id>.yaml"
 msgstr ""
+"flatpak-builder build-dir --user --install-deps-from=flathub --download-only "
+"<app-id>.yaml"
 
 #: ../../../docs/dotnet.rst:112
 msgid ""
@@ -217,25 +221,29 @@ msgid ""
 "python3 flatpak-dotnet-generator.py --dotnet 8 --freedesktop 24.08 nuget-"
 "sources.json <app-name>/<project-name>.csproj"
 msgstr ""
+"python3 flatpak-dotnet-generator.py --dotnet 8 --freedesktop 24.08 nuget-"
+"sources.json <app-name>/<project-name>.csproj"
 
 #: ../../../docs/dotnet.rst:118
 msgid "Build and install using Flatpak builder"
-msgstr ""
+msgstr "使用 Flatpak 建置器進行建置與安裝"
 
 #: ../../../docs/dotnet.rst:120
 msgid ""
 "flatpak-builder build-dir --user --force-clean --install --repo=repo <app-"
 "id>.yaml"
 msgstr ""
+"flatpak-builder build-dir --user --force-clean --install --repo=repo <app-"
+"id>.yaml"
 
 #: ../../../docs/dotnet.rst:126
 msgid "Testing the build"
-msgstr ""
+msgstr "測試建置"
 
 #: ../../../docs/dotnet.rst:128
 msgid "Run the installed Flatpak application"
-msgstr ""
+msgstr "執行已安裝的 Flatpak 應用程式"
 
 #: ../../../docs/dotnet.rst:130
 msgid "flatpak run <app-id>"
-msgstr ""
+msgstr "flatpak run <app-id>"

@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:38
 msgid "Showing notifications"
-msgstr ""
+msgstr "顯示通知"
 
 #: ../../../docs/desktop-integration.rst:39
 msgid "Taking screenshots and screencasts"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:54
 msgid "Notifications"
-msgstr ""
+msgstr "通知"
 
 #: ../../../docs/desktop-integration.rst:56
 msgid ""
@@ -121,7 +121,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:60
 msgid "Status icons"
-msgstr ""
+msgstr "狀態圖示"
 
 #: ../../../docs/desktop-integration.rst:62
 msgid ""
@@ -198,7 +198,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:104
 msgid "System search"
-msgstr ""
+msgstr "系統搜尋"
 
 #: ../../../docs/desktop-integration.rst:106
 msgid ""
@@ -335,7 +335,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:188
 msgid "$ flatpak install flathub org.kde.KStyle.Foo"
-msgstr ""
+msgstr "$ flatpak install flathub org.kde.KStyle.Foo"
 
 #: ../../../docs/desktop-integration.rst:190
 msgid ""
@@ -430,7 +430,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:246
 msgid "Appearance Settings"
-msgstr ""
+msgstr "外觀設定"
 
 #: ../../../docs/desktop-integration.rst:248
 msgid ""
@@ -442,7 +442,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:254
 msgid "Icons"
-msgstr ""
+msgstr "圖示"
 
 #: ../../../docs/desktop-integration.rst:256
 msgid ""
@@ -457,7 +457,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:263
 msgid "Fonts"
-msgstr ""
+msgstr "字型"
 
 #: ../../../docs/desktop-integration.rst:265
 msgid ""

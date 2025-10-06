@@ -19,4 +19,4 @@ msgstr ""
 
 #: ../../../docs/flatpak-command-reference.rst:4
 msgid "Flatpak Command Reference"
-msgstr ""
+msgstr "Flatpak 命令參考"

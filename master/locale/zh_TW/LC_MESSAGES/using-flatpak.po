@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:2
 msgid "Using Flatpak"
-msgstr ""
+msgstr "使用 Flatpak"
 
 #: ../../../docs/using-flatpak.rst:4
 msgid ""
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:15
 msgid "The flatpak command"
-msgstr ""
+msgstr "flatpak 命令"
 
 #: ../../../docs/using-flatpak.rst:17
 msgid ""
@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:89
 msgid "$ flatpak remotes"
-msgstr ""
+msgstr "$ flatpak remotes"
 
 #: ../../../docs/using-flatpak.rst:91
 msgid ""
@@ -198,7 +198,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:111
 msgid "$ flatpak remote-delete flathub"
-msgstr ""
+msgstr "$ flatpak remote-delete flathub"
 
 #: ../../../docs/using-flatpak.rst:113
 msgid "In this case, ``flathub`` is the remote's local name."
@@ -261,6 +261,7 @@ msgstr ""
 msgid ""
 "$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
 msgstr ""
+"$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
 
 #: ../../../docs/using-flatpak.rst:147
 msgid ""
@@ -277,7 +278,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:154
 msgid "$ flatpak install gimp"
-msgstr ""
+msgstr "$ flatpak install gimp"
 
 #: ../../../docs/using-flatpak.rst:156
 msgid "will confirm the remote and application and proceed to install."

@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:16
 msgid "Freedesktop"
-msgstr ""
+msgstr "Freedesktop"
 
 #: ../../../docs/available-runtimes.rst:18
 msgid ""
@@ -88,7 +88,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:40
 msgid "org.freedesktop.Platform"
-msgstr ""
+msgstr "org.freedesktop.Platform"
 
 #: ../../../docs/available-runtimes.rst:40
 #: ../../../docs/available-runtimes.rst:64
@@ -99,7 +99,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:41
 msgid "org.freedesktop.Sdk"
-msgstr ""
+msgstr "org.freedesktop.Sdk"
 
 #: ../../../docs/available-runtimes.rst:41
 #: ../../../docs/available-runtimes.rst:65
@@ -110,7 +110,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:42
 msgid "org.freedesktop.Platform.Locale"
-msgstr ""
+msgstr "org.freedesktop.Platform.Locale"
 
 #: ../../../docs/available-runtimes.rst:42
 #: ../../../docs/available-runtimes.rst:66
@@ -121,7 +121,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:43
 msgid "org.freedesktop.Sdk.Debug"
-msgstr ""
+msgstr "org.freedesktop.Sdk.Debug"
 
 #: ../../../docs/available-runtimes.rst:43
 #: ../../../docs/available-runtimes.rst:67
@@ -132,7 +132,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:44
 msgid "org.freedesktop.Sdk.Locale"
-msgstr ""
+msgstr "org.freedesktop.Sdk.Locale"
 
 #: ../../../docs/available-runtimes.rst:44
 #: ../../../docs/available-runtimes.rst:68
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:45
 msgid "org.freedesktop.Sdk.Docs"
-msgstr ""
+msgstr "org.freedesktop.Sdk.Docs"
 
 #: ../../../docs/available-runtimes.rst:45
 #: ../../../docs/available-runtimes.rst:69
@@ -154,7 +154,7 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:49
 msgid "GNOME"
-msgstr ""
+msgstr "GNOME"
 
 #: ../../../docs/available-runtimes.rst:51
 msgid ""
@@ -175,31 +175,31 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:64
 msgid "org.gnome.Platform"
-msgstr ""
+msgstr "org.gnome.Platform"
 
 #: ../../../docs/available-runtimes.rst:65
 msgid "org.gnome.Sdk"
-msgstr ""
+msgstr "org.gnome.Sdk"
 
 #: ../../../docs/available-runtimes.rst:66
 msgid "org.gnome.Platform.Locale"
-msgstr ""
+msgstr "org.gnome.Platform.Locale"
 
 #: ../../../docs/available-runtimes.rst:67
 msgid "org.gnome.Sdk.Debug"
-msgstr ""
+msgstr "org.gnome.Sdk.Debug"
 
 #: ../../../docs/available-runtimes.rst:68
 msgid "org.gnome.Sdk.Locale"
-msgstr ""
+msgstr "org.gnome.Sdk.Locale"
 
 #: ../../../docs/available-runtimes.rst:69
 msgid "org.gnome.Sdk.Docs"
-msgstr ""
+msgstr "org.gnome.Sdk.Docs"
 
 #: ../../../docs/available-runtimes.rst:73
 msgid "KDE"
-msgstr ""
+msgstr "KDE"
 
 #: ../../../docs/available-runtimes.rst:75
 msgid ""
@@ -222,31 +222,31 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:90
 msgid "org.kde.Platform"
-msgstr ""
+msgstr "org.kde.Platform"
 
 #: ../../../docs/available-runtimes.rst:91
 msgid "org.kde.Sdk"
-msgstr ""
+msgstr "org.kde.Sdk"
 
 #: ../../../docs/available-runtimes.rst:92
 msgid "org.kde.Platform.Locale"
-msgstr ""
+msgstr "org.kde.Platform.Locale"
 
 #: ../../../docs/available-runtimes.rst:93
 msgid "org.kde.Sdk.Debug"
-msgstr ""
+msgstr "org.kde.Sdk.Debug"
 
 #: ../../../docs/available-runtimes.rst:94
 msgid "org.kde.Sdk.Locale"
-msgstr ""
+msgstr "org.kde.Sdk.Locale"
 
 #: ../../../docs/available-runtimes.rst:95
 msgid "org.kde.Sdk.Docs"
-msgstr ""
+msgstr "org.kde.Sdk.Docs"
 
 #: ../../../docs/available-runtimes.rst:99
 msgid "elementary"
-msgstr ""
+msgstr "elementary"
 
 #: ../../../docs/available-runtimes.rst:101
 msgid ""
@@ -258,27 +258,27 @@ msgstr ""
 
 #: ../../../docs/available-runtimes.rst:109
 msgid "io.elementary.Platform"
-msgstr ""
+msgstr "io.elementary.Platform"
 
 #: ../../../docs/available-runtimes.rst:110
 msgid "io.elementary.Sdk"
-msgstr ""
+msgstr "io.elementary.Sdk"
 
 #: ../../../docs/available-runtimes.rst:111
 msgid "io.elementary.Platform.Locale"
-msgstr ""
+msgstr "io.elementary.Platform.Locale"
 
 #: ../../../docs/available-runtimes.rst:112
 msgid "io.elementary.Sdk.Debug"
-msgstr ""
+msgstr "io.elementary.Sdk.Debug"
 
 #: ../../../docs/available-runtimes.rst:113
 msgid "io.elementary.Sdk.Locale"
-msgstr ""
+msgstr "io.elementary.Sdk.Locale"
 
 #: ../../../docs/available-runtimes.rst:114
 msgid "io.elementary.Sdk.Docs"
-msgstr ""
+msgstr "io.elementary.Sdk.Docs"
 
 #: ../../../docs/available-runtimes.rst:118
 msgid "Check software available in runtimes"

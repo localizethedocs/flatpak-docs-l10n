@@ -57,7 +57,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:28
 msgid ".flatpakrepo files"
-msgstr ""
+msgstr ".flatpakrepo 檔案"
 
 #: ../../../docs/hosting-a-repository.rst:30
 msgid ""
@@ -77,6 +77,14 @@ msgid ""
 "Icon=https://dl.flathub.org/repo/logo.svg\n"
 "GPGKey=mQINBFlD2sABEADsiUZUO..."
 msgstr ""
+"[Flatpak Repo]\n"
+"Title=Flathub\n"
+"Url=https://dl.flathub.org/repo/\n"
+"Homepage=https://flathub.org/\n"
+"Comment=Central repository of Flatpak applications\n"
+"Description=Central repository of Flatpak applications\n"
+"Icon=https://dl.flathub.org/repo/logo.svg\n"
+"GPGKey=mQINBFlD2sABEADsiUZUO..."
 
 #: ../../../docs/hosting-a-repository.rst:43
 msgid ""
@@ -369,7 +377,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:237
 msgid "GPG_KEY_ID"
-msgstr ""
+msgstr "GPG_KEY_ID"
 
 #: ../../../docs/hosting-a-repository.rst:238
 msgid "Keyid of GPG key"
@@ -470,6 +478,8 @@ msgid ""
 "gpg --export <keyid> > example.gpg\n"
 "base64 example.gpg | tr -d '\\n'"
 msgstr ""
+"gpg --export <keyid> > example.gpg\n"
+"base64 example.gpg | tr -d '\\n'"
 
 #: ../../../docs/hosting-a-repository.rst:306
 msgid ""
@@ -494,6 +504,8 @@ msgid ""
 "flatpak install --user https://gitlab.com/your_user_name/repo_name/-/raw/"
 "branch/app_name.flatpakref"
 msgstr ""
+"flatpak install --user https://gitlab.com/your_user_name/repo_name/-/raw/"
+"branch/app_name.flatpakref"
 
 #: ../../../docs/hosting-a-repository.rst:321
 msgid ""

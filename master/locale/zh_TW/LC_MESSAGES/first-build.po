@@ -193,7 +193,7 @@ msgstr ""
 
 #: ../../../docs/first-build.rst:104
 msgid "flatpak install --user hello.flatpak"
-msgstr ""
+msgstr "flatpak install --user hello.flatpak"
 
 #: ../../../docs/first-build.rst:108
 msgid "To uninstall, run ``flatpak remove org.flatpak.Hello``"

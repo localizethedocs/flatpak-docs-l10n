@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/basic-concepts.rst:2
 msgid "Basic concepts"
-msgstr ""
+msgstr "基本概念"
 
 #: ../../../docs/basic-concepts.rst:4
 msgid ""
@@ -75,7 +75,7 @@ msgstr ""
 
 #: ../../../docs/basic-concepts.rst:37
 msgid "Sandboxes"
-msgstr ""
+msgstr "沙箱"
 
 #: ../../../docs/basic-concepts.rst:39
 msgid ""
@@ -120,7 +120,7 @@ msgstr ""
 
 #: ../../../docs/basic-concepts.rst:66
 msgid "Repositories"
-msgstr ""
+msgstr "儲存庫"
 
 #: ../../../docs/basic-concepts.rst:68
 msgid ""

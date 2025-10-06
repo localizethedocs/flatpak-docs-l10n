@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-builder.rst:2
 msgid "Flatpak Builder"
-msgstr ""
+msgstr "Flatpak 建置器"
 
 #: ../../../docs/flatpak-builder.rst:4
 msgid ""
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-builder.rst:13
 msgid "Exporting"
-msgstr ""
+msgstr "匯出"
 
 #: ../../../docs/flatpak-builder.rst:15
 msgid ""
@@ -59,7 +59,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-builder.rst:25
 msgid "$ flatpak-builder --repo=<repo> <build-dir> <manifest>"
-msgstr ""
+msgstr "$ flatpak-builder --repo=<repo> <build-dir> <manifest>"
 
 #: ../../../docs/flatpak-builder.rst:27
 msgid ""
@@ -96,7 +96,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-builder.rst:49
 msgid "$ flatpak-builder --install <build-dir> <manifest>"
-msgstr ""
+msgstr "$ flatpak-builder --install <build-dir> <manifest>"
 
 #: ../../../docs/flatpak-builder.rst:51
 msgid ""
@@ -118,7 +118,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-builder.rst:62
 msgid "$ flatpak-builder --gpg-sign=<key> --repo=<repository> <manifest>"
-msgstr ""
+msgstr "$ flatpak-builder --gpg-sign=<key> --repo=<repository> <manifest>"
 
 #: ../../../docs/flatpak-builder.rst:64
 msgid ""
