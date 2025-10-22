@@ -16,9 +16,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2025-10-01 07:26:35 +0530",
-        "hash" : "004cb8dec5f914be54e7808b731d0f442714017c",
-        "title" : "(Automated) Update Flatpak Builder docs"
+        "date" : "2025-10-09 22:16:51 +0530",
+        "hash" : "8d2c48f31ac5264dc41991dfd77c4fc36b411a6e",
+        "title" : "Update libflatpak docs to 1.17"
       }
     },
     "zh_TW" : 
@@ -26,9 +26,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2025-10-01 07:26:35 +0530",
-        "hash" : "004cb8dec5f914be54e7808b731d0f442714017c",
-        "title" : "(Automated) Update Flatpak Builder docs"
+        "date" : "2025-10-09 22:16:51 +0530",
+        "hash" : "8d2c48f31ac5264dc41991dfd77c4fc36b411a6e",
+        "title" : "Update libflatpak docs to 1.17"
       }
     }
   },
