@@ -276,7 +276,7 @@ msgstr ""
 
 #: ../../../docs/electron.rst:172
 msgid "Using correct desktop file name"
-msgstr ""
+msgstr "使用正確的桌面檔名"
 
 #: ../../../docs/electron.rst:174
 msgid ""

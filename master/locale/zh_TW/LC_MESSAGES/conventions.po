@@ -463,7 +463,7 @@ msgstr ""
 
 #: ../../../docs/conventions.rst:274
 msgid "MIME files"
-msgstr ""
+msgstr "MIME 檔案"
 
 #: ../../../docs/conventions.rst:276
 msgid ""

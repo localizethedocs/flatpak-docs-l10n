@@ -296,11 +296,11 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:164
 msgid "$ flatpak run org.gimp.GIMP"
-msgstr ""
+msgstr "$ flatpak run org.gimp.GIMP"
 
 #: ../../../docs/using-flatpak.rst:167
 msgid "Updating"
-msgstr ""
+msgstr "更新"
 
 #: ../../../docs/using-flatpak.rst:169
 msgid ""
@@ -310,7 +310,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:172
 msgid "$ flatpak update"
-msgstr ""
+msgstr "$ flatpak update"
 
 #: ../../../docs/using-flatpak.rst:175
 msgid "List installed applications"

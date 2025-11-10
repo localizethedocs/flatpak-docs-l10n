@@ -49,6 +49,8 @@ msgid ""
 "$ flatpak build-bundle [OPTION...] LOCATION FILENAME NAME [BRANCH]\n"
 "$ flatpak build-import-bundle [OPTION...] LOCATION FILENAME"
 msgstr ""
+"$ flatpak build-bundle [OPTION...] LOCATION FILENAME NAME [BRANCH]\n"
+"$ flatpak build-import-bundle [OPTION...] LOCATION FILENAME"
 
 #: ../../../docs/single-file-bundles.rst:23
 msgid ""
@@ -61,6 +63,8 @@ msgid ""
 "$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
 "Dictionary"
 msgstr ""
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
+"Dictionary"
 
 #: ../../../docs/single-file-bundles.rst:28
 msgid "You can also set a runtime repo in the bundle::"
@@ -71,6 +75,8 @@ msgid ""
 "$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
 "Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
 msgstr ""
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
+"Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
 
 #: ../../../docs/single-file-bundles.rst:32
 msgid "To import the bundle into a repository on another machine, run::"

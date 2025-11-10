@@ -55,7 +55,7 @@ msgstr ""
 
 #: ../../../docs/repositories.rst:25
 msgid ".flatpakref files"
-msgstr ""
+msgstr ".flatpakref 檔案"
 
 #: ../../../docs/repositories.rst:27
 msgid ""
@@ -99,7 +99,7 @@ msgstr ""
 
 #: ../../../docs/repositories.rst:54
 msgid "$ base64 --wrap=0 < key.gpg"
-msgstr ""
+msgstr "$ base64 --wrap=0 < key.gpg"
 
 #: ../../../docs/repositories.rst:56
 msgid ""
@@ -123,6 +123,8 @@ msgid ""
 "$ flatpak install https://flathub.org/repo/appstream/fr.free.Homebank."
 "flatpakref"
 msgstr ""
+"$ flatpak install https://flathub.org/repo/appstream/fr.free.Homebank."
+"flatpakref"
 
 #: ../../../docs/repositories.rst:69
 msgid "Or, if the same file has been downloaded::"

@@ -63,7 +63,7 @@ msgstr ""
 
 #: ../../../docs/tips-and-tricks.rst:29
 msgid "Downgrading"
-msgstr ""
+msgstr "降級"
 
 #: ../../../docs/tips-and-tricks.rst:31
 msgid ""
@@ -77,7 +77,7 @@ msgstr ""
 
 #: ../../../docs/tips-and-tricks.rst:36
 msgid "$ flatpak remote-info --log flathub org.gnome.Recipes"
-msgstr ""
+msgstr "$ flatpak remote-info --log flathub org.gnome.Recipes"
 
 #: ../../../docs/tips-and-tricks.rst:38
 msgid "Then you deploy the commit::"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: ../../../docs/tips-and-tricks.rst:163
 msgid "$ flatpak --installation=extra install flathub org.inkscape.Inkscape"
-msgstr ""
+msgstr "$ flatpak --installation=extra install flathub org.inkscape.Inkscape"
 
 #: ../../../docs/tips-and-tricks.rst:167
 msgid ""
@@ -313,7 +313,7 @@ msgstr ""
 
 #: ../../../docs/tips-and-tricks.rst:172
 msgid "$ flatpak --installation=extra run org.inkscape.Inkscape"
-msgstr ""
+msgstr "$ flatpak --installation=extra run org.inkscape.Inkscape"
 
 #: ../../../docs/tips-and-tricks.rst:176
 msgid ""

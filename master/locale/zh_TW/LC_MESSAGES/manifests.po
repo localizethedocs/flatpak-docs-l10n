@@ -171,7 +171,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:98
 msgid "Cleanup"
-msgstr ""
+msgstr "清理"
 
 #: ../../../docs/manifests.rst:100
 msgid ""
@@ -422,10 +422,12 @@ msgid ""
 "`autotools <https://www.gnu.org/software/automake/manual/html_node/Autotools-"
 "Introduction.html>`_"
 msgstr ""
+"`autotools <https://www.gnu.org/software/automake/manual/html_node/Autotools-"
+"Introduction.html>`_"
 
 #: ../../../docs/manifests.rst:261
 msgid "`cmake <https://cmake.org/>`_"
-msgstr ""
+msgstr "`cmake <https://cmake.org/>`_"
 
 #: ../../../docs/manifests.rst:262
 msgid "`cmake-ninja <https://cmake.org/cmake/help/v3.0/generator/Ninja.html>`_"

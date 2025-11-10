@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:2
 msgid "Desktop Integration"
-msgstr ""
+msgstr "桌面整合"
 
 #: ../../../docs/desktop-integration.rst:4
 msgid ""

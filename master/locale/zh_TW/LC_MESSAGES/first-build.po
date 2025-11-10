@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/first-build.rst:2
 msgid "Building your first Flatpak"
-msgstr ""
+msgstr "建置您的第一個 Flatpak"
 
 #: ../../../docs/first-build.rst:6
 msgid ""
@@ -129,7 +129,7 @@ msgstr ""
 
 #: ../../../docs/first-build.rst:69
 msgid "3. Build and install"
-msgstr ""
+msgstr "3. 建置並安裝"
 
 #: ../../../docs/first-build.rst:71
 msgid ""
@@ -152,7 +152,7 @@ msgstr ""
 
 #: ../../../docs/first-build.rst:81
 msgid "4. Run the application"
-msgstr ""
+msgstr "4. 執行應用程式"
 
 #: ../../../docs/first-build.rst:83
 msgid "To run the application::"
