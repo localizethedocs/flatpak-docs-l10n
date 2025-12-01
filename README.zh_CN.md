@@ -8,7 +8,7 @@
 <h1 id="localization-of-flatpak-documentation">Localization of Flatpak Documentation</h1>
 </div>
 
-<details><summary><strong>Switch Languages</strong></summary>
+<details><summary><strong>切换语言</strong></summary>
 <p></p>
 <ul>
   <li><a href="./README.md"><code>en_US</code> : English</a></li>
