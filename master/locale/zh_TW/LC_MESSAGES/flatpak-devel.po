@@ -450,6 +450,10 @@ msgid ""
 "  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',\n"
 ")"
 msgstr ""
+"install_data('org.example.coolapp.gschema.xml',\n"
+"  rename: '@0@.gschema.xml'.format(application_id),\n"
+"  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',\n"
+")"
 
 #: ../../../docs/flatpak-devel.rst:249
 msgid ""

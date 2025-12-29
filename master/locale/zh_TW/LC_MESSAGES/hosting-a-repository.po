@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:63
 msgid "$ base64 --wrap=0 < key.gpg"
-msgstr ""
+msgstr "$ base64 --wrap=0 < key.gpg"
 
 #: ../../../docs/hosting-a-repository.rst:66
 msgid "Hosting a repository on Gitlab/Github pages"

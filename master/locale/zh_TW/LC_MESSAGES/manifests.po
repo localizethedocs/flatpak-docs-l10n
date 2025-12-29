@@ -411,7 +411,7 @@ msgstr ""
 
 #: ../../../docs/manifests.rst:256
 msgid "Supported build systems"
-msgstr ""
+msgstr "支援的建置系統"
 
 #: ../../../docs/manifests.rst:258
 msgid "Modules can be built with a variety of build systems, including:"
