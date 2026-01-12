@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-<h1 id="localization-of-flatpak-documentation">Localization of Flatpak Documentation</h1>
+<h1 id="localization-of-flatpak-documentation">Flatpak 文档的本地化</h1>
 </div>
 
 <details><summary><strong>切换语言</strong></summary>
