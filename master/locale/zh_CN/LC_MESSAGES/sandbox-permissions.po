@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-13 08:50+0000\n"
+"POT-Creation-Date: 2026-01-12 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -671,7 +671,9 @@ msgid "``/root``"
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:247
-msgid "``/sys``"
+msgid ""
+"``/sys`` - Only ``/sys/block, /sys/bus, /sys/class, /sys/dev, /sys/devices`` "
+"are shared as read-only by default (if exists)"
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:248
