@@ -214,7 +214,7 @@ restore_cmake_message_indent()
 
 set(UPSTREAM_DOCS   "https://docs.flatpak.org")
 set(UPSTREAM_REPO   "https://github.com/flatpak/flatpak-docs")
-set(INSERT_POINT    "article[role=\"main\"]")
+set(INSERT_POINT    "div[class=\"content\"]")
 
 
 message(STATUS "Configuring 'ltd-provenance.js' file to the version subdir of the builder directory...")
