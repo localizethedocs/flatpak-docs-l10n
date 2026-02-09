@@ -142,6 +142,8 @@ msgid ""
 "flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo "
 "--install builddir org.flatpak.Hello.yml"
 msgstr ""
+"flatpak-builder --force-clean --user --install-deps-from=flathub --repo=repo "
+"--install builddir org.flatpak.Hello.yml"
 
 #: ../../../docs/first-build.rst:76
 msgid ""

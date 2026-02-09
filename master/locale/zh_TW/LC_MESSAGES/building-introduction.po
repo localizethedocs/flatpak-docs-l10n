@@ -114,7 +114,7 @@ msgstr ""
 
 #: ../../../docs/building-introduction.rst:56
 msgid "Software Development Kits (SDKs)"
-msgstr ""
+msgstr "軟體開發套件（SDK）"
 
 #: ../../../docs/building-introduction.rst:58
 msgid ""

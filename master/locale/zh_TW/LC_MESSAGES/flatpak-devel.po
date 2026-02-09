@@ -142,11 +142,11 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:78
 msgid "Buildsystem handling"
-msgstr ""
+msgstr "建置系統處理"
 
 #: ../../../docs/flatpak-devel.rst:80
 msgid "This is an example for the Meson buildsystem."
-msgstr ""
+msgstr "這是一個 Meson 建置系統的範例。"
 
 #: ../../../docs/flatpak-devel.rst:82
 msgid ""
@@ -551,7 +551,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:322
 msgid "Manifest handling"
-msgstr ""
+msgstr "清單處理"
 
 #: ../../../docs/flatpak-devel.rst:324
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:2
 msgid "Sandbox Permissions"
-msgstr ""
+msgstr "沙箱權限"
 
 #: ../../../docs/sandbox-permissions.rst:4
 msgid ""
@@ -89,7 +89,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:33
 msgid "Opening URIs"
-msgstr ""
+msgstr "開啟 URI"
 
 #: ../../../docs/sandbox-permissions.rst:34
 msgid "Printing"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:35
 msgid "Showing notifications"
-msgstr ""
+msgstr "顯示通知"
 
 #: ../../../docs/sandbox-permissions.rst:36
 msgid "Taking screenshots"
@@ -166,7 +166,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:78
 msgid "Standard permissions"
-msgstr ""
+msgstr "標準權限"
 
 #: ../../../docs/sandbox-permissions.rst:80
 msgid "The following permissions are commonly used by applications."
@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:148
 msgid "Filesystem access"
-msgstr ""
+msgstr "檔案系統存取"
 
 #: ../../../docs/sandbox-permissions.rst:150
 msgid ""
@@ -431,35 +431,35 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:178
 msgid "Access the XDG documents directory"
-msgstr ""
+msgstr "存取 XDG 文件目錄"
 
 #: ../../../docs/sandbox-permissions.rst:178
 msgid "``$XDG_DOCUMENTS_DIR`` or ``$HOME/Documents``"
-msgstr ""
+msgstr "``$XDG_DOCUMENTS_DIR`` 或 ``$HOME/Documents``"
 
 #: ../../../docs/sandbox-permissions.rst:179
 msgid "``xdg-download``"
-msgstr ""
+msgstr "``xdg-download``"
 
 #: ../../../docs/sandbox-permissions.rst:179
 msgid "Access the XDG download directory"
-msgstr ""
+msgstr "存取 XDG 下載目錄"
 
 #: ../../../docs/sandbox-permissions.rst:179
 msgid "``$XDG_DOWNLOAD_DIR`` or ``$HOME/Downloads``"
-msgstr ""
+msgstr "``$XDG_DOWNLOAD_DIR`` 或 ``$HOME/Downloads``"
 
 #: ../../../docs/sandbox-permissions.rst:180
 msgid "``xdg-music``"
-msgstr ""
+msgstr "``xdg-music``"
 
 #: ../../../docs/sandbox-permissions.rst:180
 msgid "Access the XDG music directory"
-msgstr ""
+msgstr "存取 XDG 音樂目錄"
 
 #: ../../../docs/sandbox-permissions.rst:180
 msgid "``$XDG_MUSIC_DIR`` or ``$HOME/Music``"
-msgstr ""
+msgstr "``$XDG_MUSIC_DIR`` 或 ``$HOME/Music``"
 
 #: ../../../docs/sandbox-permissions.rst:181
 msgid "``xdg-pictures``"
@@ -471,11 +471,11 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:181
 msgid "``$XDG_PICTURES_DIR`` or ``$HOME/Pictures``"
-msgstr ""
+msgstr "``$XDG_PICTURES_DIR`` 或 ``$HOME/Pictures``"
 
 #: ../../../docs/sandbox-permissions.rst:182
 msgid "``xdg-public-share``"
-msgstr ""
+msgstr "``xdg-public-share``"
 
 #: ../../../docs/sandbox-permissions.rst:182
 msgid "Access the XDG public directory"
@@ -483,7 +483,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:182
 msgid "``$XDG_PUBLICSHARE_DIR`` or ``$HOME/Public``"
-msgstr ""
+msgstr "``$XDG_PUBLICSHARE_DIR`` 或 ``$HOME/Public``"
 
 #: ../../../docs/sandbox-permissions.rst:183
 msgid "``xdg-videos``"
@@ -535,15 +535,15 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:187
 msgid "``xdg-data``"
-msgstr ""
+msgstr "``xdg-data``"
 
 #: ../../../docs/sandbox-permissions.rst:187
 msgid "Access the XDG data directory   [#f3]_"
-msgstr ""
+msgstr "存取 XDG 資料目錄   [#f3]_"
 
 #: ../../../docs/sandbox-permissions.rst:187
 msgid "``$XDG_DATA_HOME`` or ``$HOME/.local/share``"
-msgstr ""
+msgstr "``$XDG_DATA_HOME`` 或 ``$HOME/.local/share``"
 
 #: ../../../docs/sandbox-permissions.rst:188
 msgid "``xdg-run/path``"
@@ -551,7 +551,7 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:188
 msgid "Access subdirectories of the XDG runtime directory"
-msgstr ""
+msgstr "存取 XDG 執行時目錄的子目錄"
 
 #: ../../../docs/sandbox-permissions.rst:188
 msgid "``$XDG_RUNTIME_DIR/path`` (``/run/user/$UID/path``)"

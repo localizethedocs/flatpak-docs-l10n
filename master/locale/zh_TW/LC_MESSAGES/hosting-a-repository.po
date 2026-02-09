@@ -390,7 +390,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:242
 msgid "GPG_PASSPHRASE"
-msgstr ""
+msgstr "GPG_PASSPHRASE"
 
 #: ../../../docs/hosting-a-repository.rst:243
 msgid "Passphrase of GPG Key"
@@ -398,7 +398,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:247
 msgid "GPG_PRIVATE_KEY"
-msgstr ""
+msgstr "GPG_PRIVATE_KEY"
 
 #: ../../../docs/hosting-a-repository.rst:248
 msgid "ASCII armoured private key"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:253
 msgid "Token"
-msgstr ""
+msgstr "代符"
 
 #: ../../../docs/hosting-a-repository.rst:257
 msgid ""
@@ -420,7 +420,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:260
 msgid "gpg --list-secret-keys --with-keygrip"
-msgstr ""
+msgstr "gpg --list-secret-keys --with-keygrip"
 
 #: ../../../docs/hosting-a-repository.rst:264
 msgid ""
@@ -431,7 +431,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:268
 msgid "gpg --list-secret-keys --keyid-format=long"
-msgstr ""
+msgstr "gpg --list-secret-keys --keyid-format=long"
 
 #: ../../../docs/hosting-a-repository.rst:272
 msgid ""
@@ -524,7 +524,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:332
 msgid "Multi-architecture workflow"
-msgstr ""
+msgstr "多架構工作流"
 
 #: ../../../docs/hosting-a-repository.rst:334
 msgid ""
