@@ -1,0 +1,1007 @@
+<!doctype html>
+<html class="no-js" lang="zh-TW" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Extensions" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.flatpak.org/en/extension.html" />
+<meta property="og:site_name" content="Flatpak" />
+<meta property="og:description" content="A brief overview of extensions can be found in Dependencies. This guide will go in depth on how to write an extension manifest and explain the various properties used. The first step on writing or ..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.flatpak.org/en/latest/_images/social_previews/summary_extension_bb1fc025.png" />
+<meta property="og:image:alt" content="A brief overview of extensions can be found in Dependencies. This guide will go in depth on how to write an extension manifest and explain the various properties used. The first step on writing or ..." />
+<meta name="description" content="A brief overview of extensions can be found in Dependencies. This guide will go in depth on how to write an extension manifest and explain the various properties used. The first step on writing or ..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="genindex.html"><link rel="search" title="搜尋" href="search.html"><link rel="next" title="除錯" href="debugging.html"><link rel="prev" title="Multiarch support" href="multiarch.html">
+        <link rel="canonical" href="https://projects.localizethedocs.org/flatpak-docs-l10n/extension.html">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
+        <title>Extensions - Flatpak 文件</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/xdg.css?v=d059aca2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+
+<script type="text/javascript" src="ltd-provenance.js"></script>
+<script type="text/javascript" src="ltd-current.js"></script>
+<script type="text/javascript" src="../../ltd-config.js"></script>
+<script type="text/javascript" src="../../ltd-flyout.js"></script>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Flatpak  文件</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Flatpak  文件</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="搜尋" name="q" aria-label="搜尋">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Flatpak 簡介</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">開始使用</a><input aria-label="Toggle navigation of 開始使用" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-concepts.html">基本概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-flatpak.html">使用 Flatpak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-build.html">建置您的第一個 Flatpak</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="building.html">建置</a><input aria-label="Toggle navigation of 建置" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building-introduction.html">Building Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">Requirements &amp; Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder.html">Flatpak 建置器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifests.html">清單</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module-sources.html">Module Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox-permissions.html">沙箱權限</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="guides.html">Guides</a><input aria-label="Toggle navigation of Guides" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electron.html">Electron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dotnet.html">Dotnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt.html">Qt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiarch.html">Multiarch support</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">除錯</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="publishing.html">發布</a><input aria-label="Toggle navigation of 發布" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-a-repository.html">Hosting a repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-file-bundles.html">Single-file bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-drives.html">USB Drives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="desktop-integration.html">桌面整合</a><input aria-label="Toggle navigation of 桌面整合" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="portals.html">Portal support in GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portals.html#portal-support-in-qt-and-kde">Portal support in Qt and KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flatpak-devel.html">Flatpak 作為開發者平臺</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">參考文件</a><input aria-label="Toggle navigation of 參考文件" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-command-reference.html">Flatpak 命令參考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder-command-reference.html">Flatpak Builder Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available-runtimes.html">Available Runtimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-the-hood.html">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libflatpak-api-reference.html">libflatpak API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portal-api-reference.html">Portal API Reference</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/blob/master/docs/extension.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/edit/master/docs/extension.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="extensions">
+<h1>Extensions<a class="headerlink" href="#extensions" title="連結到這個標頭">🔗</a></h1>
+<p>A brief overview of extensions can be found in <a class="reference internal" href="dependencies.html"><span class="doc">Dependencies</span></a>. This
+guide will go in depth on how to write an extension manifest and explain
+the various properties used.</p>
+<p>The first step on writing or loading an extension is to define an extension
+point or use an existing one. The decision depends on where the extension
+should be made available.</p>
+<p>If for example it is a GTK/QT theme, it's best to define or use an
+extension point in the runtime, so that it can be made available for
+every application utilising said runtime.</p>
+<p>If it is a specific tool eg. MPV plugins, which are only used by MPV,
+it's best to define or use an extension point in the application. If
+the tool is generic enough to be used by multiple unrelated applications,
+the extension point should be defined in the runtime.</p>
+<p>To see what are the available extension points in runtime or
+applications, please see the corresponding flatpak or build
+manifest.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.Debug,</span> <span class="pre">.Locale,</span> <span class="pre">.Sources</span></code> extensions created by Flatpak builder do
+not need to be specified manually. These are automatically created and
+loaded if installed.</p>
+<p>Note that, <code class="docutils literal notranslate"><span class="pre">.Locale</span></code> extensions are by default only partially
+installed (only for the configured languages) by Flatpak. To install the
+full locale extension <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">update</span> <span class="pre">--subpath=</span> <span class="pre">$FLATPAK_ID.Locale</span></code>
+can be used.</p>
+<section id="extension-point">
+<h2>Extension point<a class="headerlink" href="#extension-point" title="連結到這個標頭">🔗</a></h2>
+<p>Now to define an extension point the <code class="docutils literal notranslate"><span class="pre">add-extensions</span></code> property can be
+used in the manifest.</p>
+<p>This is a typical example of an application extension point.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;48&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Sdk</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">add-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">org.flatpak.app.plugin</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.0&#39;</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extension_directory</span>
+<span class="w">    </span><span class="nt">add-ld-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib</span>
+<span class="w">    </span><span class="nt">merge-dirs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plug-ins;help</span>
+<span class="w">    </span><span class="nt">subdirectories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">cleanup-commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p ${FLATPAK_DEST}/extension_directory</span>
+</pre></div>
+</div>
+<p>The details of these properties are documented in the &quot;Extension NAME&quot;
+section of <a class="reference internal" href="flatpak-command-reference.html"><span class="doc">Flatpak 命令參考</span></a>. Some of it is discussed
+further below.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.flatpak.app.plugin</span></code> is the name of the extension point.
+Extensions using this extension point must start their ID with the same
+prefix, for example <code class="docutils literal notranslate"><span class="pre">org.flatpak.app.plugin.foo</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> is the branch to use when looking for the extension. This
+is useful to have parallel installations of the same extension in case
+of an API/ABI break. The value here will be the <code class="docutils literal notranslate"><span class="pre">branch</span></code> used in the
+extension manifest.</p>
+<p>If not specified it defaults to the <code class="docutils literal notranslate"><span class="pre">runtime</span></code> branch, that the
+extension point belongs to. So in the above example it is <code class="docutils literal notranslate"><span class="pre">45</span></code>.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">小訣竅</p>
+<p><code class="docutils literal notranslate"><span class="pre">versions</span></code> is same as <code class="docutils literal notranslate"><span class="pre">version</span></code> but can be used for specifying
+multiple versions. For example, if an extension is published in the
+<code class="docutils literal notranslate"><span class="pre">beta</span></code> branch and the application is published in the <code class="docutils literal notranslate"><span class="pre">stable</span></code>
+branch, to mount the extension in the application, the extension point
+in the application needs to have <code class="docutils literal notranslate"><span class="pre">versions:</span> <span class="pre">'stable;beta'</span></code>.</p>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">directory</span></code> is the path relative to prefix where everything is
+mounted by flatpak. For a runtime this will be relative to <code class="docutils literal notranslate"><span class="pre">/usr</span></code>
+and for an application it will be relative to <code class="docutils literal notranslate"><span class="pre">/app</span></code>. This supports
+a single value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add-ld-path</span></code> adds a path relative to the extension prefix
+<code class="docutils literal notranslate"><span class="pre">/app/extension_directory/foo/lib</span></code>, so that a library residing there
+can be loaded. This supports a single value. If the <code class="docutils literal notranslate"><span class="pre">$LD_LIBRARY_PATH</span></code>
+environment variable exists, the path here is appended to it, otherwise
+it is put in a ld config file in <code class="docutils literal notranslate"><span class="pre">/run/flatpak/ld.so.conf.d</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge-dirs:</span> <span class="pre">plug-ins;help</span></code> will merge the contents of these
+directories from multiple extensions using the same extension point.
+For example, if <code class="docutils literal notranslate"><span class="pre">/app/extension_directory/foo/plug-ins</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/app/extension_directory/bar/plug-ins</span></code> exist, they will be merged
+and made available at <code class="docutils literal notranslate"><span class="pre">/app/extension_directory/plug-ins</span></code>. Similarly
+for <code class="docutils literal notranslate"><span class="pre">help</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subdirectories:</span> <span class="pre">true</span></code> allows to have multiple extensions under the
+same <code class="docutils literal notranslate"><span class="pre">directory</span></code>. So two extensions like
+<code class="docutils literal notranslate"><span class="pre">org.flatpak.app.plugin.foo</span></code> and <code class="docutils literal notranslate"><span class="pre">org.flatpak.app.plugin.bar</span></code> will
+be mounted at <code class="docutils literal notranslate"><span class="pre">/app/extension_directory/foo</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/app/extension_directory/bar</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no-autodownload:</span> <span class="pre">true</span></code> will prevent installing all extensions
+under this extension point. This is the default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autodelete:</span> <span class="pre">true</span></code> will remove all extensions under this extension
+point when the application is removed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.Debug</span></code> and <code class="docutils literal notranslate"><span class="pre">.Locale</span></code> extensions are created with
+<code class="docutils literal notranslate"><span class="pre">autodelete:</span> <span class="pre">true</span></code> by default.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">${FLATPAK_DEST}/extension_directory</span></code> runs during the cleanup
+phase. It is used to initialise an empty directory for the extension to
+be loaded. This can also be done using <code class="docutils literal notranslate"><span class="pre">post-install</span></code> or <code class="docutils literal notranslate"><span class="pre">build-commands</span></code>
+in a module. The directory has to end up in the final flatpak. If it is
+missing, there will be an error while running the application.</p></li>
+</ul>
+<p>There is no extension property to extend the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>If the extension point is defined in a base runtime or SDK manifest
+<code class="docutils literal notranslate"><span class="pre">add-extensions</span></code> will make the extension point land in both
+<code class="docutils literal notranslate"><span class="pre">.Sdk</span></code> and <code class="docutils literal notranslate"><span class="pre">.Platform</span></code>. If the extension point needs to be in only
+the child <code class="docutils literal notranslate"><span class="pre">.Sdk</span></code> but not in the child <code class="docutils literal notranslate"><span class="pre">.Platform</span></code>
+<code class="docutils literal notranslate"><span class="pre">inherit-sdk-extensions</span></code> should be used which is discussed below.</p>
+</div>
+<p>There are other properties like <code class="docutils literal notranslate"><span class="pre">download-if</span></code>, <code class="docutils literal notranslate"><span class="pre">enable-if</span></code>,
+<code class="docutils literal notranslate"><span class="pre">autoprune-unless</span></code> etc. These are conditionals which must be <code class="docutils literal notranslate"><span class="pre">true</span></code>
+for the action to happen. These are typically not used in application
+extension points.</p>
+<p>An example of an extension point defined in runtime is the GL extension
+point used in <a class="reference external" href="https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/blob/1a8039407f8573725b16eab8779f2b0e1cd01629/elements/flatpak-images/platform.bst">Freedesktop SDK</a>
+Freedesktop SDK uses <a class="reference external" href="https://buildstream.build/index.html">buildstream</a>,
+so the <a class="reference external" href="https://docs.buildstream.build/master/format_project.html">format</a>
+is different from the usual <code class="docutils literal notranslate"><span class="pre">json</span></code> or <code class="docutils literal notranslate"><span class="pre">yaml</span></code> format used by Flatpak
+manifests.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Extension org.freedesktop.Platform.GL</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 1.4 is for Nvidia drivers</span>
+<span class="w">  </span><span class="nt">versions</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%{branch};%{branch-extra};1.4&quot;</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.4&quot;</span>
+<span class="w">  </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%{lib}/GL&quot;</span>
+<span class="w">  </span><span class="nt">subdirectories</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">add-ld-path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lib&quot;</span>
+<span class="w">  </span><span class="nt">merge-dirs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%{gl_merge_dirs}&quot;</span>
+<span class="w">  </span><span class="nt">download-if</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;active-gl-driver&quot;</span>
+<span class="w">  </span><span class="nt">enable-if</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;active-gl-driver&quot;</span>
+<span class="w">  </span><span class="nt">autoprune-unless</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">active-gl-driver</span>
+</pre></div>
+</div>
+<p>Most of this is already discussed above. Variables starting with <code class="docutils literal notranslate"><span class="pre">%</span></code>
+are private to the Freedesktop SDK. The version <code class="docutils literal notranslate"><span class="pre">1.4</span></code> is only used
+for the proprietary NVIDIA drivers and is static since they have no
+API/ABI guarantee.</p>
+<p><code class="docutils literal notranslate"><span class="pre">active-gl-driver</span></code> is a flatpak conditional that is true if the name
+of the active GL driver matches the extension point basename. The value
+can be checked with <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">--gl-drivers</span></code> where <code class="docutils literal notranslate"><span class="pre">host</span></code> and
+<code class="docutils literal notranslate"><span class="pre">default</span></code> are always inserted. The command also looks at the
+<code class="docutils literal notranslate"><span class="pre">FLATPAK_GL_DRIVERS</span></code> environment variable and
+<code class="docutils literal notranslate"><span class="pre">/sys/module/nvidia/version</span></code> for nvidia kernel module version.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">default</span></code> corresponds to a stable mesa fallback build whereas
+<code class="docutils literal notranslate"><span class="pre">host</span></code> is for <cite>unmaintained</cite> Flatpak extensions installed on host.</p>
+<p>The resultant extension is called <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL.default</span></code>
+and it is downloaded and enabled automatically if <code class="docutils literal notranslate"><span class="pre">active-gl-driver</span></code>
+is true and deleted if only it is false.</p>
+<p>The following conditionals are available: download-if, autoprune-unless
+enable-if.</p>
+<p><code class="docutils literal notranslate"><span class="pre">download-if</span></code> and <code class="docutils literal notranslate"><span class="pre">enable-if</span></code> supports the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">active-gl-driver</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">active-gtk-theme</span></code> is true if the host GTK theme via <code class="docutils literal notranslate"><span class="pre">org.gnome.desktop.interface</span></code>
+matches the extension basename.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">have-intel-gpu</span></code> is true if the i915 kernel module is loaded.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">have-kernel-module-{module_name}</span></code> is true if <code class="docutils literal notranslate"><span class="pre">module_name</span></code> is
+found in <code class="docutils literal notranslate"><span class="pre">/proc/modules</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on-xdg-desktop-{desktop_name}</span></code> is true if <code class="docutils literal notranslate"><span class="pre">desktop_name</span></code>
+matches the value of <code class="docutils literal notranslate"><span class="pre">XDG_CURRENT_DESKTOP</span></code> on host.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">autoprune-unless</span></code> supports only <code class="docutils literal notranslate"><span class="pre">active-gl-driver</span></code>. If this evaluates
+to <code class="docutils literal notranslate"><span class="pre">false</span></code> the extension will be considered unused and removed
+automatically when doing <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">uninstall</span> <span class="pre">--unused</span></code>.</p>
+<p>Extensions are automatically mounted inside the runtime or app sandbox
+provided the correct branch of the extension is installed, the
+extension point for that extension is specified in the app or runtime
+manifest and all the conditionals in the extension point match.</p>
+<p>The list of loaded extensions can be found by inspecting the
+<code class="docutils literal notranslate"><span class="pre">app-extensions</span></code> and <code class="docutils literal notranslate"><span class="pre">runtime-extensions</span></code> keys of the <code class="docutils literal notranslate"><span class="pre">Instance</span></code>
+group in <code class="docutils literal notranslate"><span class="pre">/.flatpak-info</span></code> of a running Flatpak.</p>
+</section>
+<section id="loading-existing-extensions">
+<h2>Loading existing extensions<a class="headerlink" href="#loading-existing-extensions" title="連結到這個標頭">🔗</a></h2>
+<p>This is a typical example of loading an existing extension
+in the application. The extension is loaded at runtime and the user needs
+to have it installed.</p>
+<p>The extensions are mounted in alphabetical path order of directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Some extensions are installed automatically by the runtime based on
+certain conditions and these do not need to be added to application
+manifests. Please see below for the purpose of extensions or
+extension points defined in the runtime. Similarly extensions created
+by Flatpak builder like <code class="docutils literal notranslate"><span class="pre">.Locale,</span> <span class="pre">.Debug</span></code> also do not need to be
+in application manifest.</p>
+</div>
+<section id="finding-base-runtime-version">
+<h3>Finding Base Runtime Version<a class="headerlink" href="#finding-base-runtime-version" title="連結到這個標頭">🔗</a></h3>
+<p>Some extensions are either built as part of the runtimes or have their
+extension points defined within them. These typically follow the branch
+pattern of the runtime. In case of
+<code class="docutils literal notranslate"><span class="pre">org.gnome.{Platform,</span> <span class="pre">Sdk},</span> <span class="pre">org.kde.{Platform,</span> <span class="pre">Sdk}</span></code> they follow the
+branch pattern of Freedesktop SDK (<code class="docutils literal notranslate"><span class="pre">org.freedesktop.{Platform,</span> <span class="pre">Sdk}</span></code>).</p>
+<p>When using such extensions, the extension version must match the base
+runtime version. This ensures ABI and API compatibility.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.ffmpeg-full</span></code> is built as part
+of the Freedesktop SDK and provides versions
+<code class="docutils literal notranslate"><span class="pre">22.08,</span> <span class="pre">23.08,</span> <span class="pre">24.08,</span> <span class="pre">...</span></code>. Suppose the application uses the runtime
+<code class="docutils literal notranslate"><span class="pre">org.kde.Platform//5.15-24.08</span></code>, which is based on Freedesktop SDK.</p>
+<p>To find the base runtime version of <code class="docutils literal notranslate"><span class="pre">org.kde.Platform//5.15-24.08</span></code>,
+run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flatpak</span> <span class="n">remote</span><span class="o">-</span><span class="n">info</span> <span class="n">flathub</span> <span class="o">-</span><span class="n">m</span> <span class="n">org</span><span class="o">.</span><span class="n">kde</span><span class="o">.</span><span class="n">Platform</span><span class="o">//</span><span class="mf">5.15</span><span class="o">-</span><span class="mf">24.08</span> <span class="o">|</span> \
+  <span class="n">grep</span> <span class="o">-</span><span class="n">A</span> <span class="mi">5</span> <span class="o">-</span><span class="n">F</span> <span class="s1">&#39;[Extension org.freedesktop.Platform.GL]&#39;</span>
+</pre></div>
+</div>
+<p>The output will have <code class="docutils literal notranslate"><span class="pre">versions=24.08;24.08-extra;1.4</span></code>, and thus the
+base runtime version is of <code class="docutils literal notranslate"><span class="pre">org.kde.Platform//5.15-24.08</span></code> is
+<code class="docutils literal notranslate"><span class="pre">24.08</span></code>.</p>
+<p>Similarly, for <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Sdk.Extension.texlive</span></code>, the extension
+point <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Sdk.Extension</span></code> is defined in the Freedesktop
+SDK. To determine the base runtime version for a derived runtime such as
+<code class="docutils literal notranslate"><span class="pre">org.gnome.Platform//48</span></code>, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flatpak</span> <span class="n">remote</span><span class="o">-</span><span class="n">info</span> <span class="n">flathub</span> <span class="o">-</span><span class="n">m</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Sdk</span><span class="o">//</span><span class="mi">48</span> <span class="o">|</span> \
+  <span class="n">grep</span> <span class="o">-</span><span class="n">A</span> <span class="mi">5</span> <span class="o">-</span><span class="n">F</span> <span class="s1">&#39;[Extension org.freedesktop.Sdk.Extension]&#39;</span>
+</pre></div>
+</div>
+<p>The output will have <code class="docutils literal notranslate"><span class="pre">versions=24.08</span></code>, and thus <code class="docutils literal notranslate"><span class="pre">24.08</span></code> needs
+to be used as <code class="docutils literal notranslate"><span class="pre">version</span></code> in <code class="docutils literal notranslate"><span class="pre">add-extensions</span></code>.</p>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="連結到這個標頭">🔗</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.kde.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5.15-24.08&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.kde.Sdk</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">add-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">org.freedesktop.Platform.ffmpeg-full</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;24.08&#39;</span><span class="w"> </span><span class="c1"># replace by appropriate version</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lib/ffmpeg</span>
+<span class="w">    </span><span class="nt">add-ld-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="nt">cleanup-commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p ${FLATPAK_DEST}/lib/ffmpeg</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;48&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">add-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">org.freedesktop.Sdk.Extension.texlive</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">texlive</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;24.08&#39;</span><span class="w"> </span><span class="c1"># replace by appropriate version</span>
+<span class="nt">cleanup-commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p ${FLATPAK_DEST}/texlive</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">Compat</span></code> or <code class="docutils literal notranslate"><span class="pre">GL32</span></code> extensions need to specifically
+requested. For providing runtime i386 support or for building i386
+modules, please refer to <a class="reference internal" href="multiarch.html"><span class="doc">Multiarch support</span></a>.</p>
+<p>A few related extension properties can be found in application or runtime
+manifests. These are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inherit-extensions</span></code> can be used to specify an extra set of extension
+points or extensions from the parent runtime or base that is inherited
+into the application or the current runtime. This for example, can be
+used to inherit i386 graphics drivers <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL32</span></code>
+or ffmpeg <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.ffmpeg-full</span></code> in any application
+that uses the <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform</span></code> runtime or a child runtime
+of it.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;48&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Sdk</span>
+<span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.winehq.Wine</span>
+<span class="nt">base-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stable-24.08</span>
+<span class="nt">inherit-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Platform.GL32</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Platform.ffmpeg-full</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Platform.ffmpeg_full.i386</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.winehq.Wine.gecko</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">add-build-extensions</span></code> is same as <code class="docutils literal notranslate"><span class="pre">add-extensions</span></code> but the
+extensions are made available during build. This can be used to add
+build dependencies that reside in an extension based on the runtime
+being used.</p>
+<p>For example an application using the runtime
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform</span></code> can use
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Sdk.Extension.openjdk11</span></code> as a build-extension.</p>
+</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;24.08&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk</span>
+<span class="nt">add-build-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk.Extension.openjdk11</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sdk-extensions</span></code> can be used to install extra extensions having
+an extension point in the parent runtime that has to be installed for
+the app to build. These are similarly made available during build and
+not in the final flatpak. These always follow the branch pattern
+of the base runtime (see above).</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;24.08&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk</span>
+<span class="nt">sdk-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk.Extension.golang</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inherit-sdk-extensions</span></code> is used to inherit extension points from the
+parent SDK into the child SDK. They aren't inherited into the child
+runtime. This is usually used when building runtimes or SDKs and not
+in applications.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">inherit-sdk-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk.Compat.i386</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk.Compat.i386.Debug</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>There is currently no way to add or inherit extensions per-arch. This
+means the extension should be available or made available for all the
+arches used by the application and vice-versa.</p>
+<p>This also means that certain extensions like i386 compatibility
+extensions like <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Sdk.Compat.i386</span></code> should not be
+added to modules that build for <code class="docutils literal notranslate"><span class="pre">aarch64</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="extension-manifest">
+<h2>Extension manifest<a class="headerlink" href="#extension-manifest" title="連結到這個標頭">🔗</a></h2>
+<p>Once the extension point is defined, an extension like
+<code class="docutils literal notranslate"><span class="pre">org.flatpak.app.plugin.foo</span></code> can be created.</p>
+<p>This is a typical example of such an extension manifest. The explanation
+is discussed below.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.app.plugin.foo</span>
+<span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.0&#39;</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.app</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;stable&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.gnome.Sdk//48</span>
+<span class="nt">build-extension</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">separate-locales</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">build-options</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/extension_directory/foo</span>
+<span class="w">  </span><span class="nt">prepend-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/extension_directory/foo/bin</span>
+<span class="w">  </span><span class="nt">prepend-pkg-config-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/extension_directory/foo/lib/pkgconfig</span>
+<span class="w">  </span><span class="nt">prepend-ld-library-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/extension_directory/foo/lib</span>
+<span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;build commands&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 org.flatpak.app.plugin.foo.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> must have the correct prefix of the extension point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">branch</span></code> must be the <code class="docutils literal notranslate"><span class="pre">version</span></code> declared in the extension point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtime</span></code> should be the ID of the parent module where the extension
+point is defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtime-version</span></code> is the version of the runtime used by the
+application. If the runtime is built locally and has not specified the
+<code class="docutils literal notranslate"><span class="pre">branch</span></code> property in its manifest, it defaults to <code class="docutils literal notranslate"><span class="pre">master</span></code>,
+otherwise the value in <code class="docutils literal notranslate"><span class="pre">branch</span></code> is used.</p>
+<p>Applications on Flathub usually use either <code class="docutils literal notranslate"><span class="pre">stable</span></code> or <code class="docutils literal notranslate"><span class="pre">beta</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sdk</span></code> should be the same SDK used to build the runtime, followed by
+its version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build-extension:</span> <span class="pre">true</span></code> instructs flatpak to build an extension.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">separate-locales:</span> <span class="pre">false</span></code> disables creating a <code class="docutils literal notranslate"><span class="pre">.Locale</span></code> extension
+for this extension.</p></li>
+</ul>
+<p>Flatpak-builder (&gt;= 1.3.4), can compose metadata for extensions
+automatically and it is no longer required to manually compose them
+through commands in the manifest.</p>
+<p>In case a manual compose is still required <code class="docutils literal notranslate"><span class="pre">appstream-compose</span> <span class="pre">--basename=${FLATPAK_ID}</span> <span class="pre">--prefix=${FLATPAK_DEST}</span> <span class="pre">--origin=flatpak</span> <span class="pre">${FLATPAK_ID}</span></code>
+for composing with appstream-glib or <code class="docutils literal notranslate"><span class="pre">appstreamcli</span> <span class="pre">compose</span> <span class="pre">--components=${FLATPAK_ID}</span> <span class="pre">--prefix=/</span> <span class="pre">--origin=${FLATPAK_ID}</span> <span class="pre">--result-root=${FLATPAK_DEST}</span> <span class="pre">--data-dir=${FLATPAK_DEST}/share/app-info/xmls</span> <span class="pre">${FLATPAK_DEST}</span></code> for composing with appstreamcli can be used in <code class="docutils literal notranslate"><span class="pre">build-commands</span></code>
+or <code class="docutils literal notranslate"><span class="pre">post-install</span></code> along with having <code class="docutils literal notranslate"><span class="pre">appstream-compose:</span> <span class="pre">false</span></code> in
+the top.</p>
+<p>Note that the extension prefix or location of pkg-config files will not
+be in <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> or <code class="docutils literal notranslate"><span class="pre">$PKG_CONFIG_PATH</span></code> by default. Any such additional
+variables need to be set in <code class="docutils literal notranslate"><span class="pre">build-options</span></code>. This is done using
+<code class="docutils literal notranslate"><span class="pre">prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">prepend-*</span></code> properties.</p>
+<p>A MetaInfo file should be provided for discoverability in software
+stores. This is a typical example of an extension MetaInfo file.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;component</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;addon&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;id&gt;</span>org.flatpak.app.plugin.foo<span class="nt">&lt;/id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;extends&gt;</span>org.flatpak.app<span class="nt">&lt;/extends&gt;</span>
+<span class="w">  </span><span class="nt">&lt;name&gt;</span>Foo<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;summary&gt;</span>A<span class="w"> </span>nice<span class="w"> </span>summary<span class="nt">&lt;/summary&gt;</span>
+<span class="w">  </span><span class="nt">&lt;project_license&gt;</span>GPL-2.0-only<span class="nt">&lt;/project_license&gt;</span>
+<span class="w">  </span><span class="nt">&lt;metadata_license&gt;</span>CC0-1.0<span class="nt">&lt;/metadata_license&gt;</span>
+<span class="w">  </span><span class="nt">&lt;developer</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;com.example&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;name&gt;</span>Bar<span class="nt">&lt;/name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/developer&gt;</span>
+<span class="w">  </span><span class="nt">&lt;url</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;homepage&quot;</span><span class="nt">&gt;</span>https://flatpak.github.io/<span class="nt">&lt;/url&gt;</span>
+<span class="w">  </span><span class="nt">&lt;update_contact&gt;</span>bar_AT_example.org<span class="nt">&lt;/update_contact&gt;</span>
+<span class="w">  </span><span class="nt">&lt;releases&gt;</span>
+<span class="w">    </span><span class="nt">&lt;release</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.2.0&quot;</span><span class="w"> </span><span class="na">date=</span><span class="s">&quot;2023-12-03&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;description&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span>Release<span class="w"> </span>description<span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;ul&gt;</span>
+<span class="w">        </span><span class="nt">&lt;li&gt;</span>A<span class="w"> </span>release<span class="w"> </span>note<span class="nt">&lt;/li&gt;</span>
+<span class="w">        </span><span class="nt">&lt;li&gt;</span>A<span class="w"> </span>bugfix<span class="nt">&lt;/li&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/ul&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/description&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/release&gt;</span>
+<span class="w">    </span><span class="nt">&lt;release</span><span class="w"> </span><span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span><span class="w"> </span><span class="na">date=</span><span class="s">&quot;2020-04-20&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/releases&gt;</span>
+<span class="nt">&lt;/component&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="bundled-extensions">
+<h2>Bundled extensions<a class="headerlink" href="#bundled-extensions" title="連結到這個標頭">🔗</a></h2>
+<p>Extensions can also be built directly from the application manifest
+instead of creating a separate extension manifest. The <code class="docutils literal notranslate"><span class="pre">bundle:</span> <span class="pre">true</span></code>
+property allows exporting them as separate extensions from the application
+manifest. The extension needs to be defined in the application manifest
+using <code class="docutils literal notranslate"><span class="pre">add-extensions</span></code>. The contents of the <code class="docutils literal notranslate"><span class="pre">directory</span></code> will be
+exported into that extension.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.flatpak.cool-app</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.kde.Platform</span>
+<span class="nt">runtime-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;6.9&#39;</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.kde.Sdk</span>
+<span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">add-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">org.flatpak.cool-app.codecs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/codecs</span>
+<span class="w">    </span><span class="nt">subdirectories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">org.flatpak.cool-app.codecs.codec_pack1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/codecs/codec-pack1</span>
+<span class="w">    </span><span class="nt">bundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">org.flatpak.cool-app.codecs.codec_pack2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/codecs/codec-pack2</span>
+<span class="w">    </span><span class="nt">bundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">autodelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+<section id="unmaintained-flatpak-extensions">
+<h2>Unmaintained Flatpak extensions<a class="headerlink" href="#unmaintained-flatpak-extensions" title="連結到這個標頭">🔗</a></h2>
+<p>Flatpak also supports <cite>unmaintained extensions</cite> that allows loading
+extensions installed externally into <code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak/extension</span></code> and
+<code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/flatpak/extension</span></code> from the host. This can be useful
+to expose administrator policies, extensions, graphics drivers etc. to
+Flatpak applications. The extension point of unmaintained extensions is
+the same as above.</p>
+<p>An example of an unmaintained extension can be found in browsers such as
+<a class="reference external" href="https://github.com/flathub/org.chromium.Chromium/blob/dc7f731e7b62199a00bfa3ea3d123ff6d16936dc/org.chromium.Chromium.yaml">Chromium</a>
+or <a class="reference external" href="https://hg.mozilla.org/mozilla-central/diff/59e57f57dcb73a286822276d02f16e7b17018de6/taskcluster/docker/firefox-flatpak/runme.sh">Firefox</a>
+on Flathub.</p>
+<p>The Firefox snippet translates to:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">add-extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">org.mozilla.firefox.systemconfig</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">etc/firefox</span>
+<span class="w">    </span><span class="nt">no-autodownload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">cleanup-commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p ${FLATPAK_DEST}/etc/firefox</span>
+</pre></div>
+</div>
+<p>Now the required policy files for Firefox <code class="docutils literal notranslate"><span class="pre">pref</span></code> and <code class="docutils literal notranslate"><span class="pre">policies.json</span></code>
+can be placed in <code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/x86_64/stable/defaults/pref</span></code>
+and <code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/x86_64/stable/policies/policies.json</span></code>
+(or in <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/flatpak/extension/...</span></code>) respectively on host.
+The path here is dependent on the extension point. These would appear
+under <code class="docutils literal notranslate"><span class="pre">/app/etc/firefox/policies/policies.json</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/app/etc/firefox/defaults/pref</span></code> inside the sandbox. (Firefox <a class="reference external" href="https://hg.mozilla.org/mozilla-central/file/23ee4ac2d048de0aac3fa27ce7eb0925c1903096/xpcom/io/SpecialSystemDirectory.cpp#l198">supports</a>
+reading policies from <code class="docutils literal notranslate"><span class="pre">/app/etc</span></code>)</p>
+<p>For details on Chromium, please look at the
+<a class="reference external" href="https://github.com/flathub/org.chromium.Chromium">readme</a>.</p>
+<section id="creating-an-unmaintained-gtk-theme-extension">
+<h3>Creating an unmaintained Gtk theme extension<a class="headerlink" href="#creating-an-unmaintained-gtk-theme-extension" title="連結到這個標頭">🔗</a></h3>
+<p>The following script can be used to create an unmaintained extension
+for the host's Gtk 3 theme. This is useful when the theme is not packaged
+as an extension in a remote.</p>
+<p>The script expects the theme to be installed in <code class="docutils literal notranslate"><span class="pre">/usr/share/themes</span></code>
+or <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/themes</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">DEFAULT_ARCH</span><span class="o">=</span><span class="k">$(</span>flatpak<span class="w"> </span>--default-arch<span class="k">)</span>
+<span class="nv">THEME_NAME</span><span class="o">=</span><span class="k">$(</span>gsettings<span class="w"> </span>get<span class="w"> </span>org.gnome.desktop.interface<span class="w"> </span>gtk-theme<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;&#39;&quot;</span><span class="k">)</span>
+<span class="nv">XDG_DATA_HOME</span><span class="o">=</span><span class="si">${</span><span class="nv">XDG_DATA_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.local/share</span><span class="si">}</span>
+<span class="nv">THEME_EXTENSION_DIR</span><span class="o">=</span><span class="nv">$XDG_DATA_HOME</span>/flatpak/extension/org.gtk.Gtk3theme.<span class="nv">$THEME_NAME</span>/<span class="nv">$DEFAULT_ARCH</span>/3.22
+
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$THEME_EXTENSION_DIR</span><span class="s2">&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;/usr/share/themes/</span><span class="nv">$THEME_NAME</span><span class="s2">/gtk-3.0/&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>cp<span class="w"> </span>-r<span class="w"> </span>/usr/share/themes/<span class="s2">&quot;</span><span class="nv">$THEME_NAME</span><span class="s2">&quot;</span>/gtk-3.0/*<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$THEME_EXTENSION_DIR</span><span class="s2">&quot;</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$XDG_DATA_HOME</span><span class="s2">/themes/</span><span class="nv">$THEME_NAME</span><span class="s2">/gtk-3.0/&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$XDG_DATA_HOME</span><span class="s2">&quot;</span>/themes/<span class="s2">&quot;</span><span class="nv">$THEME_NAME</span><span class="s2">&quot;</span>/gtk-3.0/*<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$THEME_EXTENSION_DIR</span><span class="s2">&quot;</span>
+<span class="k">else</span>
+<span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Could not find theme files&quot;</span>
+<span class="w">      </span>rmdir<span class="w"> </span>--ignore-fail-on-non-empty<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$THEME_EXTENSION_DIR</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="extensions-or-extension-points-defined-by-runtime">
+<h2>Extensions or extension points defined by runtime<a class="headerlink" href="#extensions-or-extension-points-defined-by-runtime" title="連結到這個標頭">🔗</a></h2>
+<p>The following extensions and extension points are defined in the
+Freedesktop runtime/SDK or are shipped along with it. Most of these
+are inherited by the GNOME and KDE runtimes as well. These may
+change over time, please check the respective project.</p>
+<p>These are common to the Freedesktop SDK and runtime:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL</span></code> – Extension for graphics drivers managed
+by the runtime and installed or removed automatically. The default
+has two branches <code class="docutils literal notranslate"><span class="pre">${RUNTIME_VERSION}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">${RUNTIME_VERSION}-extra</span></code>, the latter containing support for
+patented codecs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL.Debug</span></code> – Debug extension point for
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL</span></code>, managed by the runtime but the user needs
+to explicitly install <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL.Debug.default//${RUNTIME_VERSION}</span></code>
+and <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GL.Debug.default//${RUNTIME_VERSION}-extra</span></code>
+to have the debug symbols available.</p>
+<p>The following extensions utilise the above two extension points:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>org.freedesktop.Platform.GL.default//${RUNTIME_VERSION}
+org.freedesktop.Platform.GL.default//${RUNTIME_VERSION}-extra
+org.freedesktop.Platform.GL.Debug.default//${RUNTIME_VERSION}
+org.freedesktop.Platform.GL.Debug.default//${RUNTIME_VERSION}-extra
+
+org.freedesktop.Platform.GL32.default//${RUNTIME_VERSION}
+org.freedesktop.Platform.GL32.default//${RUNTIME_VERSION}-extra
+org.freedesktop.Platform.GL32.Debug.default//${RUNTIME_VERSION}
+org.freedesktop.Platform.GL32.Debug.default//${RUNTIME_VERSION}-extra
+
+org.freedesktop.Platform.GL.nvidia-${DRIVER_VERSION}
+org.freedesktop.Platform.GL32.nvidia-${DRIVER_VERSION}
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.VulkanLayer</span></code> – Extension point for
+<a class="reference external" href="https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/layers.md">Vulkan layers</a>.
+Developers can provide extensions using this extension point
+and the user needs to install those extensions to have them available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.GStreamer</span></code> – Extension point for GStreamer
+plugins. Developers can provide extensions using this extension point
+and the user needs to install those extensions to have them available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.Icontheme</span></code> – Extension point for icon themes.
+Developers can provide extensions using this extension point
+and the user needs to install those extensions to have them available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.gtk.Gtk3theme</span></code> – Extension point for Gtk3 themes. Extensions
+under this extension point are automatically installed by Flatpak
+if an extension matching the host theme is available. Developers can
+provide extensions using this extension point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.VAAPI.Intel</span></code> – Extension providing Intel
+VAAPI media drivers. This is automatically installed if the user
+has an Intel GPU. This has a compat i386 extension
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.VAAPI.Intel.i386</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.VAAPI.nvidia</span></code> – Extension providing Nvidia
+VAAPI media drivers. This is automatically installed if the user
+has an Nvidia GPU. This has a compat i386 extension
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.VAAPI.nvidia.i386</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.openh264</span></code> – Extension providing OpenH264,
+automatically installed by the runtime. (This is discontinued since
+Freedesktop SDK 25.08)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.ffmpeg-full</span></code> – Extension providing ffmpeg
+with support for patented codecs. This needs to explicitly added to the
+manifest using <code class="docutils literal notranslate"><span class="pre">add-extensions</span></code> by the developer, so that it becomes
+available when the user installs it.This has a compat i386 extension
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.ffmpeg_full.i386</span></code>. (This is discontinued
+since Freedesktop SDK 25.08)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.codecs-extra</span></code> – This is the successor
+to <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.ffmpeg-full</span></code> available since
+Freedesktop SDK 25.08. This is a runtime extension and it will be
+automatically installed by the runtime when installing an app. This
+has a compat i386 extension
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform.codecs_extra.i386</span></code>. The branch is set to
+<code class="docutils literal notranslate"><span class="pre">$freedesktop-sdk-version-extra</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">25.08-extra,</span> <span class="pre">26.08-extra</span></code>
+and so on. Users and distributors who want to block or not use
+patented codecs can use <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">mask</span></code> to mask this extension or
+the <code class="docutils literal notranslate"><span class="pre">-extra</span></code> branch pattern.</p></li>
+</ul>
+<p>These are only in Freedesktop SDK:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.freedesktop.Sdk.Extension</span></code> – Extension point for SDK extensions
+like extra toolchains (eg. LLVM), compilers and language specific
+tools to aid building applications or provide language support for
+development tools such as IDEs.</p>
+<p>SDK extensions available on Flathub are listed
+<a class="reference external" href="https://github.com/orgs/flathub/repositories?q=org.freedesktop.Sdk.Extension.">here</a>.</p>
+<p>The application developer needs to explicitly add these extensions
+in the manifest by using <code class="docutils literal notranslate"><span class="pre">sdk-extensions</span></code> when building an app.</p>
+</li>
+</ul>
+<p>Extensions marked as <code class="docutils literal notranslate"><span class="pre">Compat</span></code> in the name or <code class="docutils literal notranslate"><span class="pre">GL32</span></code> provide compat
+support for extra architectures and needs to explicitly requested.</p>
+<p>Additionally all SDKs provide a <code class="docutils literal notranslate"><span class="pre">.Docs</span></code> extension for documentation.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="debugging.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">除錯</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="multiarch.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Multiarch support</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Extensions</a><ul>
+<li><a class="reference internal" href="#extension-point">Extension point</a></li>
+<li><a class="reference internal" href="#loading-existing-extensions">Loading existing extensions</a><ul>
+<li><a class="reference internal" href="#finding-base-runtime-version">Finding Base Runtime Version</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extension-manifest">Extension manifest</a></li>
+<li><a class="reference internal" href="#bundled-extensions">Bundled extensions</a></li>
+<li><a class="reference internal" href="#unmaintained-flatpak-extensions">Unmaintained Flatpak extensions</a><ul>
+<li><a class="reference internal" href="#creating-an-unmaintained-gtk-theme-extension">Creating an unmaintained Gtk theme extension</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extensions-or-extension-points-defined-by-runtime">Extensions or extension points defined by runtime</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=0d9984b1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/translations.js?v=cbf116e0"></script>
+    </body>
+</html>

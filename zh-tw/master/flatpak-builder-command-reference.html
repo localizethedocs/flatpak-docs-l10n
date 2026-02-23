@@ -1,0 +1,949 @@
+<!doctype html>
+<html class="no-js" lang="zh-TW" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Flatpak Builder Command Reference" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.flatpak.org/en/flatpak-builder-command-reference.html" />
+<meta property="og:site_name" content="Flatpak" />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.flatpak.org/en/latest/_images/social_previews/summary_flatpak-builder-command-reference_f5ec9013.png" />
+<meta property="og:image:alt" content="" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="genindex.html"><link rel="search" title="搜尋" href="search.html"><link rel="next" title="Available Runtimes" href="available-runtimes.html"><link rel="prev" title="Flatpak 命令參考" href="flatpak-command-reference.html">
+        <link rel="canonical" href="https://projects.localizethedocs.org/flatpak-docs-l10n/flatpak-builder-command-reference.html">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
+        <title>Flatpak Builder Command Reference - Flatpak 文件</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/xdg.css?v=d059aca2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+
+<script type="text/javascript" src="ltd-provenance.js"></script>
+<script type="text/javascript" src="ltd-current.js"></script>
+<script type="text/javascript" src="../../ltd-config.js"></script>
+<script type="text/javascript" src="../../ltd-flyout.js"></script>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Flatpak  文件</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Flatpak  文件</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="搜尋" name="q" aria-label="搜尋">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Flatpak 簡介</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">開始使用</a><input aria-label="Toggle navigation of 開始使用" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-concepts.html">基本概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-flatpak.html">使用 Flatpak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-build.html">建置您的第一個 Flatpak</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="building.html">建置</a><input aria-label="Toggle navigation of 建置" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="building-introduction.html">Building Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">Requirements &amp; Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder.html">Flatpak 建置器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifests.html">清單</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module-sources.html">Module Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox-permissions.html">沙箱權限</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="guides.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electron.html">Electron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dotnet.html">Dotnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt.html">Qt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiarch.html">Multiarch support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extension.html">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">除錯</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="publishing.html">發布</a><input aria-label="Toggle navigation of 發布" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-a-repository.html">Hosting a repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-file-bundles.html">Single-file bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-drives.html">USB Drives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="desktop-integration.html">桌面整合</a><input aria-label="Toggle navigation of 桌面整合" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="portals.html">Portal support in GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portals.html#portal-support-in-qt-and-kde">Portal support in Qt and KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flatpak-devel.html">Flatpak 作為開發者平臺</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="reference.html">參考文件</a><input aria-label="Toggle navigation of 參考文件" checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="flatpak-command-reference.html">Flatpak 命令參考</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Flatpak Builder Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available-runtimes.html">Available Runtimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-the-hood.html">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libflatpak-api-reference.html">libflatpak API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portal-api-reference.html">Portal API Reference</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/blob/master/docs/flatpak-builder-command-reference.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/edit/master/docs/flatpak-builder-command-reference.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="hide-header" id="flatpak-builder-command-reference">
+<h1>Flatpak Builder Command Reference<a class="headerlink" href="#flatpak-builder-command-reference" title="連結到這個標頭">🔗</a></h1>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Flatpak Builder Command Reference</title><link rel="stylesheet" type="text/css" href="docbook.css" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /></head><body><div class="reference"><div class="titlepage"><div><div><h1 class="title"><a id="id1337"></a>Flatpak Builder Command Reference</h1></div><div><p class="releaseinfo">Version 1.4.7</p></div></div><hr /></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+          The command reference is generated from the flatpak-builder repo; see <a class="ulink" href="https://github.com/flatpak/flatpak-builder/tree/master/doc" target="_top">https://github.com/flatpak/flatpak-builder/tree/master/doc</a>
+        </p></div><div class="partintro"><div></div><p>
+        Flatpak-builder is a tool to build flatpak applications.
+      </p><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="chapter"><a href="#id1338">Executables</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#flatpak-builder">flatpak-builder</a></span><span class="refpurpose"> — Help build application dependencies</span></dt></dl></dd><dt><span class="chapter"><a href="#id1339">File Formats</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#flatpak-manifest">flatpak manifest</a></span><span class="refpurpose"> — Information for building an application</span></dt></dl></dd></dl></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="id1338"></a>Executables</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="refentrytitle"><a href="#flatpak-builder">flatpak-builder</a></span><span class="refpurpose"> — Help build application dependencies</span></dt></dl></div><div class="refentry"><a id="flatpak-builder"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>flatpak-builder — Help build application dependencies</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">flatpak-builder</code>  [OPTION...]  DIRECTORY   MANIFEST </p></div><div class="cmdsynopsis"><p><code class="command">flatpak-builder</code>   --run  [OPTION...]  DIRECTORY   MANIFEST   COMMAND </p></div><div class="cmdsynopsis"><p><code class="command">flatpak-builder</code>   --show-deps  [OPTION...]  MANIFEST </p></div><div class="cmdsynopsis"><p><code class="command">flatpak-builder</code>   --show-manifest  [OPTION...]  MANIFEST </p></div></div><div class="refsect1"><a id="id1340"></a><h2>Description</h2><p>
+            <span class="command"><strong>flatpak-builder</strong></span> is a wrapper around the <span class="command"><strong>flatpak build</strong></span> command
+            that automates the building of applications and their dependencies. It is one option you can use
+            to build applications.
+        </p><p>
+            The goal of <span class="command"><strong>flatpak-builder</strong></span> is to push as much knowledge about how to build modules to
+            the individual upstream projects. It does this by assuming that the modules adhere to the Build API specified
+            at https://github.com/cgwalters/build-api. This essentially  means that it follows the <span class="command"><strong>./configure
+            &amp;&amp; make &amp;&amp; make install</strong></span> scheme with an optional autogen script. If the upstream
+            does not adhere to the API you can make it do so by adding patches and extra files.
+        </p><p>
+            An invocation of <span class="command"><strong>flatpak-builder</strong></span> proceeds in these stages, each being specified
+            in detail in json format in   MANIFEST :
+            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: bullet; "><li class="listitem" style="list-style-type: disc"><p>Download all sources</p></li><li class="listitem" style="list-style-type: disc"><p>Initialize the application directory with <span class="command"><strong>flatpak build-init</strong></span></p></li><li class="listitem" style="list-style-type: disc"><p>Build and install each module with <span class="command"><strong>flatpak build</strong></span></p></li><li class="listitem" style="list-style-type: disc"><p>Clean up the final build tree by removing unwanted files and e.g. stripping binaries</p></li><li class="listitem" style="list-style-type: disc"><p>Finish the application directory with <span class="command"><strong>flatpak build-finish</strong></span></p></li></ul></div><p>
+
+            After this you will end up with a build of the application in   DIRECTORY , which you can
+            export to a repository with the <span class="command"><strong>flatpak build-export</strong></span> command. If you use the <code class="option">--repo</code>
+            option, flatpak-builder will do the export for you at the end of the build process. When flatpak-builder does the
+            export, it also stores the manifest that was used for the build in /app/manifest.json. The manifest is 'resolved',
+            i.e. git branch names are replaced by the actual commit IDs that were used in the build.
+        </p><p>
+            At each of the above steps flatpak caches the result, and if you build the same file again, it will start
+            at the first step where something changes. For instance the first version controlled source that had
+            new commits added, or the first module where some changes to the  MANIFEST  file caused
+            the build environment to change. This makes flatpak-builder very efficient for incremental builds.
+        </p><p>
+            When building a flatpak to be published to the internet,
+            <code class="option">--collection-id=COLLECTION-ID</code> should be specified
+            as a globally unique reverse DNS value to identify the collection of
+            flatpaks this will be added to. Setting a globally unique collection
+            ID allows the apps in the repository to be shared over peer to peer
+            systems without needing further configuration.
+        </p></div><div class="refsect1"><a id="id1341"></a><h2>Manifest</h2><p>The manifest file is a json or yaml file whose format is described in detail in its own manual page.</p></div><div class="refsect1"><a id="id1342"></a><h2>Options</h2><p>The following options are understood:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">-h</code>, </span><span class="term"><code class="option">--help</code></span></dt><dd><p>
+                    Show help options and exit.
+                </p></dd><dt><span class="term"><code class="option">-v</code>, </span><span class="term"><code class="option">--verbose</code></span></dt><dd><p>
+                    Print debug information during command processing.
+                </p></dd><dt><span class="term"><code class="option">--version</code></span></dt><dd><p>
+                    Print version information and exit.
+                </p></dd><dt><span class="term"><code class="option">--arch=ARCH</code></span></dt><dd><p>
+                    Specify the machine architecture to build for. If no architecture is specified, the host architecture will be automatically detected. Only host compatible architectures can be specified.
+                </p></dd><dt><span class="term"><code class="option">--default-branch=<em class="replaceable"><code>BRANCH</code></em></code></span></dt><dd><p>
+                    Set the default branch to
+                    <em class="replaceable"><code>BRANCH</code></em>. This is used if
+                    the manifest does not specify a branch. The default
+                    is <code class="literal">master</code>.
+                </p></dd><dt><span class="term"><code class="option">--disable-cache</code></span></dt><dd><p>
+                    Don't look at the existing cache for a previous build, instead always rebuild modules.
+                </p></dd><dt><span class="term"><code class="option">--disable-rofiles-fuse</code></span></dt><dd><p>
+                    Disable the use of rofiles-fuse to optimize the cache use via hardlink checkouts.
+                </p></dd><dt><span class="term"><code class="option">--disable-download</code></span></dt><dd><p>
+                     Don't download any sources. This only works if some version of all sources are downloaded
+                     already. This is useful if you want to guarantee that no network i/o is done. However, the
+                     build will fail if some source is not locally available.
+                </p></dd><dt><span class="term"><code class="option">--disable-updates</code></span></dt><dd><p>
+                  Download missing sources, but don't update local mirrors of version control repos. This is useful
+                  to rebuild things but without updating git, bzr or svn repositories from the remote repository.
+                </p></dd><dt><span class="term"><code class="option">--disable-tests</code></span></dt><dd><p>
+                    Don't run any of the tests.
+                </p></dd><dt><span class="term"><code class="option">--run</code></span></dt><dd><p>
+                  Run a command in a sandbox based on the build dir. This starts flatpak build, with some extra
+                  arguments to give the same environment as the build, and the same permissions the final app
+                  will have (except filesystem permissions). The command to run must be the last argument passed to
+                  flatpak-builder, after the directory and the manifest.
+                  </p><p>
+                  Only the
+                  <code class="option">--arch=</code><em class="replaceable"><code>ARCH</code></em>,
+                  <code class="option">--ccache</code> and
+                  <code class="option">--verbose</code> options can be combined
+                  with this option.
+                  </p></dd><dt><span class="term"><code class="option">--build-shell=MODULENAME</code></span></dt><dd><p>
+                  Extract and prepare the sources for the named module, and then start
+                  a shell in a sandbox identical to the one flatpak-builder would use for building the module.
+                  This is useful to debug a module.
+                </p></dd><dt><span class="term"><code class="option">--show-deps</code></span></dt><dd><p>
+                  List all the (local) files that the manifest depends on.
+                  </p><p>
+                  Only the <code class="option">--verbose</code> option can be combined
+                  with this option.
+                  </p></dd><dt><span class="term"><code class="option">--show-manifest</code></span></dt><dd><p>
+                  Loads the manifest, including any included files and prints it in a canonical json format.
+                  This is useful for tools that want to handle manifest files to avoid having to support both
+                  yaml and json, as well as some non-standard json handling that is supported (for example
+                  comments and multiline strings).
+                  </p><p>
+                  Only the <code class="option">--verbose</code> option can be combined
+                  with this option.
+                  </p></dd><dt><span class="term"><code class="option">--download-only</code></span></dt><dd><p>
+                     Exit successfully after downloading the required sources.
+                </p></dd><dt><span class="term"><code class="option">--bundle-sources</code></span></dt><dd><p>
+                    Create an additional runtime with the source code for
+                    this module. It will be named
+                    <em class="replaceable"><code>app-id</code></em><code class="literal">.Sources</code>,
+                    for example
+                    <code class="literal">org.gnome.Maps.Sources</code>.
+                </p></dd><dt><span class="term"><code class="option">--build-only</code></span></dt><dd><p>
+                     Don't do the cleanup and finish stages, which is useful if you
+                     want to build more things into the app.
+                </p></dd><dt><span class="term"><code class="option">--finish-only</code></span></dt><dd><p>
+                     Only do the cleanup, finish and export stages, picking up
+                     where a --build-only command left off.
+                </p></dd><dt><span class="term"><code class="option">--export-only</code></span></dt><dd><p>
+                    Only do the export stages, picking up the build result from a previous build.
+                    This can be used to split the build and export/signature into two calls
+                    by leaving out --repo in the first call.
+                </p></dd><dt><span class="term"><code class="option">--require-changes</code></span></dt><dd><p>
+                    Do nothing, leaving a non-existent  DIRECTORY  if nothing changes since
+                    last cached build. If this is not specified, the latest version from the cache will be put
+                    into   DIRECTORY .
+                </p></dd><dt><span class="term"><code class="option">--state-dir=PATH</code></span></dt><dd><p>
+                  Use this directory for storing state (downloads, build dirs, build cache, etc) rather than
+                  .flatpak-builder. This can be an absolute or relative path, but must be on the
+                  same filesystem as the specified target  DIRECTORY .
+                </p></dd><dt><span class="term"><code class="option">--keep-build-dirs</code></span></dt><dd><p>
+                    Don't remove the sources and build after having built and installed each module.
+                    This also creates a symlink to the build directory with a stable name ("build-modulename").
+                </p></dd><dt><span class="term"><code class="option">--delete-build-dirs</code></span></dt><dd><p>
+                    Always remove the sources and build after having built each module, even if the build
+                    failed. The default is to keep failed build directories but remove successful ones.
+                    This is useful in e.g. automatic build systems.
+                </p></dd><dt><span class="term"><code class="option">--ccache</code></span></dt><dd><p>
+                     Enable use of ccache in the build (needs ccache in the sdk). The default ccache folder can be
+                     overridden by setting the environment variable CCACHE_DIR.
+                </p></dd><dt><span class="term"><code class="option">--stop-at=MODULENAME</code></span></dt><dd><p>
+                     Stop at the specified module, ignoring it and all the following ones
+                     in both the "download" and "build" phases. This is useful for debugging
+                     and development. For instance, you can build all the dependencies, but
+                     stop at the main application so that you can then do a build from a
+                     pre-existing checkout. Implies --build-only.
+                </p></dd><dt><span class="term"><code class="option">--repo=DIR</code></span></dt><dd><p>
+                    After the build finishes, run <span class="command"><strong>flatpak build-export</strong></span> to
+                    export the result to the repository   DIR . If
+                      DIR  exists, it must be an OSTree repository;
+                    otherwise a new one will be created.
+                </p></dd><dt><span class="term"><code class="option">-s</code>, </span><span class="term"><code class="option">--subject=SUBJECT</code></span></dt><dd><p>
+                    One line subject for the commit message.
+                    Used when exporting the build results.
+                </p></dd><dt><span class="term"><code class="option">-b</code>, </span><span class="term"><code class="option">--body=BODY</code></span></dt><dd><p>
+                    Full description for the commit message.
+                    Used when exporting the build results.
+                </p></dd><dt><span class="term"><code class="option">--collection-id=COLLECTION-ID</code></span></dt><dd><p>
+                    Set as the collection ID of the repository. Setting a globally
+                    unique collection ID allows the apps in the repository to be shared over
+                    peer to peer systems without needing further configuration.
+                    If building in an existing repository, the collection ID
+                    must match the existing configured collection ID for that
+                    repository.
+                </p></dd><dt><span class="term"><code class="option">--token-type=VAL</code></span></dt><dd><p>
+                    Set type of token needed to install this commit.
+                    Setting this to a value greater than 0 implies that
+                    authentication will be needed to install the
+                    flatpak. A <code class="option">token-type</code> property set
+                    in the manifest takes precedence over this option.
+                    Used when exporting the build results.
+                </p></dd><dt><span class="term"><code class="option">--gpg-sign=KEYID</code></span></dt><dd><p>
+                    Sign the commit with this GPG key.
+                    Used when exporting the build results.
+                    This option can be used multiple times.
+                </p></dd><dt><span class="term"><code class="option">--gpg-homedir=PATH</code></span></dt><dd><p>
+                    GPG Homedir to use when looking for keyrings.
+                    Used when exporting the build results.
+                </p></dd><dt><span class="term"><code class="option">--jobs=JOBS</code></span></dt><dd><p>
+                     Limit the number of parallel jobs during the build.
+                     The default is the number of CPUs on the machine.
+                </p></dd><dt><span class="term"><code class="option">--force-clean</code></span></dt><dd><p>
+                    Erase the previous contents of DIRECTORY if it is
+                    not empty. Since 1.4.6, deletion will be refused
+                    if DIRECTORY is the current working directory, the
+                    state directory, or any of their parent directories.
+                </p></dd><dt><span class="term"><code class="option">--sandbox</code></span></dt><dd><p>
+                    Disable the possibility to specify build-args that
+                    are passed to flatpak build. This means the build
+                    process can't break out of its sandbox, and is
+                    useful when building less trusted software.
+                </p></dd><dt><span class="term"><code class="option">--allow-missing-runtimes</code></span></dt><dd><p>
+                    Do not immediately fail if the sdk or platform runtimes
+                    are not installed on this system. Attempting to build any
+                    manifest modules will still fail if the sdk is missing, but
+                    may be useful for apps that install files without a sandbox
+                    build.
+                </p></dd><dt><span class="term"><code class="option">--rebuild-on-sdk-change</code></span></dt><dd><p>
+                  Record the exact version of the sdk in the cache, and rebuild everything
+                  if it changes. This is useful if you're building against an API-unstable
+                  runtime, like a nightly build.
+                </p></dd><dt><span class="term"><code class="option">--skip-if-unchanged</code></span></dt><dd><p>
+                  If the json is unchanged since the last build of this filename, then
+                  do nothing, and return exit code 42.
+                </p></dd><dt><span class="term"><code class="option">--mirror-screenshots-url=URL</code></span></dt><dd><p>
+                  Mirror any media in the appstream and rewrite the media URLs
+                  in the appstream xml to the specified URL. The resulting files
+                  will be stored in the "screenshots" subdirectory in the app directory
+                  for versions earlier than 1.3.4 and "files/share/app-info/media"
+                  subdirectory for newer versions. Since version 1.4.5 this
+                  will also create a screenshot ref in the exported OSTree
+                  repo for each architecture containing the mirrored media.
+                </p></dd><dt><span class="term"><code class="option">--extra-sources=SOURCE-DIR</code></span></dt><dd><p>
+                  When downloading sources (archives, files, git, bzr, svn), look in this
+                  directory for pre-existing copies and use them instead of downloading.
+                  The directory must match the state directory structure:
+                  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Files and archives must be inside the folder: <code class="filename">downloads/&lt;sha256&gt;/</code></p></li><li class="listitem"><p>
+                            Sources of type <code class="literal">git</code>, <code class="literal">bzr</code> and <code class="literal">svn</code>
+                            must be inside the folder: <code class="filename">&lt;type&gt;/&lt;converted-uri&gt;/</code>
+                        </p></li></ul></div><p>
+                  The <code class="literal">converted-uri</code> is constructed from <code class="literal">path</code> or <code class="literal">url</code> (in case of <code class="literal">git</code>)
+                  and from <code class="literal">url</code> (in case of <code class="literal">bzr</code> and <code class="literal">svn</code>). <code class="literal">://</code> is converted to a single
+                  underscore and every other <code class="literal">/</code> is replaced by an underscore. For example, <code class="literal">https://github.com/user/repo.git</code>
+                  becomes <code class="literal">https_github.com_user_repo.git</code>.
+
+                  In case of <code class="literal">svn</code> sources if <code class="literal">revision</code> is present, the folder name is
+                  <code class="filename">svn/&lt;converted-uri&gt;__r&lt;revision&gt;/</code>. In case of <code class="literal">git</code>
+                  sources, it needs to be a mirrored clone.
+                </p></dd><dt><span class="term"><code class="option">--extra-sources-url=URL</code></span></dt><dd><p>
+                  When downloading sources (archives, files, git, bzr, svn), look at this url
+                  for mirrored downloads before downloading from the original url.
+                </p></dd><dt><span class="term"><code class="option">--from-git=GIT</code></span></dt><dd><p>
+                  Look for the manifest in the given git repository. If this option is
+                  given, MANIFEST is interpreted as a relative path inside the repository.
+                </p></dd><dt><span class="term"><code class="option">--from-git-branch=BRANCH</code></span></dt><dd><p>
+                  The branch to use with --from-git.
+                </p></dd><dt><span class="term"><code class="option">--no-shallow-clone</code></span></dt><dd><p>
+                  Don't use shallow clones when mirroring git repos.
+                </p></dd><dt><span class="term"><code class="option">--override-source-date-epoch</code></span></dt><dd><p>
+                  Set this timestamp as SOURCE_DATE_EPOCH to perform the
+                  build, instead of the last modification time of the manifest.
+                  This is available since 1.3.1.
+                </p></dd><dt><span class="term"><code class="option">--compose-url-policy=POLICY</code></span></dt><dd><p>
+                  Set the AppStream compose URL policy. Accepted values
+                  are <code class="literal">partial</code> and <code class="literal">full</code>.
+                  <code class="literal">full</code> requires AppStream version &gt;= 0.16.3.
+                  Defaults to <code class="literal">partial</code> if unspecified.
+                  This policy only takes effect when used in conjunction
+                  with <code class="option">--mirror-screenshots-url=URL</code>;
+                  otherwise the Appstream catalogue will preserve
+                  the source media URLs.
+                </p></dd><dt><span class="term"><code class="option">--add-tag=TAG</code></span></dt><dd><p>
+                  Add this tag to the tags list of the manifest before building.
+                </p></dd><dt><span class="term"><code class="option">--remove-tag=TAG</code></span></dt><dd><p>
+                  Remove this tag to the tags list of the manifest before building. The remove
+                  happen before processing the --add-tag option, so if both are specified, then
+                  --app-tag wins.
+                </p></dd><dt><span class="term"><code class="option">--install-deps-from=REMOTE</code></span></dt><dd><p>
+                    Install/update build required dependencies from the specified remote.
+                </p></dd><dt><span class="term"><code class="option">--install-deps-only</code></span></dt><dd><p>
+                    Stop after downloading dependencies.
+                </p></dd><dt><span class="term"><code class="option">--install</code></span></dt><dd><p>
+                    When the build is finished, install the result locally.
+                </p></dd><dt><span class="term"><code class="option">--user</code></span></dt><dd><p>
+                    Install the dependencies in a per-user installation.
+                </p></dd><dt><span class="term"><code class="option">--system</code></span></dt><dd><p>
+                    Install the dependencies in the default system-wide installation.
+                </p></dd><dt><span class="term"><code class="option">--installation=NAME</code></span></dt><dd><p>
+                    Install the dependencies in a system-wide installation
+                    specified by  NAME  among those defined in
+                    <code class="filename">/etc/flatpak/installations.d/</code>. Using
+                      --installation=default  is equivalent to using
+                      --system .
+                </p></dd></dl></div></div><div class="refsect1"><a id="id1343"></a><h2>Caching</h2><p>
+            flatpak-builder caches sources and partial build results
+            in the state directory (defaulting to the .flatpak-builder
+            subdirectory of the current directory). If you use
+            <code class="option">--keep-build-dirs</code>, build directories for
+            each module are also stored here.
+        </p><p>
+            It is safe to remove the state directory. This will force a full build the next time you build.
+        </p></div><div class="refsect1"><a id="id1344"></a><h2>Examples</h2><p>
+            <span class="command"><strong>$ flatpak-builder my-app-dir manifest.json</strong></span>
+        </p><p>
+            Example manifest file:
+        </p><pre class="programlisting">
+{
+    "id": "org.test.TestApp",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.2",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "test",
+    "cleanup": [ "/include", "*.la" ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        },
+        "arch": {
+            "x86_64": {
+                "cflags": "-O3 -g",
+            }
+        }
+    },
+    "modules": [
+        {
+            "name": "pygobject",
+            "config-opts": [ "--disable-introspection" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.xz",
+                    "sha256": "fb8a1d4f665130a125011659bd347c7339c944232163dbb9a34fd0686577adb8"
+                },
+                {
+                    "type": "patch",
+                    "path": "required-pygobject-fix.patch"
+                },
+                {
+                    "type": "file",
+                    "path": "pygobject-extra-file",
+                    "dest-filename": "extra-file"
+                }
+            ]
+        },
+        {
+            "name": "babl",
+            "build-options" : { "cxxflags": "-O2 -g -std=c++11" },
+            "cleanup": [ "/bin" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/babl.git"
+                }
+            ]
+        },
+        {
+            "name": "testapp",
+            "sources": [
+                {
+                    "type": "bzr",
+                    "url": "lp:testapp"
+                }
+            ]
+        }
+    ]
+}
+</pre></div><div class="refsect1"><a id="id1345"></a><h2>See also</h2><p>
+            <a class="citerefentry" href="#flatpak"><span class="citerefentry"><span class="refentrytitle">flatpak</span>(1)</span></a>,
+            <a class="citerefentry" href="#flatpak-manifest"><span class="citerefentry"><span class="refentrytitle">flatpak-manifest</span>(5)</span></a>,
+            <a class="citerefentry" href="#flatpak-build-init"><span class="citerefentry"><span class="refentrytitle">flatpak-build-init</span>(1)</span></a>,
+            <a class="citerefentry" href="#flatpak-build"><span class="citerefentry"><span class="refentrytitle">flatpak-build</span>(1)</span></a>,
+            <a class="citerefentry" href="#flatpak-build-finish"><span class="citerefentry"><span class="refentrytitle">flatpak-build-finish</span>(1)</span></a>,
+            <a class="citerefentry" href="#flatpak-build-export"><span class="citerefentry"><span class="refentrytitle">flatpak-build-export</span>(1)</span></a>
+        </p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="id1339"></a>File Formats</h2></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="refentrytitle"><a href="#flatpak-manifest">flatpak manifest</a></span><span class="refpurpose"> — Information for building an application</span></dt></dl></div><div class="refentry"><a id="flatpak-manifest"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>flatpak-manifest — Information for building an application</p></div><div class="refsect1"><a id="id1346"></a><h2>Description</h2><p>
+          Flatpak uses manifest, or recipe, files in a json or yaml format to describe how an
+          application and its bundled dependencies can be built from sources. The manifest
+          gets used by flatpak-builder.
+       </p></div><div class="refsect1"><a id="id1347"></a><h2>File format</h2><p>
+          The top level of the manifest file describes global attributes of the application, how
+          it can be built, and the list of modules that need to be built.
+        </p><div class="refsect2"><a id="id1348"></a><h3>Toplevel properties</h3><p>
+          These are the properties that are accepted:
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">id</code> or <code class="option">app-id</code> (string)</span></dt><dd><p>A string defining the application id.</p><p>Note, "app-id" is deprecated and preserved only for
+                    backwards compatibility.</p></dd><dt><span class="term"><code class="option">branch</code> (string)</span></dt><dd><p>The branch to use when exporting
+                    the application. If this is unset the default
+                    comes from the default-branch option.</p><p>This key overrides both the default-branch
+                    key, and the --default-branch commandline
+                    option. Unless you need a very specific branchname
+                    (like for a runtime or an extension) it is
+                    recommended to use the default-branch key instead, as
+                    that can be overridden by the --default-branch option.</p></dd><dt><span class="term"><code class="option">default-branch</code> (string)</span></dt><dd><p>The default branch to use when
+                    exporting the application. Defaults to master. </p><p>This key can be overridden by the
+                    --default-branch commandline
+                    option.</p></dd><dt><span class="term"><code class="option">collection-id</code> (string)</span></dt><dd><p>The collection ID of the repository,
+                    defaults to being unset. Setting a globally
+                    unique collection ID allows the apps in the repository to be shared over
+                    peer-to-peer systems without needing further configuration.
+                    If building in an existing repository, the collection ID
+                    must match the existing configured collection ID for that
+                    repository.</p></dd><dt><span class="term"><code class="option">extension-tag</code> (string)</span></dt><dd><p>If building an extension, the tag for the extension
+                    point to use. Since flatpak 0.11.4 a runtime may define multiple
+                    locations for the same extension point with the intention that
+                    different branches for the extension are mounted at each location. When
+                    building an extension it is necessary to know what extension point to
+                    install the extension to. This option resolves any ambiguity
+                    in which extension point to choose. If not specified, the default choice
+                    is to install into either the only location for the extension point or
+                    into the location for the untagged extension point. If there are multiple
+                    locations for the same extension point defined with different tags
+                    then an error will occur.</p></dd><dt><span class="term"><code class="option">token-type</code> (integer)</span></dt><dd><p>The type of token needed to install
+                    this commit. Setting this to a value greater than 0
+                    implies that authentication will be needed to
+                    install the flatpak.</p></dd><dt><span class="term"><code class="option">runtime</code> (string)</span></dt><dd><p>The name of the runtime that the application uses.</p></dd><dt><span class="term"><code class="option">runtime-version</code> (string)</span></dt><dd><p>The version of the runtime that the application uses, defaults to master.</p></dd><dt><span class="term"><code class="option">sdk</code> (string)</span></dt><dd><p>The name of the development runtime that the application builds with.</p></dd><dt><span class="term"><code class="option">var</code> (string)</span></dt><dd><p>Initialize the (otherwise empty) writable /var in the build with a copy of this runtime.</p></dd><dt><span class="term"><code class="option">metadata</code> (string)</span></dt><dd><p>Use this file as the base metadata file when finishing.</p></dd><dt><span class="term"><code class="option">command</code> (string)</span></dt><dd><p>
+                        The filename or path to the main binary of the application. Note that this
+                        must be a single executable, not a commandline or an absolute path. If you want to pass arguments,
+                        install a shell script wrapper and use that as the command.
+                    </p><p>
+                        Also note that the command is used when the application is run via
+                        <span class="command"><strong>flatpak run</strong></span>, and does not affect what gets executed when
+                        the application is run in other ways, e.g. via the desktop file or D-Bus
+                        activation.
+                    </p></dd><dt><span class="term"><code class="option">build-runtime</code> (boolean)</span></dt><dd><p>Build a new runtime instead of an application.</p></dd><dt><span class="term"><code class="option">build-extension</code> (boolean)</span></dt><dd><p>Build an extension.</p></dd><dt><span class="term"><code class="option">separate-locales</code> (boolean)</span></dt><dd><p>Separate out locale files and translations to an extension runtime. Defaults to true.</p></dd><dt><span class="term"><code class="option">id-platform</code> (string)</span></dt><dd><p>When building a runtime sdk, also create a platform based on it with this id.</p></dd><dt><span class="term"><code class="option">metadata-platform</code> (string)</span></dt><dd><p>The metadata file to use for the platform we create.</p></dd><dt><span class="term"><code class="option">writable-sdk</code> (boolean)</span></dt><dd><p>If true, use a writable copy of the sdk for /usr.
+                    Defaults to true if build-runtime is specified.</p></dd><dt><span class="term"><code class="option">appstream-compose</code> (boolean)</span></dt><dd><p>Run <span class="command"><strong>appstreamcli compose</strong></span> during cleanup phase. Defaults to true.</p></dd><dt><span class="term"><code class="option">sdk-extensions</code> (array of strings)</span></dt><dd><p>Install these extra sdk extensions in /usr.</p></dd><dt><span class="term"><code class="option">platform-extensions</code> (array of strings)</span></dt><dd><p>Install these extra sdk extensions when creating the platform.</p></dd><dt><span class="term"><code class="option">base</code> (string)</span></dt><dd><p>Start with the files from the specified application. This can be
+                    used to create applications that extend another application.</p></dd><dt><span class="term"><code class="option">base-version</code> (string)</span></dt><dd><p>Use this specific version of the application specified in base.
+                    If unspecified, this uses the value specified in branch</p></dd><dt><span class="term"><code class="option">base-extensions</code> (array of strings)</span></dt><dd><p>Install these extra extensions from the base application when initializing
+                    the application directory.</p></dd><dt><span class="term"><code class="option">inherit-extensions</code> (array of strings)</span></dt><dd><p>Inherit these extra extension points from the base application or sdk when
+                    finishing the build.</p></dd><dt><span class="term"><code class="option">inherit-sdk-extensions</code> (array of strings)</span></dt><dd><p>Inherit these extra extension points from the base application or sdk when
+                    finishing the build, but do not inherit them into the platform.</p></dd><dt><span class="term"><code class="option">tags</code> (array of strings)</span></dt><dd><p>Add these tags to the metadata file.</p></dd><dt><span class="term"><code class="option">build-options</code> (object)</span></dt><dd><p>Object specifying the build environment. See below for details.</p></dd><dt><span class="term"><code class="option">modules</code> (array of objects or strings)</span></dt><dd><p>An array of objects specifying the modules to be built in order.
+                    String members in the array are interpreted as the name of a separate json or yaml file that contains a module.
+                    See below for details.</p></dd><dt><span class="term"><code class="option">add-extensions</code> (objects)</span></dt><dd><p>This is a dictionary of extension objects. The key is the name of the extension. See below for details.</p></dd><dt><span class="term"><code class="option">add-build-extensions</code> (objects)</span></dt><dd><p>This is a dictionary of extension objects similar to add-extensions. The main difference is that the extensions are added early and are available for use during the build.</p></dd><dt><span class="term"><code class="option">cleanup</code> (array of strings)</span></dt><dd><p>An array of file patterns that should be removed at the end.
+                    Patterns starting with / are taken to be full pathnames (without the /app prefix), otherwise they just match
+                    the basename.</p></dd><dt><span class="term"><code class="option">cleanup-commands</code> (array of strings)</span></dt><dd><p>An array of commandlines that are run during the cleanup phase.</p></dd><dt><span class="term"><code class="option">cleanup-platform</code> (array of strings)</span></dt><dd><p>Extra files to clean up in the platform.</p></dd><dt><span class="term"><code class="option">cleanup-platform-commands</code> (array of strings)</span></dt><dd><p>An array of commandlines that are run during the cleanup phase of the platform.</p></dd><dt><span class="term"><code class="option">prepare-platform-commands</code> (array of strings)</span></dt><dd><p>An array of commandlines that are run after importing the base platform, but before applying the new files from the sdk. This is a good place to e.g. delete things from the base that may conflict with the files added in the sdk. </p></dd><dt><span class="term"><code class="option">finish-args</code> (array of strings)</span></dt><dd><p>An array of arguments passed to the <span class="command"><strong>flatpak build-finish</strong></span> command.</p></dd><dt><span class="term"><code class="option">rename-desktop-file</code> (string)</span></dt><dd><p>Any desktop file with this name will be renamed to a name based on id during the cleanup phase. The appdata file launchable will be updated if needed.</p></dd><dt><span class="term"><code class="option">rename-appdata-file</code> (string)</span></dt><dd><p>Any appdata (metainfo) file with this name will be renamed to a name based on id during the cleanup phase. The id in the file will be updated as needed and the subsequent provides. (since 1.4.1)</p></dd><dt><span class="term"><code class="option">rename-mime-file</code> (string)</span></dt><dd><p>Any mimetypes file with this name will be renamed to a name based on id during the cleanup phase. (since 1.4.0)</p></dd><dt><span class="term"><code class="option">rename-icon</code> (string)</span></dt><dd><p>Any icon with this name will be renamed to a name based on id during the cleanup phase. Note that this is the icon name, not the full filename, so it should not include a filename extension. </p></dd><dt><span class="term"><code class="option">rename-mime-icons</code> (array of string)</span></dt><dd><p>Any mime icons with any of these names will be renamed to a name prefixed with id during the cleanup phase. Note that these are the icon names, not the full filenames, so they should not include a filename extension. (since 1.4.0)</p></dd><dt><span class="term"><code class="option">appdata-license</code> (string)</span></dt><dd><p>Replace the appdata (metainfo)
+                    project_license field with this string. This is
+                    useful as the upstream license is typically only
+                    about the application itself, whereas the bundled
+                    app can contain other licenses
+                    too. </p></dd><dt><span class="term"><code class="option">copy-icon</code> (boolean)</span></dt><dd><p>If rename-icon is set, keep a copy of the old icon file.</p></dd><dt><span class="term"><code class="option">desktop-file-name-prefix</code> (string)</span></dt><dd><p>This string will be prefixed to the Name key in the main application desktop file.</p></dd><dt><span class="term"><code class="option">desktop-file-name-suffix</code> (string)</span></dt><dd><p>This string will be suffixed to the Name key in the main application desktop file.</p></dd></dl></div></div><div class="refsect2"><a id="id1349"></a><h3>Build Options</h3><p>
+                Build options specify the build environment of a module, and can be specified globally as
+                well as per-module. Options can also be specified on a per-architecture basis using the arch property.
+            </p><p>
+                These are the properties that are accepted:
+            </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">cflags</code> (string)</span></dt><dd><p>This is set in the environment variable CFLAGS during the build. Multiple specifications of this (in e.g. per-arch area) are concatenated, separated by spaces.</p></dd><dt><span class="term"><code class="option">cflags-override</code> (boolean)</span></dt><dd><p>If this is true, clear cflags from previous build options before adding it from these options.</p></dd><dt><span class="term"><code class="option">cppflags</code> (string)</span></dt><dd><p>This is set in the environment variable CPPFLAGS during the build. Multiple specifications of this (in e.g. per-arch area) are concatenated, separated by spaces.</p></dd><dt><span class="term"><code class="option">cppflags-override</code> (boolean)</span></dt><dd><p>If this is true, clear cppflags from previous build options before adding it from these options.</p></dd><dt><span class="term"><code class="option">cxxflags</code> (string)</span></dt><dd><p>This is set in the environment variable CXXFLAGS during the build. Multiple specifications of this (in e.g. per-arch area) are concatenated, separated by spaces.</p></dd><dt><span class="term"><code class="option">cxxflags-override</code> (boolean)</span></dt><dd><p>If this is true, clear cxxflags from previous build options before adding it from these options.</p></dd><dt><span class="term"><code class="option">ldflags</code> (string)</span></dt><dd><p>This is set in the environment variable LDFLAGS during the build. Multiple specifications of this (in e.g. per-arch area) are concatenated, separated by spaces.</p></dd><dt><span class="term"><code class="option">ldflags-override</code> (boolean)</span></dt><dd><p>If this is true, clear ldflags from previous build options before adding it from these options.</p></dd><dt><span class="term"><code class="option">prefix</code> (string)</span></dt><dd><p>The build prefix for the modules (defaults to <code class="filename">/app</code> for
+                    applications and <code class="filename">/usr</code> for runtimes).</p></dd><dt><span class="term"><code class="option">libdir</code> (string)</span></dt><dd><p>The build libdir for the modules (defaults to <code class="filename">/app/lib</code> for
+                    applications and <code class="filename">/usr/lib</code> for runtimes).</p></dd><dt><span class="term"><code class="option">append-path</code> (string)</span></dt><dd><p>This will get appended to PATH in the build environment (with an leading colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">prepend-path</code> (string)</span></dt><dd><p>This will get prepended to PATH in the build environment (with an trailing colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">append-ld-library-path</code> (string)</span></dt><dd><p>This will get appended to LD_LIBRARY_PATH in the build environment (with an leading colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">prepend-ld-library-path</code> (string)</span></dt><dd><p>This will get prepended to LD_LIBRARY_PATH in the build environment (with an trailing colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">append-pkg-config-path</code> (string)</span></dt><dd><p>This will get appended to PKG_CONFIG_PATH in the build environment (with an leading colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">prepend-pkg-config-path</code> (string)</span></dt><dd><p>This will get prepended to PKG_CONFIG_PATH in the build environment (with an trailing colon if
+                    needed).</p></dd><dt><span class="term"><code class="option">env</code> (object)</span></dt><dd><p>This is a dictionary defining environment variables to be set during the build. Elements in this override the properties that set the environment, like cflags and ldflags. Keys with a null value unset the corresponding variable. </p></dd><dt><span class="term"><code class="option">secret-env</code> (array of strings)</span></dt><dd><p>This is an array defining which host environment variables are transfered to the build-commands or post-install environment.</p></dd><dt><span class="term"><code class="option">build-args</code> (array of strings)</span></dt><dd><p>This is an array containing extra options to pass to flatpak build.</p></dd><dt><span class="term"><code class="option">test-args</code> (array of strings)</span></dt><dd><p>Similar to build-args but affects the tests, not the normal build.</p></dd><dt><span class="term"><code class="option">config-opts</code> (array of strings)</span></dt><dd><p>This is an array containing extra options passed to the build system during configuration.</p></dd><dt><span class="term"><code class="option">secret-opts</code> (array of strings)</span></dt><dd><p>This is an array of options that will be passed to
+                    configure. This is meant to be used to pass secrets through host environment variables.
+                    Environment variables in the options will be expanded. '-DSECRET_ID=$CI_SECRET'</p></dd><dt><span class="term"><code class="option">make-args</code> (array of strings)</span></dt><dd><p>An array of extra arguments that will be passed to make</p></dd><dt><span class="term"><code class="option">make-install-args</code> (array of strings)</span></dt><dd><p>An array of extra arguments that will be passed to make install</p></dd><dt><span class="term"><code class="option">strip</code> (boolean)</span></dt><dd><p>If this is true (the default is false) then all ELF files will be stripped after install.</p></dd><dt><span class="term"><code class="option">no-debuginfo</code> (boolean)</span></dt><dd><p>By default (if strip is not true) flatpak-builder extracts all debug info in ELF files to separate files
+                    and puts them into an extension. If you want to disable this, set no-debuginfo to true.</p></dd><dt><span class="term"><code class="option">no-debuginfo-compression</code> (boolean)</span></dt><dd><p>By default when extracting debuginfo the debug sections are compressed. If you want to disable this, set no-debuginfo-compression to true.</p></dd><dt><span class="term"><code class="option">arch</code> (object)</span></dt><dd><p>This is a dictionary defining a separate build options object for each arch, to override the main build options.</p></dd></dl></div></div><div class="refsect2"><a id="id1350"></a><h3>Extension</h3><p>
+              Defines extension points in the app or runtime that can be implemented by extensions,
+              supplying extra files which are available during runtime.
+            </p><p>
+                These are the properties that are accepted:
+            </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">directory</code> (string)</span></dt><dd><p>
+                      The directory where the extension is mounted.
+                      If the extension point is for an application, this path is relative to /app,
+                      otherwise it is relative to /usr.
+                    </p></dd><dt><span class="term"><code class="option">bundle</code> (boolean)</span></dt><dd><p>If this is true, then the data
+                    created in the extension directory is omitted from
+                    the result, and instead packaged in a separate
+                    extension.</p></dd><dt><span class="term"><code class="option">remove-after-build</code> (boolean)</span></dt><dd><p>If this is true, the extension is
+                    removed when finishing. This is only
+                    interesting for extensions in the
+                    add-build-extensions property.</p></dd></dl></div><p>
+              Additionally the standard flatpak extension properties
+              are supported, and put directly into the metadata file:
+              autodelete, no-autodownload, subdirectories,
+              add-ld-path, download-if, enable-if, autoprune-unless, merge-dirs,
+              subdirectory-suffix, locale-subset, version, versions.
+              See the flatpak metadata documentation for more information on these.
+            </p></div><div class="refsect2"><a id="id1351"></a><h3>Module</h3><p>
+                Each module specifies a source that has to be separately built and installed. It contains
+                the build options and a list of sources to download and extract before building.
+            </p><p>
+                Modules can be nested, in order to turn related modules on and off with a single key. Module scopes are always isolated, so nested modules do not inherit attributes from parent modules.
+            </p><p>
+                These are the properties that are accepted:
+            </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">name</code> (string)</span></dt><dd><p>The name of the module, used in e.g. build logs. The name is also used for constructing filenames and commandline arguments, therefore using spaces or '/' in this string is a bad idea.</p></dd><dt><span class="term"><code class="option">disabled</code> (boolean)</span></dt><dd><p>If true, skip this module</p></dd><dt><span class="term"><code class="option">sources</code> (array of objects or strings)</span></dt><dd><p>An array of objects defining
+                    sources that will be downloaded and extracted in
+                    order. String members in the array are interpreted
+                    as the name of a separate json or yaml file that contains
+                    sources.  See below for details.</p></dd><dt><span class="term"><code class="option">secret-env</code> (array of strings)</span></dt><dd><p>An array defining which host environment variables is transfered to build-commands or post-install environment.</p></dd><dt><span class="term"><code class="option">config-opts</code> (array of strings)</span></dt><dd><p>An array of options that will be passed to configure</p></dd><dt><span class="term"><code class="option">secret-opts</code> (array of strings)</span></dt><dd><p>An array of options that will be passed to configure,
+                    meant to be used to pass secrets through host environment variables. Put the option
+                    with an environment variables and will be resolved beforehand. '-DSECRET_ID=$CI_SECRET'</p></dd><dt><span class="term"><code class="option">make-args</code> (array of strings)</span></dt><dd><p>An array of arguments that will be passed to make</p></dd><dt><span class="term"><code class="option">make-install-args</code> (array of strings)</span></dt><dd><p>An array of arguments that will be passed to make install</p></dd><dt><span class="term"><code class="option">rm-configure</code> (boolean)</span></dt><dd><p>If true, remove the configure script before starting build. This requires the configure script to exist in the source directory.</p></dd><dt><span class="term"><code class="option">no-autogen</code> (boolean)</span></dt><dd><p>Ignore the existence of an autogen script</p></dd><dt><span class="term"><code class="option">no-parallel-make</code> (boolean)</span></dt><dd><p>Don't call make with arguments to build in parallel</p></dd><dt><span class="term"><code class="option">install-rule</code> (string)</span></dt><dd><p>Name of the rule passed to make for the install phase, default is install</p></dd><dt><span class="term"><code class="option">no-make-install</code> (boolean)</span></dt><dd><p>Don't run the make install (or equivalent) stage</p></dd><dt><span class="term"><code class="option">no-python-timestamp-fix</code> (boolean)</span></dt><dd><p>Don't fix up the *.py[oc] header timestamps for ostree use.</p></dd><dt><span class="term"><code class="option">cmake</code> (boolean)</span></dt><dd><p>Use cmake instead of configure (deprecated: use buildsystem instead)</p></dd><dt><span class="term"><code class="option">buildsystem</code> (string)</span></dt><dd><p>Build system to use: autotools, cmake, cmake-ninja, meson, simple, qmake</p></dd><dt><span class="term"><code class="option">builddir</code> (boolean)</span></dt><dd><p>Use a build directory that is separate from the source directory</p></dd><dt><span class="term"><code class="option">subdir</code> (string)</span></dt><dd><p>Build inside this subdirectory of the extracted sources</p></dd><dt><span class="term"><code class="option">build-options</code> (object)</span></dt><dd><p>A build options object that can override global options. Note that this is not inherited by nested modules.</p></dd><dt><span class="term"><code class="option">build-commands</code> (array of strings)</span></dt><dd><p>An array of commands to run during build (between make and make install if those are used).
+                    This is primarily useful when using the "simple" buildsystem.
+                    Each command is run in <code class="literal">/bin/sh -c</code>, so it can use standard POSIX shell syntax such as piping output.
+                    If any individual entry in the array fails, then the whole build process will fail,
+                    similar to commands in a <a class="citerefentry" href="#make"><span class="citerefentry"><span class="refentrytitle">make</span>(1)</span></a> recipe.
+                    </p></dd><dt><span class="term"><code class="option">post-install</code> (array of strings)</span></dt><dd><p>An array of shell commands that are run after the install phase. Can for example
+                    clean up the install dir, or install extra files.
+                    </p></dd><dt><span class="term"><code class="option">cleanup</code> (array of strings)</span></dt><dd><p>An array of file patterns that should be removed at the end.
+                    Patterns starting with / are taken to be full pathnames (without the /app prefix), otherwise they just match
+                    the basename. Note that any patterns will only match files installed by this module.
+                    </p></dd><dt><span class="term"><code class="option">ensure-writable</code> (array of strings)</span></dt><dd><p>The way the builder works is that files in the install directory
+                    are hard-links to the cached files, so you're not allowed to modify them in-place.
+                    If you list a file in this then the hardlink will be broken and you can modify it.
+                    This is a workaround, ideally installing files should replace files, not modify
+                    existing ones.</p></dd><dt><span class="term"><code class="option">only-arches</code> (array of strings)</span></dt><dd><p>If non-empty, only build the module on the arches listed.</p></dd><dt><span class="term"><code class="option">skip-arches</code> (array of strings)</span></dt><dd><p>Don't build on any of the arches listed.</p></dd><dt><span class="term"><code class="option">cleanup-platform</code> (array of strings)</span></dt><dd><p>Extra files to clean up in the platform.</p></dd><dt><span class="term"><code class="option">run-tests</code> (boolean)</span></dt><dd><p>If true this will run the tests after installing.</p></dd><dt><span class="term"><code class="option">test-rule</code> (string)</span></dt><dd><p>The target to build when running the tests. Defaults to "check" for make and "test" for ninja. Set to empty to disable.</p></dd><dt><span class="term"><code class="option">test-commands</code> (array of strings)</span></dt><dd><p>Array of commands to run during the tests.</p></dd><dt><span class="term"><code class="option">license-files</code> (array of strings)</span></dt><dd><p>Array of paths to LICENSE files of the module.</p></dd><dt><span class="term"><code class="option">modules</code> (array of objects or strings)</span></dt><dd><p>An array of objects specifying nested modules to be built before this one.
+                    String members in the array are interpreted as names of a separate json or yaml file that contains a module.</p></dd></dl></div></div><div class="refsect2"><a id="id1352"></a><h3>Sources</h3><p>
+                These contain a pointer to the source that will be extracted into the source directory before
+                the build starts. They can be of several types, distinguished by the type property.
+            </p><p>
+                Additionally, the sources list can contain a plain string, which is interpreted as the name
+                of a separate json or yaml file that is read and inserted at this point. The file can contain
+                a single source, or an array of sources.
+            </p><div class="refsect3"><a id="id1353"></a><h4>All sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">only-arches</code> (array of strings)</span></dt><dd><p>If non-empty, only build the module on the arches listed.</p></dd><dt><span class="term"><code class="option">skip-arches</code> (array of strings)</span></dt><dd><p>Don't build on any of the arches listed.</p></dd><dt><span class="term"><code class="option">dest</code> (string)</span></dt><dd><p>Directory inside the source dir where this source will be extracted.</p></dd></dl></div></div><div class="refsect3"><a id="id1354"></a><h4>Archive sources (tar, zip)</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"archive"</p></dd><dt><span class="term"><code class="option">path</code> (string)</span></dt><dd><p>The path of the archive</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>The URL of a remote archive that will be downloaded. This overrides path if both are specified.</p></dd><dt><span class="term"><code class="option">mirror-urls</code> (array of strings)</span></dt><dd><p>A list of alternative urls that are used if the main url fails.</p></dd><dt><span class="term"><code class="option">referer</code> (string)</span></dt><dd><p>Sets the HTTP "Referer" header when downloading the archive.</p></dd><dt><span class="term"><code class="option">disable-http-decompression</code> (boolean)</span></dt><dd><p>Disables decompression of downloads over HTTP for misconfigured servers.</p></dd><dt><span class="term"><code class="option">git-init</code> (boolean)</span></dt><dd><p>Whether to initialise the repository as a git repository.</p></dd><dt><span class="term"><code class="option">archive-type</code> (string)</span></dt><dd><p>
+                            The type of archive if it cannot be guessed from the path. Possible values are "rpm", "tar",
+                            "tar-gzip", "tar-compress", "tar-bzip2", "tar-lzip", "tar-lzma", "tar-lzop", "tar-xz", "tar-zst", "zip" and "7z".
+                        </p></dd><dt><span class="term"><code class="option">md5</code> (string)</span></dt><dd><p>The md5 checksum of the file, verified after download</p><p>Note that md5 is no longer considered a safe checksum, we recommend you use at least sha256.</p></dd><dt><span class="term"><code class="option">sha1</code> (string)</span></dt><dd><p>The sha1 checksum of the file, verified after download</p><p>Note that sha1 is no longer considered a safe checksum, we recommend you use at least sha256.</p></dd><dt><span class="term"><code class="option">sha256</code> (string)</span></dt><dd><p>The sha256 checksum of the file, verified after download</p></dd><dt><span class="term"><code class="option">sha512</code> (string)</span></dt><dd><p>The sha512 checksum of the file, verified after download</p></dd><dt><span class="term"><code class="option">strip-components</code> (integer)</span></dt><dd><p>The number of initial pathname components to strip during extraction. Defaults to 1.</p></dd><dt><span class="term"><code class="option">dest-filename</code> (string)</span></dt><dd><p>Filename to for the downloaded file, defaults to the basename of url.</p></dd></dl></div></div><div class="refsect3"><a id="id1355"></a><h4>Git sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"git"</p></dd><dt><span class="term"><code class="option">path</code> (string)</span></dt><dd><p>The path to a local checkout of the git repository. Due to how git-clone works, this will be much faster than specifying a URL of file:///...</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>URL of the git repository. This overrides path if both are specified. When using git via SSH, the correct syntax is ssh://user@domain/path/to/repo.git.</p></dd><dt><span class="term"><code class="option">branch</code> (string)</span></dt><dd><p>The branch to use from the git repository. As of 1.2.3 this will try to auto-detect the upstream default branch. Previously this defaulted to <code class="literal">master</code>.</p></dd><dt><span class="term"><code class="option">tag</code> (string)</span></dt><dd><p>The tag to use from the git repository</p></dd><dt><span class="term"><code class="option">commit</code> (string)</span></dt><dd><p>The commit to use from the git repository. If branch is also specified, then it is verified that the branch/tag is at this specific commit. This is
+                        a readable way to document that you're using a particular tag, but verify that it does not change.</p></dd><dt><span class="term"><code class="option">disable-fsckobjects</code> (boolean)</span></dt><dd><p>Don't use transfer.fsckObjects=1 to mirror git repository. This may be needed for some (broken) repositories.</p></dd><dt><span class="term"><code class="option">disable-shallow-clone</code> (boolean)</span></dt><dd><p>Don't optimize by making a shallow clone when downloading the git repo.</p></dd><dt><span class="term"><code class="option">disable-submodules</code> (boolean)</span></dt><dd><p>Don't checkout the git submodules when cloning the repository.</p></dd><dt><span class="term"><code class="option">disable-lfs</code> (boolean)</span></dt><dd><p>Don't explicitly fetch or checkout LFS git objects. This will be ignored by Git if LFS filters are active in system or global gitconfig.</p></dd></dl></div></div><div class="refsect3"><a id="id1356"></a><h4>Bzr sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"bzr"</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>URL of the bzr repository</p></dd><dt><span class="term"><code class="option">revision</code> (string)</span></dt><dd><p>A specific revision to use in the branch</p></dd></dl></div></div><div class="refsect3"><a id="id1357"></a><h4>Svn sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"svn"</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>URL of the svn repository, including branch/tag part</p></dd><dt><span class="term"><code class="option">revision</code> (string)</span></dt><dd><p>A specific revision number to use</p></dd></dl></div></div><div class="refsect3"><a id="id1358"></a><h4>Directory sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"dir"</p></dd><dt><span class="term"><code class="option">path</code> (string)</span></dt><dd><p>The path of a local directory whose content will be copied into the source dir. Note that directory sources don't currently support caching, so they will be rebuilt each time.</p></dd><dt><span class="term"><code class="option">skip</code> (array of strings)</span></dt><dd><p>Source files to ignore in the directory.</p></dd></dl></div></div><div class="refsect3"><a id="id1359"></a><h4>File sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"file"</p></dd><dt><span class="term"><code class="option">path</code> (string)</span></dt><dd><p>The path of a local file that will be copied into the source dir</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>The URL of a remote file that will be downloaded and copied into the source dir. This overrides path if both are specified.</p></dd><dt><span class="term"><code class="option">mirror-urls</code> (array of strings)</span></dt><dd><p>A list of alternative urls that are used if the main url fails.</p></dd><dt><span class="term"><code class="option">referer</code> (string)</span></dt><dd><p>Sets the HTTP "Referer" header when downloading the file.</p></dd><dt><span class="term"><code class="option">disable-http-decompression</code> (boolean)</span></dt><dd><p>Disables decompression of downloads over HTTP for misconfigured servers.</p></dd><dt><span class="term"><code class="option">md5</code> (string)</span></dt><dd><p>The md5 checksum of the file, verified after download. This is optional for local files.</p><p>Note that md5 is no longer considered a safe checksum, we recommend you use at least sha256.</p></dd><dt><span class="term"><code class="option">sha1</code> (string)</span></dt><dd><p>The sha1 checksum of the file, verified after download. This is optional for local files.</p><p>Note that sha1 is no longer considered a safe checksum, we recommend you use at least sha256.</p></dd><dt><span class="term"><code class="option">sha256</code> (string)</span></dt><dd><p>The sha256 checksum of the file, verified after download. This is optional for local files.</p></dd><dt><span class="term"><code class="option">sha512</code> (string)</span></dt><dd><p>The sha512 checksum of the file, verified after download. This is optional for local files.</p></dd><dt><span class="term"><code class="option">dest-filename</code> (string)</span></dt><dd><p>Filename to use inside the source dir, default to the basename of path.</p></dd></dl></div></div><div class="refsect3"><a id="id1360"></a><h4>Script sources</h4><p>
+                    This is a way to create a shell (/bin/sh) script from an inline set of commands.
+                </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"script"</p></dd><dt><span class="term"><code class="option">commands</code> (array of strings)</span></dt><dd><p>An array of shell commands that will be put in a shellscript file</p></dd><dt><span class="term"><code class="option">dest-filename</code> (string)</span></dt><dd><p>Filename to use inside the source dir, default to autogen.sh.</p></dd></dl></div></div><div class="refsect3"><a id="id1361"></a><h4>Inline data sources</h4><p>
+                    This is a way to create a file with given contents.
+                </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"inline"</p></dd><dt><span class="term"><code class="option">dest-filename</code> (string)</span></dt><dd><p>Filename to use inside the source dir.</p></dd><dt><span class="term"><code class="option">contents</code> (string)</span></dt><dd><p>Text data that will be put in the file.</p></dd><dt><span class="term"><code class="option">base64</code> (boolean)</span></dt><dd><p>Whether content is base64-encoded.</p></dd></dl></div></div><div class="refsect3"><a id="id1362"></a><h4>Shell sources</h4><p>
+                    This is a way to create/modify the sources by running shell commands.
+                </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"shell"</p></dd><dt><span class="term"><code class="option">commands</code> (array of strings)</span></dt><dd><p>An array of shell commands that will be run during source extraction</p></dd></dl></div></div><div class="refsect3"><a id="id1363"></a><h4>Patch sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"patch"</p></dd><dt><span class="term"><code class="option">path</code> (string)</span></dt><dd><p>The path of a patch file that will be applied in the source dir</p></dd><dt><span class="term"><code class="option">paths</code> (array of strings)</span></dt><dd><p>An list of paths to a patch files that will be applied in the source dir, in order</p></dd><dt><span class="term"><code class="option">strip-components</code> (integer)</span></dt><dd><p>The value of the -p argument to patch, defaults to 1.</p></dd><dt><span class="term"><code class="option">use-git</code> (boolean)</span></dt><dd><p>Whether to use "git apply" rather than "patch" to apply the patch, required when the patch file contains binary diffs.</p></dd><dt><span class="term"><code class="option">use-git-am</code> (boolean)</span></dt><dd><p>Whether to use "git am" rather than "patch" to apply the patch, required when the patch file contains binary diffs. You cannot use this at the same time as <code class="option">use-git</code>.</p></dd><dt><span class="term"><code class="option">options</code> (array of strings)</span></dt><dd><p>Extra options to pass to the patch command.</p></dd></dl></div></div><div class="refsect3"><a id="id1364"></a><h4>Extra data sources</h4><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">type</code></span></dt><dd><p>"extra-data"</p></dd><dt><span class="term"><code class="option">filename</code> (string)</span></dt><dd><p>The name to use for the downloaded extra data</p></dd><dt><span class="term"><code class="option">url</code> (string)</span></dt><dd><p>The url to the extra data.</p></dd><dt><span class="term"><code class="option">sha256</code> (string)</span></dt><dd><p>The sha256 of the extra data.</p></dd><dt><span class="term"><code class="option">size</code> (number)</span></dt><dd><p>The size of the extra data in bytes.</p></dd><dt><span class="term"><code class="option">installed-size</code> (string)</span></dt><dd><p>The extra installed size this adds to the app (optional).</p></dd></dl></div></div></div></div><div class="refsect1"><a id="id1365"></a><h2>Build environment</h2><p>
+        When building the application each command is run in a separate sandbox with access
+        to only the things required for it. This section describes the details of the sandbox.
+        Any options here can be overridden globally or per-module with the <code class="option">build-args</code>
+        option (although such manifest will not work if you start flatpak-builder with <code class="option">--sandbox</code>).
+      </p><div class="refsect2"><a id="id1366"></a><h3>Filesystem</h3><p>
+          Each module is built in its own build directory, stored in a sub directory called
+          <code class="filename">build/$modulename-$count</code> in the state dir (which is typically <code class="filename">.flatpak-builder/</code>).
+          Additionally there is a symlink <code class="filename">build/$modulename</code> to the latest version.
+          In order to generate reproducible builds this directory is also mounted as <code class="filename">/run/build/$modulename</code>
+          in the sandbox (or <code class="filename">/run/build-runtime/$modulename</code> when building runtimes) and also as
+          <code class="filename">/run/active-build</code> since 1.4.7.
+          This is used as current working directory for all build ops.
+        </p><p>
+          The destination directory for installation is accessible for writing at the place it will seen at runtime.
+          In the case of a regular application this will be /app. If building a runtime it will instead be /usr, and
+          when building an extension it will be at the extensionpoint directory somewhere below /app (for app extension)
+          or /usr (for runtime extensions).
+        </p><p>
+          Additionally the there will be (as needed, depending on what is building) read-only mounts of the sdk at /usr,
+          sdk extensions below that, and the application at /app. No other filesystem access is available.
+        </p></div><div class="refsect2"><a id="id1367"></a><h3>Environment</h3><p>
+          The environment can be modified in several ways in the manifest, but the default values are:
+        </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">FLATPAK_ID</span></dt><dd><p>The id of the application currently building.</p></dd><dt><span class="term">FLATPAK_ARCH</span></dt><dd><p>The architecture currently building.</p></dd><dt><span class="term">FLATPAK_DEST</span></dt><dd><p>The path to where the current build should install into. This is <code class="filename">/app</code> for application builds.</p></dd><dt><span class="term">FLATPAK_BUILDER_N_JOBS</span></dt><dd><p>The number of jobs that flatpak-builder would normally use for make -j. Defaults to ncpus unless the module disabled parallel make.</p></dd><dt><span class="term">FLATPAK_BUILDER_BUILDDIR</span></dt><dd><p>The path to the build directory of the module currently building. This is normally <code class="filename">/run/build/$MODULE</code>.</p></dd><dt><span class="term">PATH</span></dt><dd><p><code class="filename">/app/bin:/usr/bin</code></p></dd><dt><span class="term">LD_LIBRARY_PATH</span></dt><dd><p><code class="filename">/app/lib</code></p></dd><dt><span class="term">PKG_CONFIG_PATH</span></dt><dd><p><code class="filename">/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig</code></p></dd><dt><span class="term">ACLOCAL_PATH</span></dt><dd><p><code class="filename">/app/share/aclocal</code></p></dd><dt><span class="term">C_INCLUDE_PATH</span></dt><dd><p><code class="filename">/app/include</code></p></dd><dt><span class="term">CPLUS_INCLUDE_PATH</span></dt><dd><p><code class="filename">/app/include</code></p></dd><dt><span class="term">LDFLAGS</span></dt><dd><p>-L/app/lib </p></dd><dt><span class="term">LC_ALL</span></dt><dd><p>en_US.utf8</p></dd></dl></div></div><div class="refsect2"><a id="id1368"></a><h3>Permissions</h3><p>
+          Builds have the --allow=devel and --allow=multiarch permissions that regular flatpak runs don't have by default. This
+          limits the syscall filtering that is normally done so development tools like debuggers work. Otherwise the build sandbox
+          is very limited, for example there is no network access.
+        </p></div></div><div class="refsect1"><a id="id1369"></a><h2>Examples</h2><p>
+            <span class="command"><strong>$ flatpak-builder my-app-dir manifest.json</strong></span>
+        </p><p>
+            Example manifest file:
+        </p><pre class="programlisting">
+{
+    "id": "org.test.TestApp",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.2",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "test",
+    "clean": [ "/include", "*.la" ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        },
+        "arch": {
+            "x86_64": {
+                "cflags": "-O3 -g",
+            }
+        }
+    },
+    "modules": [
+        {
+            "name": "pygobject",
+            "config-opts": [ "--disable-introspection" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.xz",
+                    "sha256": "fb8a1d4f665130a125011659bd347c7339c944232163dbb9a34fd0686577adb8"
+                },
+                {
+                    "type": "patch",
+                    "path": "required-pygobject-fix.patch"
+                },
+                {
+                    "type": "file",
+                    "path": "pygobject-extra-file",
+                    "dest-filename": "extra-file"
+                }
+            ]
+        },
+        {
+            "name": "babl",
+            "build-options" : { "cxxflags": "-O2 -g -std=c++11" },
+            "cleanup": [ "/bin" ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/babl.git"
+                }
+            ]
+        },
+        {
+            "name": "testapp",
+            "sources": [
+                {
+                    "type": "bzr",
+                    "url": "lp:testapp"
+                }
+            ]
+        }
+    ]
+}
+</pre></div><div class="refsect1"><a id="id1370"></a><h2>See also</h2><p>
+            <a class="citerefentry" href="#flatpak-builder"><span class="citerefentry"><span class="refentrytitle">flatpak-builder</span>(1)</span></a>
+        </p></div></div></div></div></body></html></section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="available-runtimes.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Available Runtimes</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="flatpak-command-reference.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Flatpak 命令參考</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=0d9984b1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/translations.js?v=cbf116e0"></script>
+    </body>
+</html>

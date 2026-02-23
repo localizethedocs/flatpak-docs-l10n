@@ -1,0 +1,916 @@
+<!doctype html>
+<html class="no-js" lang="zh-TW" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="沙箱權限" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.flatpak.org/en/sandbox-permissions.html" />
+<meta property="og:site_name" content="Flatpak" />
+<meta property="og:description" content="One of Flatpak&#x27;s main goals is to increase the security of desktop systems by isolating applications from one another. This is achieved using sandboxing and means that, by default, application..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.flatpak.org/en/latest/_images/social_previews/summary_sandbox-permissions_2b051280.png" />
+<meta property="og:image:alt" content="One of Flatpak&#x27;s main goals is to increase the security of desktop systems by isolating applications from one another. This is achieved using sandboxing and means that, by default, application..." />
+<meta name="description" content="One of Flatpak&#x27;s main goals is to increase the security of desktop systems by isolating applications from one another. This is achieved using sandboxing and means that, by default, application..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="genindex.html"><link rel="search" title="搜尋" href="search.html"><link rel="next" title="Guides" href="guides.html"><link rel="prev" title="Module Sources" href="module-sources.html">
+        <link rel="canonical" href="https://projects.localizethedocs.org/flatpak-docs-l10n/sandbox-permissions.html">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
+        <title>沙箱權限 - Flatpak 文件</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/xdg.css?v=d059aca2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+
+<script type="text/javascript" src="ltd-provenance.js"></script>
+<script type="text/javascript" src="ltd-current.js"></script>
+<script type="text/javascript" src="../../ltd-config.js"></script>
+<script type="text/javascript" src="../../ltd-flyout.js"></script>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Flatpak  文件</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Flatpak  文件</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="搜尋" name="q" aria-label="搜尋">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Flatpak 簡介</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">開始使用</a><input aria-label="Toggle navigation of 開始使用" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-concepts.html">基本概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-flatpak.html">使用 Flatpak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-build.html">建置您的第一個 Flatpak</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="building.html">建置</a><input aria-label="Toggle navigation of 建置" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building-introduction.html">Building Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">Requirements &amp; Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder.html">Flatpak 建置器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifests.html">清單</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module-sources.html">Module Sources</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">沙箱權限</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="guides.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electron.html">Electron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dotnet.html">Dotnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt.html">Qt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiarch.html">Multiarch support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extension.html">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">除錯</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="publishing.html">發布</a><input aria-label="Toggle navigation of 發布" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-a-repository.html">Hosting a repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-file-bundles.html">Single-file bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-drives.html">USB Drives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="desktop-integration.html">桌面整合</a><input aria-label="Toggle navigation of 桌面整合" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="portals.html">Portal support in GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portals.html#portal-support-in-qt-and-kde">Portal support in Qt and KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flatpak-devel.html">Flatpak 作為開發者平臺</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">參考文件</a><input aria-label="Toggle navigation of 參考文件" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-command-reference.html">Flatpak 命令參考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder-command-reference.html">Flatpak Builder Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available-runtimes.html">Available Runtimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-the-hood.html">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libflatpak-api-reference.html">libflatpak API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portal-api-reference.html">Portal API Reference</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/blob/master/docs/sandbox-permissions.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/edit/master/docs/sandbox-permissions.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="sandbox-permissions">
+<h1>沙箱權限<a class="headerlink" href="#sandbox-permissions" title="連結到這個標頭">🔗</a></h1>
+<p>One of Flatpak's main goals is to increase the security of desktop systems by
+isolating applications from one another. This is achieved using sandboxing
+and means that, by default, applications that are run with Flatpak have
+extremely limited access to the host environment. This includes:</p>
+<ul class="simple">
+<li><p>No access to any host files except the runtime, the app,
+<code class="docutils literal notranslate"><span class="pre">~/.var/app/$FLATPAK_ID</span></code>, and <code class="docutils literal notranslate"><span class="pre">$XDG_RUNTIME_DIR/app/$FLATPAK_ID</span></code>.
+Only the latter two being writable.</p></li>
+<li><p>No access to the network.</p></li>
+<li><p>No access to any device nodes (apart from <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code>, etc).</p></li>
+<li><p>No access to processes outside the sandbox.</p></li>
+<li><p>Limited syscalls.  For instance, apps can't use nonstandard network socket
+types or ptrace other processes.</p></li>
+<li><p>Limited access to the session D-Bus instance - an app can only own its
+own name on the bus.</p></li>
+<li><p>No access to host services like X11, system D-Bus, or PulseAudio.</p></li>
+</ul>
+<p>Most applications will need access to some of these resources in order to
+be useful. This is primarily done during the finishing build stage, which
+can be configured through the <code class="docutils literal notranslate"><span class="pre">finish-args</span></code> section of the manifest file
+(see <a class="reference internal" href="manifests.html"><span class="doc">清單</span></a>).</p>
+<section id="portals">
+<h2>Portals<a class="headerlink" href="#portals" title="連結到這個標頭">🔗</a></h2>
+<p>Portals have already been mentioned in <a class="reference internal" href="basic-concepts.html"><span class="doc">基本概念</span></a>. They are a
+framework for providing access to resources outside of the sandbox, including:</p>
+<ul class="simple">
+<li><p>Opening files with a native file chooser dialog</p></li>
+<li><p>開啟 URI</p></li>
+<li><p>Printing</p></li>
+<li><p>顯示通知</p></li>
+<li><p>Taking screenshots</p></li>
+<li><p>Inhibiting the user session from ending, suspending, idling or getting
+switched away</p></li>
+<li><p>Getting network status information</p></li>
+</ul>
+<p>In many cases, portals use a system component to implicitly ask the user
+for permission before granting access to a particular resource. For example,
+in the case of opening a file, the user's selection of a file using the file
+chooser dialog is interpreted as implicitly granting the application access
+to whatever file is chosen.</p>
+<p>This approach enables applications to avoid having to configure blanket
+access to large amounts of data or services and gives users control over
+what their applications have access to.</p>
+<p>Interface toolkits like GTK3 and Qt5 implement transparent support for
+portals, meaning that applications don't need to do any additional
+work to use them (it is worth checking which portals each toolkit
+supports). Applications that aren't using a toolkit with support
+for portals can refer to the <a class="reference external" href="https://flatpak.github.io/xdg-desktop-portal/">xdg-desktop-portal API documentation</a> for
+information on how to use them.</p>
+</section>
+<section id="permissions-guidelines">
+<h2>Permissions guidelines<a class="headerlink" href="#permissions-guidelines" title="連結到這個標頭">🔗</a></h2>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Note, that these permissions are completely static and variable
+expansion or substitution (for example in <code class="docutils literal notranslate"><span class="pre">--filesystem</span></code> or <code class="docutils literal notranslate"><span class="pre">--env</span></code>)
+is not possible.</p>
+</div>
+<p>While application developers have control over the sandbox permissions they
+wish to configure, good practice is encouraged and can be enforced. For
+example, the Flathub hosting service places requirements on which permissions
+can be used, and software on the host may warn users if certain permissions
+are used.</p>
+<p>The following guidelines describe which permissions can be freely used,
+which can be used on an as-needed basis, and which should be avoided.</p>
+<section id="standard-permissions">
+<h3>標準權限<a class="headerlink" href="#standard-permissions" title="連結到這個標頭">🔗</a></h3>
+<p>The following permissions are commonly used by applications.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--allow=bluetooth</span></code> - Allow access to Bluetooth (<code class="docutils literal notranslate"><span class="pre">AF_BLUETOOTH</span></code>) sockets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--device=dri</span></code> - OpenGL rendering</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--share=ipc</span></code> - Share IPC namespace with the host <a class="footnote-reference brackets" href="#f1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--share=network</span></code> - Access the network <a class="footnote-reference brackets" href="#f2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=pulseaudio</span></code> - Access to PulseAudio. It includes sound input
+(mic), sound output/playback, MIDI and ALSA sound devices in
+<code class="docutils literal notranslate"><span class="pre">/dev/snd</span></code>. This permission can be sensitive in certain situations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=cups</span></code> - Talk to the CUPS printing system. <code class="docutils literal notranslate"><span class="pre">$CUPS_SERVER</span></code>
+or server defined in CUPS's <code class="docutils literal notranslate"><span class="pre">client.conf</span></code>. Falls back to
+<code class="docutils literal notranslate"><span class="pre">/var/run/cups/cups.sock</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=pcsc</span></code> - Smart card access <code class="docutils literal notranslate"><span class="pre">$PCSCLITE_CSOCK_NAME</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=gpg-agent</span></code> - Talk to the GPG agent running on host. This
+may allow acquiring additional permissions that can be used to perform
+priviledged GPG operations. The gives access to the socket in
+<code class="docutils literal notranslate"><span class="pre">gpgconf</span> <span class="pre">--list-dir</span> <span class="pre">agent-socket</span></code>. This is not commonly needed
+unless the application interacts with GPG such as e-mail clients or
+GPG frontends.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=ssh-auth</span></code>- Allow access to <code class="docutils literal notranslate"><span class="pre">$SSH_AUTH_SOCK</span></code>. This is not
+commonly needed unless the application interacts with SSH such as
+Git clients or SSH frontends.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Applications that do not support native Wayland should use
+only <code class="docutils literal notranslate"><span class="pre">--socket=x11</span></code> and applications that do, should use
+<code class="docutils literal notranslate"><span class="pre">--socket=fallback-x11</span></code> and <code class="docutils literal notranslate"><span class="pre">--socket=wayland</span></code>.
+The two configurations here will make the application work on both
+X11 and Wayland sessions of the desktop environment.</p>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=wayland</span></code> - Show windows with Wayland</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=x11</span></code> - Show windows using X11</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--socket=fallback-x11</span></code> - Show windows using X11, if Wayland is not
+available, overrides <code class="docutils literal notranslate"><span class="pre">x11</span></code> socket permission. Note that you must
+still use <code class="docutils literal notranslate"><span class="pre">--socket=wayland</span></code> for wayland permission</p></li>
+</ul>
+</section>
+<section id="d-bus-access">
+<h3>D-Bus access<a class="headerlink" href="#d-bus-access" title="連結到這個標頭">🔗</a></h3>
+<p>D-Bus access is filtered by default. The default policy for the session bus
+only allows the application to own its own namespace named by
+<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code>, subnames of it and <code class="docutils literal notranslate"><span class="pre">org.mpris.MediaPlayer2.$FLATPAK_ID</span></code>
+for <a class="reference external" href="https://www.freedesktop.org/wiki/Specifications/mpris-spec/">MPRIS</a>.
+Furthermore, it is only allowed to talk to names matching those patterns,
+the bus itself <code class="docutils literal notranslate"><span class="pre">org.freedesktop.DBus</span></code> and portal APIs of the form
+<code class="docutils literal notranslate"><span class="pre">org.freedesktop.portal.*</span></code>.</p>
+<p>Access to the entire bus with <code class="docutils literal notranslate"><span class="pre">--socket=system-bus</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--socket=session-bus</span></code> stops the filtering and using them is a security
+risk. So they must be avoided, unless the application is a development
+tool.</p>
+<p><code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">run</span> <span class="pre">--log-session-bus</span> <span class="pre">$FLATPAK_ID</span></code> can be used to find the specific
+D-Bus permissions needed. See <a class="reference internal" href="debugging.html#audit-session-or-system-bus-traffic"><span class="std std-ref">Audit session or system bus traffic</span></a>
+for more information.</p>
+<p><strong>Ownership</strong></p>
+<p>Any ownership beyond what is granted by default ie. own namespace and
+<code class="docutils literal notranslate"><span class="pre">org.mpris.MediaPlayer2.$FLATPAK_ID</span></code> is typically unnecessary
+although there can be exceptions.</p>
+<p><strong>Talk</strong></p>
+<p>It is recommended to use the minimum required talk-name permissions.</p>
+</section>
+<section id="filesystem-access">
+<h3>檔案系統存取<a class="headerlink" href="#filesystem-access" title="連結到這個標頭">🔗</a></h3>
+<p>As a general rule, static and permanent filesystem access should be
+limited as much as possible. This includes:</p>
+<ul class="simple">
+<li><p>Using portals as an alternative to blanket filesystem access, wherever
+possible.</p></li>
+<li><p>Using read-only access wherever possible, using the <code class="docutils literal notranslate"><span class="pre">:ro</span></code> option.</p></li>
+<li><p>Using <a class="reference internal" href="conventions.html#xdg-base-directories"><span class="std std-ref">XDG base directories</span></a> to store application's
+cache, config and state. Then no additional filesystem access would be
+required.</p></li>
+<li><p>Avoiding full home access and instead using XDG directories such
+as <code class="docutils literal notranslate"><span class="pre">xdg-music</span></code> or <code class="docutils literal notranslate"><span class="pre">xdg-download</span></code> etc.</p></li>
+</ul>
+<p>The following permission options are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:ro</span></code> - read-only access</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:create</span></code> - read/write access, and create the directory if it doesn't
+exist</p></li>
+</ul>
+<p>Additionally the following permissions are available:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
+<td><p>Access to <code class="docutils literal notranslate"><span class="pre">/home,</span> <span class="pre">/media,</span> <span class="pre">/opt,</span> <span class="pre">/run/media,</span> <span class="pre">/srv</span></code> and everything provided by <code class="docutils literal notranslate"><span class="pre">host-os,</span> <span class="pre">host-etc</span></code> mounted in <code class="docutils literal notranslate"><span class="pre">/run/host</span></code></p></td>
+<td><p>Includes any subpaths</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">host-etc</span></code></p></td>
+<td><p>Host's <code class="docutils literal notranslate"><span class="pre">/etc</span></code></p></td>
+<td><p>Host's <code class="docutils literal notranslate"><span class="pre">/etc</span></code> is mounted at <code class="docutils literal notranslate"><span class="pre">/run/host/etc</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host-os</span></code></p></td>
+<td><p>Host's <code class="docutils literal notranslate"><span class="pre">/usr,</span> <span class="pre">/bin,</span> <span class="pre">/sbin,</span> <span class="pre">/lib{32,</span> <span class="pre">64},</span> <span class="pre">/etc/ld.so.cache,</span> <span class="pre">/etc/alternatives</span></code></p></td>
+<td><p>Mounted at <code class="docutils literal notranslate"><span class="pre">/run/host</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">home</span></code></p></td>
+<td><p>Access the home directory</p></td>
+<td><p>Except <code class="docutils literal notranslate"><span class="pre">~/.var/app</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/some/dir</span></code></p></td>
+<td><p>Access an arbitrary path except any reserved path</p></td>
+<td><p>Includes any subpaths</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">~/some/dir</span></code></p></td>
+<td><p>Arbitrary path relative to the home directory</p></td>
+<td><p>Includes any subpaths</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-desktop</span></code></p></td>
+<td><p>Access the XDG desktop directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_DESKTOP_DIR</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/Desktop</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-documents</span></code></p></td>
+<td><p>存取 XDG 文件目錄</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_DOCUMENTS_DIR</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/Documents</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-download</span></code></p></td>
+<td><p>存取 XDG 下載目錄</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_DOWNLOAD_DIR</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/Downloads</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-music</span></code></p></td>
+<td><p>存取 XDG 音樂目錄</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_MUSIC_DIR</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/Music</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-pictures</span></code></p></td>
+<td><p>Access the XDG pictures directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_PICTURES_DIR</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/Pictures</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-public-share</span></code></p></td>
+<td><p>Access the XDG public directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_PUBLICSHARE_DIR</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/Public</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-videos</span></code></p></td>
+<td><p>Access the XDG videos directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_VIDEOS_DIR</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/Videos</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-templates</span></code></p></td>
+<td><p>Access the XDG templates directory</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_TEMPLATES_DIR</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/Templates</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-config</span></code></p></td>
+<td><p>Access the XDG config directory <a class="footnote-reference brackets" href="#f3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/.config</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-cache</span></code></p></td>
+<td><p>Access the XDG cache directory  <a class="footnote-reference brackets" href="#f3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_CACHE_HOME</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME/.cache</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-data</span></code></p></td>
+<td><p>存取 XDG 資料目錄   <a class="footnote-reference brackets" href="#f3" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME</span></code> 或 <code class="docutils literal notranslate"><span class="pre">$HOME/.local/share</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xdg-run/path</span></code></p></td>
+<td><p>存取 XDG 執行時目錄的子目錄</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$XDG_RUNTIME_DIR/path</span></code> (<code class="docutils literal notranslate"><span class="pre">/run/user/$UID/path</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Except <code class="docutils literal notranslate"><span class="pre">host,</span> <span class="pre">host-etc,</span> <span class="pre">host-os</span></code> paths can be added to all the above
+filesystem options. For example, <code class="docutils literal notranslate"><span class="pre">--filesystem=xdg-documents/path</span></code>.</p>
+<p>Other filesystem access guidelines include:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--persist=DIR</span></code> option can be used to map directories from the
+user's home directory into the sandbox filesystem. This only works if
+the application has no <code class="docutils literal notranslate"><span class="pre">home</span></code> or a broader permission like <code class="docutils literal notranslate"><span class="pre">host</span></code>
+that includes <code class="docutils literal notranslate"><span class="pre">home</span></code>.</p>
+<p>For example, if an application hardcodes the directory <code class="docutils literal notranslate"><span class="pre">~/.foo</span></code>,
+without any <code class="docutils literal notranslate"><span class="pre">home</span></code> access and no <code class="docutils literal notranslate"><span class="pre">--persist</span></code> the directory will be
+lost from the sandbox once exited due to the filesystem being set up
+as tmpfs by flatpak unless overriden. A <code class="docutils literal notranslate"><span class="pre">--persist=.foo</span></code> bind mounts
+<code class="docutils literal notranslate"><span class="pre">~/.foo</span></code> <cite>inside the sandbox</cite> to <code class="docutils literal notranslate"><span class="pre">~/.var/app/$FLATPAK_ID/.foo</span></code> on
+host thus allowing an app to persistently store data in
+<code class="docutils literal notranslate"><span class="pre">~/.var/app/$FLATPAK_ID/.foo</span></code> which would otherwise be lost.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">--persist=.</span></code> will <cite>persist</cite> all directories.</p>
+<p>This does not support <code class="docutils literal notranslate"><span class="pre">:create,</span> <span class="pre">:ro,</span> <span class="pre">:rw</span></code> suffixes or
+special values like <code class="docutils literal notranslate"><span class="pre">xdg-documents</span></code>. However, the directory will be
+created by flatpak if it doesn't already exist.</p>
+<p>This makes it possible to avoid configuring access to the entire home
+directory, and can be useful for applications that hardcode file paths
+in <code class="docutils literal notranslate"><span class="pre">~/</span></code>.</p>
+</li>
+<li><p>If an application uses <code class="docutils literal notranslate"><span class="pre">$TMPDIR</span></code> to contain lock files you may want to
+add a wrapper script that sets it to
+<code class="docutils literal notranslate"><span class="pre">$XDG_RUNTIME_DIR/app/$FLATPAK_ID</span></code> (tmpfs) or <code class="docutils literal notranslate"><span class="pre">/var/tmp</span></code> (persistent
+on host).</p></li>
+<li><p>Retaining and sharing configuration with non-Flatpak installations is to
+be avoided.</p></li>
+</ul>
+</section>
+<section id="reserved-paths">
+<h3>Reserved Paths<a class="headerlink" href="#reserved-paths" title="連結到這個標頭">🔗</a></h3>
+<p>The following paths and subpaths of them are reserved and asking access
+to them with <code class="docutils literal notranslate"><span class="pre">--filesystem</span></code> will have no effect:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">app</span><span class="p">,</span> <span class="o">/</span><span class="nb">bin</span><span class="p">,</span> <span class="o">/</span><span class="n">dev</span><span class="p">,</span> <span class="o">/</span><span class="n">etc</span><span class="p">,</span> <span class="o">/</span><span class="n">lib</span><span class="p">,</span> <span class="o">/</span><span class="n">lib32</span><span class="p">,</span> <span class="o">/</span><span class="n">lib64</span><span class="p">,</span> <span class="o">/</span><span class="n">proc</span><span class="p">,</span> <span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">flatpak</span><span class="p">,</span> <span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">host</span><span class="p">,</span> <span class="o">/</span><span class="n">sbin</span><span class="p">,</span> <span class="o">/</span><span class="n">usr</span>
+</pre></div>
+</div>
+<p>The entire <code class="docutils literal notranslate"><span class="pre">/run</span></code> is not allowed but all subpaths of <code class="docutils literal notranslate"><span class="pre">/run</span></code> except
+<code class="docutils literal notranslate"><span class="pre">/run/flatpak,</span> <span class="pre">/run/host</span></code> are allowed to be exposed via
+<code class="docutils literal notranslate"><span class="pre">--filesystem</span></code>. Additionally, if <code class="docutils literal notranslate"><span class="pre">/var/run</span></code> on the host is a symlink to
+<code class="docutils literal notranslate"><span class="pre">../run</span></code>, exposing it or a subpath of it, is not allowed.</p>
+<p>Additionally the following directories from host need to be explicitly
+requested with <code class="docutils literal notranslate"><span class="pre">--filesystem</span></code> and are not available with
+<code class="docutils literal notranslate"><span class="pre">home,</span> <span class="pre">host,</span> <span class="pre">host-os,</span> <span class="pre">host-etc</span></code> by default:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.var/app</span></code> - The app can access only its own directory in <code class="docutils literal notranslate"><span class="pre">~/.var/app/$FLATPAK_ID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/flatpak</span></code> (<code class="docutils literal notranslate"><span class="pre">~/.local/share/flatpak</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/boot</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/efi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/root</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/sys</span></code> - Only <code class="docutils literal notranslate"><span class="pre">/sys/block,</span> <span class="pre">/sys/bus,</span> <span class="pre">/sys/class,</span> <span class="pre">/sys/dev,</span> <span class="pre">/sys/devices</span></code> are shared as read-only by default (if exists)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/tmp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var</span></code> - Note that by default <code class="docutils literal notranslate"><span class="pre">/var/{cache,</span> <span class="pre">config,</span> <span class="pre">data,</span> <span class="pre">tmp}</span></code>
+inside the sandbox are the same as <code class="docutils literal notranslate"><span class="pre">~/.var/app/$FLATPAK_ID/{cache,</span> <span class="pre">config,</span> <span class="pre">data,</span> <span class="pre">cache/tmp}</span></code>.
+However an explicit <code class="docutils literal notranslate"><span class="pre">--filesystem=/var</span></code> will make only <code class="docutils literal notranslate"><span class="pre">/var</span></code> from
+host available and those will no longer be available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak</span></code> - <code class="docutils literal notranslate"><span class="pre">/var</span></code> does not give access to this.</p></li>
+</ul>
+</section>
+<section id="device-access">
+<h3>Device access<a class="headerlink" href="#device-access" title="連結到這個標頭">🔗</a></h3>
+<p>You can provide the following device permissions:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dri</span></code></p></td>
+<td><p>Direct Rendering Interface. Necessary for GL.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kvm</span></code></p></td>
+<td><p>Kernel based Virtual Machine <code class="docutils literal notranslate"><span class="pre">/dev/kvm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shm</span></code></p></td>
+<td><p>Shared Memory in <code class="docutils literal notranslate"><span class="pre">/dev/shm</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
+<td><p>Input devices as exposed in <code class="docutils literal notranslate"><span class="pre">/dev/input</span></code>. This includes game controllers. Since Flatpak 1.15.6.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">usb</span></code></p></td>
+<td><p>Raw USB devices as exposed in <code class="docutils literal notranslate"><span class="pre">/dev/bus/usb</span></code>. Since Flatpak 1.15.11.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">all</span></code></p></td>
+<td><p>All devices, including all of the above except <code class="docutils literal notranslate"><span class="pre">shm</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Using newer permissions like <code class="docutils literal notranslate"><span class="pre">input</span></code> or <code class="docutils literal notranslate"><span class="pre">usb</span></code> will have no effect
+on older Flatpak versions and will fail when used through Flatpak
+commandline.</p>
+</div>
+<p>While not ideal, <code class="docutils literal notranslate"><span class="pre">--device=all</span></code> can be used to access devices like
+webcams, CD/DVD drives etc.</p>
+</section>
+<section id="usb-portal">
+<h3>USB portal<a class="headerlink" href="#usb-portal" title="連結到這個標頭">🔗</a></h3>
+<p>Since 1.5.11.</p>
+<p>Sandboxed access to individual USB devices can be controlled by
+portals. Flatpak allows specifying enumerable USB devices to allow
+access.</p>
+<p>Like <code class="docutils literal notranslate"><span class="pre">--device=usb</span></code>, this is just about accessing the raw USB
+device, that needs libusb (or equivalent). By using the portal, you
+can restrict which device can be requested (enumerable) and then
+request an explicit permission to access. For example, if you run a
+scanner driver, there is no reason for USB security devices to be
+accessible.</p>
+<p>A list of valid use cases includes scanners (handled, for example by
+SANE), photo cameras (handled by libgphoto2), flashing devices, etc.</p>
+<p>While this is portal dependent and <code class="docutils literal notranslate"><span class="pre">xdg-desktop-portal</span></code> is currently
+the only portal implementation, the overall permission flow is as
+follows:</p>
+<ul class="simple">
+<li><p>The Flatpak package specifies the devices it wishes to enumerate
+through <code class="docutils literal notranslate"><span class="pre">finish-args</span></code>.</p></li>
+<li><p>The application requests the portal to enumerate the available USB
+devices based on that list. If the list is empty it will enumerate
+all USB devices.</p></li>
+<li><p>When the application wants to access the device, it will make a
+request for the device it wants to access via the portal.</p></li>
+<li><p>The portal then requests permission from the user if not already
+granted.</p></li>
+<li><p>If the permission was granted, a file descriptor for the device is
+passed back to the application.</p></li>
+</ul>
+<p>The application is then able to open the devices it is supposed to use
+while the others would be hidden.</p>
+<section id="specifying-the-enumerable-devices">
+<h4>Specifying the enumerable devices<a class="headerlink" href="#specifying-the-enumerable-devices" title="連結到這個標頭">🔗</a></h4>
+<p>You can specify devices on the <code class="docutils literal notranslate"><span class="pre">flatpak</span></code> command line, and by
+extension in the finish arguments for Flatpak Builder. Enumerable
+devices are specified with a query passed with <code class="docutils literal notranslate"><span class="pre">--usb=</span></code> while hidden
+devices are specified with a query passed with <code class="docutils literal notranslate"><span class="pre">--nousb=</span></code>. The
+hidden list takes precedence over the enumerable list, like an
+exception list. The goal is to be able to specify a broad range and
+then exclude the few devices that shall not be enumerated.</p>
+<p>Queries are made out of rules. These rules are composable with <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p>
+<p>The rule <code class="docutils literal notranslate"><span class="pre">all</span></code> enumerates every USB device. There is no further rule
+allowed in the query.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">vnd</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> rules specify a USB vendor and a USB device ID
+respectively. A vendor can be specified alone, but a device rule
+always comes with a vendor rule as a device ID is only unique within a
+vendor. Vendor and device ID are specified with 4 digit hex
+numbers. For more information about the USB IDs, you can refer to the
+<a class="reference external" href="http://www.linux-usb.org/usb-ids.html">Linux USB ID repository</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">cls</span></code> specifies the device USB class and subclass. Both class and
+subclass are two digit hex numbers separated by a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. You
+can use <code class="docutils literal notranslate"><span class="pre">*</span></code> to specify any subclass within the class.</p>
+<p>Some examples of the syntax:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vnd:1234</span></code>: Devices from vendor <code class="docutils literal notranslate"><span class="pre">1234</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vnd:1234+dev:3456</span></code>: Only device <code class="docutils literal notranslate"><span class="pre">3456</span></code> from vendor <code class="docutils literal notranslate"><span class="pre">1234</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vnd:1234+cls:06:*</span></code>: All the PTP devices from vendor <code class="docutils literal notranslate"><span class="pre">1234</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cls:06:*</span></code>: All the PTP devices.</p></li>
+</ul>
+<p>This permission only allows to enumerate devices. To open them,
+permission must be requested from the portal. It is not possible to
+open a device that is not enumerable.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--device=usb</span></code> permission is broader than what the USB portal
+is supposed to provide and allows unfettered access to any USB
+device on the bus.</p>
+</div>
+<p>In some situations you may need to specify a very long list of devices.</p>
+<p>Device lists can be passed in one single argument, or through a file.</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">--usb-list</span></code>, the queries are separated by a semi-colon
+<code class="docutils literal notranslate"><span class="pre">;</span></code>, with queries for hidden devices (i.e. those that would be
+passed with <code class="docutils literal notranslate"><span class="pre">--nousb</span></code>) prefixed with <code class="docutils literal notranslate"><span class="pre">!</span></code>.</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">--usb-list-file</span></code>, the filename of the file containing
+USB queries is passed line by line. Like with <code class="docutils literal notranslate"><span class="pre">--usb-list</span></code> queries
+for hidden devices are prefixed with <code class="docutils literal notranslate"><span class="pre">!</span></code>. Empty lines and lines
+starting with a <code class="docutils literal notranslate"><span class="pre">#</span></code> are ignored. When used with <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">override</span></code>
+or <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">build-finish</span></code> the file is no longer needed afterwards as
+the list is persisted internally.</p>
+</section>
+</section>
+<section id="dconf-access">
+<h3>dconf access<a class="headerlink" href="#dconf-access" title="連結到這個標頭">🔗</a></h3>
+<p>As of xdg-desktop-portal 1.1.0 and glib 2.60.5 (in the runtime) you do not
+need direct DConf access in most cases.</p>
+<p>As of now this glib version is included in <code class="docutils literal notranslate"><span class="pre">org.freedesktop.Platform//19.08</span></code>
+and <code class="docutils literal notranslate"><span class="pre">org.gnome.Platform//3.34</span></code> and newer.</p>
+<p>If an application existed prior to these runtimes you can tell Flatpak (&gt;=
+1.3.4) to migrate the DConf settings on the
+host into the sandbox by adding
+<code class="docutils literal notranslate"><span class="pre">--metadata=X-DConf=migrate-path=/org/example/foo/</span></code> to <code class="docutils literal notranslate"><span class="pre">finish-args</span></code>. The
+path must be similar to your app-id or it will not be allowed (case is
+ignored and <code class="docutils literal notranslate"><span class="pre">_</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code> are treated equal).</p>
+<p>If you are targeting older runtimes or require direct DConf access for other
+reasons you can use these permissions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">filesystem</span><span class="o">=</span><span class="n">xdg</span><span class="o">-</span><span class="n">run</span><span class="o">/</span><span class="n">dconf</span>
+<span class="o">--</span><span class="n">filesystem</span><span class="o">=~/.</span><span class="n">config</span><span class="o">/</span><span class="n">dconf</span><span class="p">:</span><span class="n">ro</span>
+<span class="o">--</span><span class="n">talk</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">ca</span><span class="o">.</span><span class="n">desrt</span><span class="o">.</span><span class="n">dconf</span>
+<span class="o">--</span><span class="n">env</span><span class="o">=</span><span class="n">DCONF_USER_CONFIG_DIR</span><span class="o">=.</span><span class="n">config</span><span class="o">/</span><span class="n">dconf</span>
+</pre></div>
+</div>
+<p>With those permissions glib will continue using dconf directly.</p>
+<p>If you use a newer runtime where dconf is no longer built and still need it
+you will have to build the <a class="reference external" href="https://download.gnome.org/sources/dconf/">dconf</a> GIO module
+and set <code class="docutils literal notranslate"><span class="pre">--env=GIO_EXTRA_MODULES=/app/lib/gio/modules/</span></code>.</p>
+</section>
+<section id="gvfs-access">
+<h3>gvfs access<a class="headerlink" href="#gvfs-access" title="連結到這個標頭">🔗</a></h3>
+<p>As of gvfs 1.48, the gvfs daemons and applications use an on-disk socket
+to communicate, rather than an abstract socket so that the gvfs infrastructure
+still works when network support is disabled in the application's sandbox.</p>
+<p>A number of different options need to be passed depending on the application's
+use of gvfs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--talk-name=org.gtk.vfs.*</span></code> is necessary to talk to the gvfs daemons over
+D-Bus and list mounts using the GIO APIs.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--filesystem=xdg-run/gvfsd</span></code> is necessary to use the GIO APIs to list and access
+non-native files using the GIO APIs, using URLs rather than FUSE paths.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--filesystem=xdg-run/gvfs</span></code> is necessary to give access to the FUSE mounts
+non-GIO and legacy applications can use. This is what will make native files
+appear under <code class="docutils literal notranslate"><span class="pre">/run/user/`id</span> <span class="pre">-u`/gvfs/</span></code>.</p>
+<p>Typical GNOME and GTK applications should use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">talk</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">gtk</span><span class="o">.</span><span class="n">vfs</span><span class="o">.*</span>
+<span class="o">--</span><span class="n">filesystem</span><span class="o">=</span><span class="n">xdg</span><span class="o">-</span><span class="n">run</span><span class="o">/</span><span class="n">gvfsd</span>
+</pre></div>
+</div>
+<p>Typical non-GNOME and non-GTK applications should use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">filesystem</span><span class="o">=</span><span class="n">xdg</span><span class="o">-</span><span class="n">run</span><span class="o">/</span><span class="n">gvfs</span>
+</pre></div>
+</div>
+<p>No application should be using <code class="docutils literal notranslate"><span class="pre">--talk-name=org.gtk.vfs</span></code> in its manifest, as
+there are no D-Bus services named <code class="docutils literal notranslate"><span class="pre">org.gtk.vfs</span></code>.</p>
+<p>These permission grants the app, the ability to communicate with the
+gvfs daemon and backends running on host. Depending on the backends
+installed or running on host, it grants the ability to list mounted
+devices (USB, optical etc.), detach/format/eject them, mount them
+locally, read and write data. This is usually used with network storages
+like WebDAV, Google Drive, SMB etc. but backends exist for MTP/PTP,
+<a class="reference external" href="https://gitlab.gnome.org/GNOME/gvfs/-/tree/master/monitor/udisks2?ref_type=heads">USB</a>,
+special locations like <code class="docutils literal notranslate"><span class="pre">trash://</span></code> and the
+<a class="reference external" href="https://gitlab.gnome.org/GNOME/gvfs/-/blob/master/daemon/gvfsbackendlocaltest.c?ref_type=heads">local filesystem</a>
+too. So the app can access, read and write data from all of these
+locations provided the daemon and backends are installed and running
+on host.</p>
+</section>
+<section id="external-drive-access">
+<h3>External drive access<a class="headerlink" href="#external-drive-access" title="連結到這個標頭">🔗</a></h3>
+<p>External drives are mounted by the host system using systemd, udev, udisk
+fstab etc. and each of them can have different defaults. Flatpak has no
+control over how and where they get mounted. The following
+filesystem permissions should work in most cases:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">filesystem</span><span class="o">=/</span><span class="n">media</span>
+<span class="o">--</span><span class="n">filesystem</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">media</span>
+<span class="o">--</span><span class="n">filesystem</span><span class="o">=/</span><span class="n">mnt</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">--filesystem=host</span></code> is used <code class="docutils literal notranslate"><span class="pre">/media,</span> <span class="pre">/run/media</span></code> is shared
+automatically if they exist.</p>
+<p>Note that these should not have subpaths in them unless the value
+of the subpath can be consistently pre-determined. Block device naming
+depends on the kernel/fstab configuration and cannot be pre-determined.</p>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This is not necessarily required, but without it the X11 shared
+memory extension will not work, which is very bad for X11 performance.</p>
+</aside>
+<aside class="footnote brackets" id="f2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Giving network access also grants access to all host services
+listening on abstract Unix sockets (due to how network namespaces work),
+and these have no permission checks. This unfortunately affects e.g. the X
+server and the session bus which listens to abstract sockets by default. A
+secure distribution should disable these and just use regular sockets.</p>
+</aside>
+<aside class="footnote brackets" id="f3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>)</span>
+<p><code class="docutils literal notranslate"><span class="pre">xdg-{cache,</span> <span class="pre">config,</span> <span class="pre">data}</span></code> bind mounts the paths from host to the per-app sandbox directory.
+Inside the sandbox <code class="docutils literal notranslate"><span class="pre">$XDG_CACHE_HOME</span></code>, <code class="docutils literal notranslate"><span class="pre">$XDG_CONFIG_HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME</span></code> is set to
+<code class="docutils literal notranslate"><span class="pre">$HOME/.var/app/$FLATPAK_ID/{cache,</span> <span class="pre">config,</span> <span class="pre">data}</span></code> respectively. So for example, <code class="docutils literal notranslate"><span class="pre">xdg-data/applications</span></code> ie.
+<code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/applications</span></code> on host is bind mounted to <code class="docutils literal notranslate"><span class="pre">$HOME/.var/app/$FLATPAK_ID/data/applications</span></code>
+(inside the sandbox this is <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/applications</span></code>).
+Additionally it'll have two mount points - one expanded to
+<code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/applications</span></code> from the host and another to the
+sandbox's <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME/applications</span></code> ie. <code class="docutils literal notranslate"><span class="pre">$HOME/.var/app/$FLATPAK_ID/data/applications</span></code>.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="guides.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Guides</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="module-sources.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Module Sources</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">沙箱權限</a><ul>
+<li><a class="reference internal" href="#portals">Portals</a></li>
+<li><a class="reference internal" href="#permissions-guidelines">Permissions guidelines</a><ul>
+<li><a class="reference internal" href="#standard-permissions">標準權限</a></li>
+<li><a class="reference internal" href="#d-bus-access">D-Bus access</a></li>
+<li><a class="reference internal" href="#filesystem-access">檔案系統存取</a></li>
+<li><a class="reference internal" href="#reserved-paths">Reserved Paths</a></li>
+<li><a class="reference internal" href="#device-access">Device access</a></li>
+<li><a class="reference internal" href="#usb-portal">USB portal</a><ul>
+<li><a class="reference internal" href="#specifying-the-enumerable-devices">Specifying the enumerable devices</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dconf-access">dconf access</a></li>
+<li><a class="reference internal" href="#gvfs-access">gvfs access</a></li>
+<li><a class="reference internal" href="#external-drive-access">External drive access</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=0d9984b1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/translations.js?v=cbf116e0"></script>
+    </body>
+</html>
