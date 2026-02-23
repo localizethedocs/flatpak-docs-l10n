@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-13 08:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/index.rst:2
+msgid "Welcome to Flatpak's documentation!"
+msgstr "歡迎來到 Flatpak 文件！"
+
+#: ../../../docs/index.rst:4
+msgid ""
+"These docs cover everything you need to know to build and distribute "
+"applications using Flatpak. They begin with a basic introduction to Flatpak, "
+"background information on basic concepts, and a guide to the Flatpak command "
+"line interface. Later sections provide detailed information on building and "
+"distributing applications."
+msgstr ""
+"這些文件涵蓋了您使用 Flatpak 建置和散布應用程式所需了解的一切。它們從 "
+"Flatpak 的基本介紹、基本概念的背景資訊，以及 Flatpak 命令行介面的指南開始。後"
+"續章節提供了建置和散布應用程式的詳細資訊。"
+
+#: ../../../docs/index.rst:10
+msgid ""
+"The docs are primarily intended for application developers and distributors. "
+"Their content is also relevant to those who have a general interest in "
+"Flatpak."
+msgstr ""
+
+#: ../../../docs/index.rst:14
+msgid ""
+"If you are looking for information about how to use Flatpak to install and "
+"run applications, please refer to `the Flatpak website <https://flatpak."
+"org>`_."
+msgstr ""
+"如果您想了解如何使用 Flatpak 安裝並執行應用程式，請參見 `Flatpak 網站 "
+"<https://flatpak.org>`_。"
+
+#: ../../../docs/index.rst:18
+msgid "Contents"
+msgstr "目次"
