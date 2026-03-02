@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:2
 msgid "Module Sources"
-msgstr ""
+msgstr "模組來源"
 
 #: ../../../docs/module-sources.rst:4
 msgid "This page will go in depth on each source type with examples."
@@ -243,7 +243,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:163
 msgid "Git sources"
-msgstr ""
+msgstr "Git 來源"
 
 #: ../../../docs/module-sources.rst:165
 msgid ""
@@ -320,7 +320,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:217
 msgid "File sources"
-msgstr ""
+msgstr "檔案來源"
 
 #: ../../../docs/module-sources.rst:219
 msgid ""
@@ -393,7 +393,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:277
 msgid "Patch sources"
-msgstr ""
+msgstr "補釘來源"
 
 #: ../../../docs/module-sources.rst:279
 msgid ""
@@ -438,6 +438,8 @@ msgid ""
 "By default, ``patch -p 1`` is used, but it can be adjusted with ``strip-"
 "components`` and additional options can be passed with ``options``."
 msgstr ""
+"預設情況下會使用 ``patch -p 1``，但可以透過 ``strip-components`` 進行調整，並"
+"能使用 ``options`` 傳遞額外選項。"
 
 #: ../../../docs/module-sources.rst:314
 msgid ""
@@ -464,7 +466,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:331
 msgid "Shell and Script sources"
-msgstr ""
+msgstr "外殼與腳本來源"
 
 #: ../../../docs/module-sources.rst:333
 msgid ""
@@ -527,7 +529,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:377
 msgid "Extra Data"
-msgstr ""
+msgstr "額外資料"
 
 #: ../../../docs/module-sources.rst:379
 msgid ""
@@ -788,7 +790,7 @@ msgstr ""
 
 #: ../../../docs/module-sources.rst:563
 msgid "Directory source"
-msgstr ""
+msgstr "目錄來源"
 
 #: ../../../docs/module-sources.rst:565
 msgid ""
