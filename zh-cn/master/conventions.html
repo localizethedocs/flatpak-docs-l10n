@@ -1,0 +1,770 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Requirements & Conventions" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.flatpak.org/en/conventions.html" />
+<meta property="og:site_name" content="Flatpak" />
+<meta property="og:description" content="Flatpak deliberately imposes very few requirements on applications. However, a small number of standard Linux desktop conventions are expected, primarily to ensure that applications integrate with ..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.flatpak.org/en/latest/_images/social_previews/summary_conventions_783e39ba.png" />
+<meta property="og:image:alt" content="Flatpak deliberately imposes very few requirements on applications. However, a small number of standard Linux desktop conventions are expected, primarily to ensure that applications integrate with ..." />
+<meta name="description" content="Flatpak deliberately imposes very few requirements on applications. However, a small number of standard Linux desktop conventions are expected, primarily to ensure that applications integrate with ..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="genindex.html"><link rel="search" title="搜索" href="search.html"><link rel="next" title="Dependencies" href="dependencies.html"><link rel="prev" title="Building Introduction" href="building-introduction.html">
+        <link rel="canonical" href="https://projects.localizethedocs.org/flatpak-docs-l10n/conventions.html">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
+        <title>Requirements &amp; Conventions - Flatpak 文档</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/xdg.css?v=d059aca2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+
+<script type="text/javascript" src="ltd-provenance.js"></script>
+<script type="text/javascript" src="ltd-current.js"></script>
+<script type="text/javascript" src="../../ltd-config.js"></script>
+<script type="text/javascript" src="../../ltd-flyout.js"></script>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Flatpak  文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Flatpak  文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Flatpak</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><input aria-label="Toggle navigation of Getting Started" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-concepts.html">Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-flatpak.html">Using Flatpak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-build.html">Building your first Flatpak</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="building.html">Building</a><input aria-label="Toggle navigation of Building" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building-introduction.html">Building Introduction</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Requirements &amp; Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder.html">Flatpak Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifests.html">Manifests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module-sources.html">Module Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox-permissions.html">Sandbox Permissions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="guides.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electron.html">Electron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dotnet.html">Dotnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt.html">Qt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiarch.html">Multiarch support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extension.html">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="publishing.html">Publishing</a><input aria-label="Toggle navigation of Publishing" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-a-repository.html">Hosting a repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-file-bundles.html">Single-file bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-drives.html">USB Drives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="desktop-integration.html">Desktop Integration</a><input aria-label="Toggle navigation of Desktop Integration" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="portals.html">Portal support in GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portals.html#portal-support-in-qt-and-kde">Portal support in Qt and KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flatpak-devel.html">Flatpak as a developer platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">Reference Documentation</a><input aria-label="Toggle navigation of Reference Documentation" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-command-reference.html">Flatpak Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder-command-reference.html">Flatpak Builder Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available-runtimes.html">Available Runtimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-the-hood.html">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libflatpak-api-reference.html">libflatpak API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portal-api-reference.html">Portal API Reference</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/blob/master/docs/conventions.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/edit/master/docs/conventions.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="requirements-conventions">
+<h1>Requirements &amp; Conventions<a class="headerlink" href="#requirements-conventions" title="Link to this heading">🔗</a></h1>
+<p>Flatpak deliberately imposes very few requirements on applications.
+However, a small number of standard Linux desktop conventions
+are expected, primarily to ensure that applications integrate with Linux
+desktops and app centers. Developers might also encounter a small number of
+Linux technical conventions.</p>
+<p>Information on additional desktop integration options can be found in
+<a class="reference internal" href="desktop-integration.html"><span class="doc">Desktop Integration</span></a>.</p>
+<section id="expected-standards">
+<h2>Expected Standards<a class="headerlink" href="#expected-standards" title="Link to this heading">🔗</a></h2>
+<p>Applications using Flatpak are generally expected to comply with the
+following standards. Applications that have previously targeted the Linux
+desktop will typically need to make very few (if any) changes to meet these requirements.</p>
+<section id="application-ids">
+<h3>Application IDs<a class="headerlink" href="#application-ids" title="Link to this heading">🔗</a></h3>
+<p>As described in <a class="reference internal" href="using-flatpak.html"><span class="doc">Using Flatpak</span></a>, Flatpak requires each application to have a
+unique identifier, which follows a format such as <code class="docutils literal notranslate"><span class="pre">org.example.app</span></code>.</p>
+<p>The format is in reverse-DNS style, meaning the first section should be a domain
+controlled by the project, while the trailing section represents the specific project.
+There are exceptions to this, such as extensions, which use the base application-id of the project
+they extend rather than their own.</p>
+<p>As will be seen below and in future sections, this ID is expected to be used in a number of places.
+Developers must follow the standard <a class="reference external" href="https://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-names">D-Bus naming conventions for bus names</a>
+when creating their own IDs. This format is
+already recommended by the <a class="reference external" href="https://specifications.freedesktop.org/desktop-entry-spec/latest/file-naming.html">Desktop File specification</a>
+and also the <a class="reference external" href="https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-GenericComponent">Appstream specification</a>.</p>
+<p>Here are some practical examples of poor ID choices:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.example.desktop</span></code></p>
+<p>This ID is problematic because the Appstream standard, for legacy reasons, treats IDs ending with
+<code class="docutils literal notranslate"><span class="pre">.desktop</span></code> as a special case, leading to inconsistency. For the same reason, <code class="docutils literal notranslate"><span class="pre">.Desktop</span></code> suffixes
+should not be used for newly named applications. Don't hesitate to repeat the application name
+even if it is already part of the domain name section of the identifier (e.g. <code class="docutils literal notranslate"><span class="pre">org.example.Example</span></code>).</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">io.github.foo</span></code></p>
+<p>This is problematic because while <code class="docutils literal notranslate"><span class="pre">foo.github.io</span></code> may be unique to your project, it does not
+include a project-specific identifier. For instance, if another project
+creates <code class="docutils literal notranslate"><span class="pre">io.github.foo-bar</span></code>, issues can arise since the two IDs would then
+be treated as similar by <code class="docutils literal notranslate"><span class="pre">flatpak</span></code> (even though they deserve to be treated as different
+namespaces). A better ID would be <code class="docutils literal notranslate"><span class="pre">io.github.foo.foo</span></code>, even if the second
+<code class="docutils literal notranslate"><span class="pre">foo</span></code> seems redundant.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">org.example-site.foo</span></code></p>
+<p>This ID is not valid according to the D-Bus specification, as the dash
+<code class="docutils literal notranslate"><span class="pre">-</span></code> isn't allowed except in the last component. You should replace
+the dash with an underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>, and thus use
+<code class="docutils literal notranslate"><span class="pre">org.example_site.Foo</span></code> instead.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">com.github.foo.bar</span></code> or <code class="docutils literal notranslate"><span class="pre">com.gitlab.foo.bar</span></code></p>
+<p>While a project may be hosted on GitHub or GitLab, it does not have
+control over the <code class="docutils literal notranslate"><span class="pre">github.com</span></code> or <code class="docutils literal notranslate"><span class="pre">gitlab.com</span></code>
+domains. Instead, you should use <code class="docutils literal notranslate"><span class="pre">io.github</span></code> or <code class="docutils literal notranslate"><span class="pre">io.gitlab</span></code> as
+shown above.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Org.Example.App</span></code></p>
+<p>The domain portion of the ID must be in lowercase, and while not required,
+the application portion is recommended to be in lowercase as well.
+Therefore, you should use <code class="docutils literal notranslate"><span class="pre">org.example.app</span></code>.</p>
+</li>
+</ul>
+</section>
+<section id="metainfo-files">
+<h3>MetaInfo files<a class="headerlink" href="#metainfo-files" title="Link to this heading">🔗</a></h3>
+<p>MetaInfo files provide metadata about applications, which is
+used by application stores (such as Flathub, GNOME Software
+and KDE Discover).</p>
+<p>The <a class="reference external" href="https://www.freedesktop.org/software/appstream/docs/">Freedesktop AppStream specification</a> provides a complete
+reference for providing MetaInfo. You can use the online
+<a class="reference external" href="https://www.freedesktop.org/software/appstream/metainfocreator/">AppStream MetaInfo Creator</a>
+to generate a basic file.</p>
+<p>MetaInfo files should be named using the application ID, must end with the <code class="docutils literal notranslate"><span class="pre">.metainfo.xml</span></code>
+file extension, and must be placed in <code class="docutils literal notranslate"><span class="pre">/app/share/metainfo/</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">metainfo</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">metainfo</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>A legacy convention allows for placing the <code class="docutils literal notranslate"><span class="pre">.appdata.xml</span></code> file in <code class="docutils literal notranslate"><span class="pre">/app/share/appdata</span></code>.
+<code class="docutils literal notranslate"><span class="pre">flatpak-builder</span></code> will check either directory for
+its respective extension.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">appstreamcli</span> <span class="pre">validate</span> <span class="pre">--explain</span></code> command can be used to check MetaInfo
+files for errors.</p>
+<p>The metainfo file along with the other metadata such as icon and desktop
+files is composed into a catalogue by <code class="docutils literal notranslate"><span class="pre">appstream</span></code>. Since 1.3.4,
+Flatpak Builder by default uses <code class="docutils literal notranslate"><span class="pre">appstreamcli</span></code> from <a class="reference external" href="https://github.com/ximion/appstream/">libappstream</a>
+to compose this and executes the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ appstreamcli compose --no-partial-urls --prefix=/ --origin=${FLATPAK_ID} --media-baseurl=&lt;repo-media-url&gt; --media-dir=${FLATPAK_DEST}/share/app-info/media --result-root=${FLATPAK_DEST} --data-dir=${FLATPAK_DEST}/share/app-info/xmls --icons-dir=${FLATPAK_DEST}/share/app-info/icons/flatpak --components=${FLATPAK_ID} ${FLATPAK_DEST}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">${FLATPAK_ID}</span></code> is the Flatpak application ID and <code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}</span></code>
+is set to <code class="docutils literal notranslate"><span class="pre">/app</span></code> for apps and <code class="docutils literal notranslate"><span class="pre">/usr</span></code> for runtimes. The <code class="docutils literal notranslate"><span class="pre">media-baseurl</span></code>
+controls the base URL used for mirroring screenshots. Usually each app
+store will have their own base URL for this. On Flathub this is
+set to <code class="docutils literal notranslate"><span class="pre">https://dl.flathub.org/media/</span></code>.</p>
+</section>
+<section id="application-icons">
+<h3>Application icons<a class="headerlink" href="#application-icons" title="Link to this heading">🔗</a></h3>
+<p>Applications are expected to provide an application icon, which
+is used for their application launcher. These icons should be
+provided in accordance with the <a class="reference external" href="https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html">Freedesktop icon specification</a>.</p>
+<p>Icons must be named using the application's ID, be in either PNG or SVG
+format, and must be placed in the standard location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/app/share/icons/hicolor/$size/apps/
+</pre></div>
+</div>
+<p>For example, the path to the 128✕128px version of GNOME Dictionary's
+icon is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">icons</span><span class="o">/</span><span class="n">hicolor</span><span class="o">/</span><span class="mi">128</span><span class="n">x128</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>Icons must be square-shaped, meaning their width and height must be the
+same. The maximum size allowed by the specification is 512x512px. SVG
+icons are of size <code class="docutils literal notranslate"><span class="pre">scalable</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">icons</span><span class="o">/</span><span class="n">hicolor</span><span class="o">/</span><span class="n">scalable</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">svg</span>
+</pre></div>
+</div>
+<p>Flatpak will export the following icon name patterns:
+<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-foo</span></code>. They may end with an
+extension suffix like <code class="docutils literal notranslate"><span class="pre">.png</span></code> or <code class="docutils literal notranslate"><span class="pre">.svg</span></code>. Exported icons can be found in the
+<code class="docutils literal notranslate"><span class="pre">icons</span></code> subfolder of either <code class="docutils literal notranslate"><span class="pre">$HOME/.local/share/flatpak/exports/share</span></code> or
+<code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak/exports/share</span></code>, depending on whether it's a system or user install.</p>
+<p>The distribution usually appends those paths to <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_DIRS</span></code> on
+the host when installing the <code class="docutils literal notranslate"><span class="pre">flatpak</span></code> package. Unless an icon is exported
+by Flatpak, host applications cannot access it.</p>
+</section>
+<section id="desktop-files">
+<h3>Desktop files<a class="headerlink" href="#desktop-files" title="Link to this heading">🔗</a></h3>
+<p>Desktop files are used to provide the desktop environment with
+information about each application. The <a class="reference external" href="https://specifications.freedesktop.org/desktop-entry-spec/latest/">Freedesktop specification</a>
+provides a complete reference for writing desktop files.</p>
+<p>Desktop files must be named using the application's ID, followed
+by the <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file extension, and must be placed in
+<code class="docutils literal notranslate"><span class="pre">/app/share/applications/</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">desktop</span>
+</pre></div>
+</div>
+<p>A minimal desktop file should contain at least the application's <em>name</em>,
+<em>exec</em> command, <em>type</em>, <em>icon</em> name and <em>categories</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Desktop</span> <span class="n">Entry</span><span class="p">]</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">Gnome</span> <span class="n">Dictionary</span>
+<span class="n">Exec</span><span class="o">=</span><span class="n">gnome</span><span class="o">-</span><span class="n">dictionary</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">Application</span>
+<span class="n">Icon</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span>
+<span class="n">Categories</span><span class="o">=</span><span class="n">Office</span><span class="p">;</span><span class="n">Dictionary</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">desktop-file-validate</span></code> command can be used to check for errors in
+desktop files.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Exec</span></code> key of the desktop files is rewritten by Flatpak when installing
+an app. The original value of the key becomes the value of the <code class="docutils literal notranslate"><span class="pre">--command</span></code>
+argument like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Exec</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">flatpak</span> <span class="n">run</span> <span class="o">--</span><span class="n">branch</span><span class="o">=</span><span class="n">stable</span> <span class="o">--</span><span class="n">arch</span><span class="o">=</span><span class="n">x86_64</span> <span class="o">--</span><span class="n">command</span><span class="o">=</span><span class="n">gnome</span><span class="o">-</span><span class="n">dictionary</span> <span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span>
+</pre></div>
+</div>
+<p>Flatpak will export the following desktop filename patterns:
+<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo.desktop</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-foo.desktop</span></code>.
+Exported desktop files can be found in the <code class="docutils literal notranslate"><span class="pre">applications</span></code> subfolder of either
+<code class="docutils literal notranslate"><span class="pre">$HOME/.local/share/flatpak/exports/share</span></code> or
+<code class="docutils literal notranslate"><span class="pre">/var/lib/flatpak/exports/share</span></code>, depending on whether it's a system or
+user install.</p>
+<p>The distribution usually appends those paths to <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_DIRS</span></code> on
+the host when installing the <code class="docutils literal notranslate"><span class="pre">flatpak</span></code> package. Unless a desktop file is
+exported by Flatpak, host applications cannot access it.</p>
+</section>
+<section id="d-bus-service-files">
+<h3>D-Bus service files<a class="headerlink" href="#d-bus-service-files" title="Link to this heading">🔗</a></h3>
+<p>D-Bus service files are sometimes supplied by applications for
+automatic &quot;on demand&quot; activation of services such as when setting up an
+appliction for D-Bus launching.</p>
+<p>The service file must be installed to <code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/share/dbus-1/services</span></code>
+and must end in <code class="docutils literal notranslate"><span class="pre">.service</span></code>. The rest of the filename must match
+the <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code> or a subname of the Flatpak ID
+(<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo</span></code>).</p>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">Name</span></code> key inside the service file must match
+the filename without the <code class="docutils literal notranslate"><span class="pre">.service</span></code> part exactly. An example is
+provided below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installed as /app/share/dbus-1/services/org.example.coolapp.service</span>
+
+<span class="p">[</span><span class="n">D</span><span class="o">-</span><span class="n">BUS</span> <span class="n">Service</span><span class="p">]</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span>
+<span class="n">Exec</span><span class="o">=/</span><span class="n">app</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">coolapp</span> <span class="o">--</span><span class="n">gapplication</span><span class="o">-</span><span class="n">service</span>
+
+<span class="c1"># Installed as /app/share/dbus-1/services/org.example.coolapp.foobar.service</span>
+
+<span class="p">[</span><span class="n">D</span><span class="o">-</span><span class="n">BUS</span> <span class="n">Service</span><span class="p">]</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span><span class="o">.</span><span class="n">foobar</span>
+<span class="n">Exec</span><span class="o">=/</span><span class="n">app</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">coolapp</span> <span class="o">--</span><span class="n">arg1</span> <span class="o">--</span><span class="n">gapplication</span><span class="o">-</span><span class="n">service</span>
+</pre></div>
+</div>
+</section>
+<section id="gnome-shell-search-providers">
+<h3>GNOME shell search providers<a class="headerlink" href="#gnome-shell-search-providers" title="Link to this heading">🔗</a></h3>
+<p>A GNOME Shell search provider is a mechanism by which an application
+can expose its search capabilities to the GNOME Shell. Note that
+Flatpak will mark all search providers files as disabled when exporting
+them.</p>
+<p>The search provider file must be installed as
+<code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/share/gnome-shell/search-providers/$NAME-search-provider.ini</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$NAME</span></code> can be either the <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code> or a subname of the Flatpak
+ID (<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-foo</span></code>).</p>
+<p>An example is provided below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installed as /app/share/gnome-shell/search-providers/org.example.coolapp-search-provider.ini</span>
+
+<span class="p">[</span><span class="n">Shell</span> <span class="n">Search</span> <span class="n">Provider</span><span class="p">]</span>
+<span class="n">DesktopId</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span><span class="o">.</span><span class="n">desktop</span>
+<span class="n">BusName</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span><span class="o">.</span><span class="n">SearchProvider</span>
+<span class="n">ObjectPath</span><span class="o">=/</span><span class="n">org</span><span class="o">/</span><span class="n">mozilla</span><span class="o">/</span><span class="n">coolapp</span><span class="o">/</span><span class="n">SearchProvider</span>
+<span class="n">Version</span><span class="o">=</span><span class="mi">2</span>
+</pre></div>
+</div>
+</section>
+<section id="krunner-dbus-plugins">
+<h3>Krunner DBus plugins<a class="headerlink" href="#krunner-dbus-plugins" title="Link to this heading">🔗</a></h3>
+<p>Krunner DBus plugins offer similar functionality in KDE as GNOME shell
+search providers. Flatpak supports exporting these since 1.16.0 and
+they are also disabled by default.</p>
+<p>The plugin file must be installed as
+<code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/share/krunner/dbusplugins/$NAME.desktop</span></code>. <code class="docutils literal notranslate"><span class="pre">$NAME</span></code>
+can be either the <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code> or a subname of the Flatpak ID
+(<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-foo</span></code>).</p>
+<p>An example is provided below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installed as /app/share/krunner/dbusplugins/org.example.coolapp.desktop</span>
+
+<span class="p">[</span><span class="n">Desktop</span> <span class="n">Entry</span><span class="p">]</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">Hello</span>
+<span class="n">X</span><span class="o">-</span><span class="n">KDE</span><span class="o">-</span><span class="n">ServiceTypes</span><span class="o">=</span><span class="n">Plasma</span><span class="o">/</span><span class="n">Runner</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">Service</span>
+<span class="n">Icon</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span>
+<span class="n">X</span><span class="o">-</span><span class="n">KDE</span><span class="o">-</span><span class="n">ServiceTypes</span><span class="o">=</span><span class="n">Plasma</span><span class="o">/</span><span class="n">Runner</span>
+<span class="n">X</span><span class="o">-</span><span class="n">KDE</span><span class="o">-</span><span class="n">PluginInfo</span><span class="o">-</span><span class="n">EnabledByDefault</span><span class="o">=</span><span class="n">true</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Plasma</span><span class="o">-</span><span class="n">API</span><span class="o">=</span><span class="n">DBus</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Plasma</span><span class="o">-</span><span class="n">DBusRunner</span><span class="o">-</span><span class="n">Service</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">coolapp</span><span class="o">.</span><span class="n">KRunner</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Plasma</span><span class="o">-</span><span class="n">DBusRunner</span><span class="o">-</span><span class="n">Path</span><span class="o">=/</span><span class="n">org</span><span class="o">/</span><span class="n">example</span><span class="o">/</span><span class="n">coolapp</span><span class="o">/</span><span class="n">KRunner</span>
+</pre></div>
+</div>
+</section>
+<section id="mime-files">
+<h3>MIME files<a class="headerlink" href="#mime-files" title="Link to this heading">🔗</a></h3>
+<p>MIME files define new MIME types, file extensions, and detection rules.
+The MIME file must be installed as
+<code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/share/mime/packages/$NAME.xml</span></code>. <code class="docutils literal notranslate"><span class="pre">$NAME</span></code>
+can be either the <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID</span></code> or a subname of the Flatpak ID
+(<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID.foo</span></code>, <code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-foo</span></code>). It is common to use
+<code class="docutils literal notranslate"><span class="pre">$FLATPAK_ID-mime.xml</span></code> as the filename.</p>
+<p>Note, that Flatpak may rewrite these MIME files to remove magic mime
+rules and drop globs to a lower priority. An example MIME file of
+<a class="reference external" href="https://github.com/KDE/akonadi/blob/master/akonadi-mime.xml">Akonadi</a>
+is provided below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!--
+SPDX-License-Identifier: GPL-2.0-or-later
+--&gt;
+&lt;!--
+Notes:
+- the mime types in this file are valid with the version 0.20 of the
+  shared-mime-info package.
+- the &quot;fdo #xxxxx&quot; are the wish in the freedesktop.org bug database to include
+  the mime type there.
+--&gt;
+&lt;mime-info xmlns=&quot;http://www.freedesktop.org/standards/shared-mime-info&quot;&gt;
+  &lt;mime-type type=&quot;application/x-vnd.akonadi.calendar.event&quot;&gt;
+    &lt;sub-class-of type=&quot;text/calendar&quot;/&gt;
+    &lt;comment&gt;iCal Calendar Event Component&lt;/comment&gt;
+  &lt;/mime-type&gt;
+  &lt;mime-type type=&quot;application/x-vnd.akonadi.calendar.freebusy&quot;&gt;
+    &lt;sub-class-of type=&quot;text/calendar&quot;/&gt;
+    &lt;comment&gt;iCal Calendar FreeBusy Component&lt;/comment&gt;
+  &lt;/mime-type&gt;
+  &lt;mime-type type=&quot;application/x-vnd.akonadi.calendar.journal&quot;&gt;
+    &lt;sub-class-of type=&quot;text/calendar&quot;/&gt;
+    &lt;comment&gt;iCal Calendar Journal Component&lt;/comment&gt;
+  &lt;/mime-type&gt;
+  &lt;mime-type type=&quot;application/x-vnd.akonadi.calendar.todo&quot;&gt;
+    &lt;sub-class-of type=&quot;text/calendar&quot;/&gt;
+    &lt;comment&gt;iCal Calendar TODO Component&lt;/comment&gt;
+  &lt;/mime-type&gt;
+  &lt;mime-type type=&quot;application/x-vnd.akonadi.collection.virtual&quot;&gt;
+    &lt;comment&gt;Virtual Akonadi Collection&lt;/comment&gt;
+  &lt;/mime-type&gt;
+&lt;/mime-info&gt;
+</pre></div>
+</div>
+<p>This is installed as <code class="docutils literal notranslate"><span class="pre">/app/share/mime/packages/org.kde.akregator.xml</span></code>
+in Akregator.</p>
+</section>
+</section>
+<section id="technical-conventions">
+<h2>Technical conventions<a class="headerlink" href="#technical-conventions" title="Link to this heading">🔗</a></h2>
+<p>The following are standard technical conventions used by Flatpak and
+Linux desktops. Those with Linux experience will likely already be aware
+of them. However, developers who are new to Linux might find some of this
+information useful.</p>
+<section id="d-bus">
+<h3>D-Bus<a class="headerlink" href="#d-bus" title="Link to this heading">🔗</a></h3>
+<p>D-Bus is the standard IPC framework used on Linux desktops. A lot of
+applications won't need to use it, but it is supported by Flatpak should it
+be required.</p>
+<p>D-Bus can be used for application launching and communicating with some system
+services. Applications can also provide their own D-Bus services (when doing
+this, the D-Bus service name is expected to be the same as the application ID).</p>
+</section>
+<section id="filesystem-layout">
+<h3>Filesystem layout<a class="headerlink" href="#filesystem-layout" title="Link to this heading">🔗</a></h3>
+<p>Each Flatpak sandbox, which is the environment in which an
+application is run, contains the filesystem of the application's
+runtime. This follows <a class="reference external" href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">standard Linux filesystem conventions</a>.</p>
+<p>For example, the root of the sandbox contains the <code class="docutils literal notranslate"><span class="pre">/etc</span></code> directory for
+configuration files and <code class="docutils literal notranslate"><span class="pre">/usr</span></code> for multi-user utilities and applications. In
+addition to these, each sandbox contains a top-level <code class="docutils literal notranslate"><span class="pre">/app</span></code> directory,
+which is where the application's own files are located.</p>
+</section>
+</section>
+<section id="xdg-base-directories">
+<h2>XDG base directories<a class="headerlink" href="#xdg-base-directories" title="Link to this heading">🔗</a></h2>
+<p><a class="reference external" href="https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html">XDG base directories</a> are
+standard locations for user-specific application data. Popular toolkits provide
+convenience functions for accessing XDG base directories. These include:</p>
+<ul class="simple">
+<li><p>Electron: XDG base directories can be accessed with <code class="docutils literal notranslate"><span class="pre">app.getPath</span></code>.</p></li>
+<li><p>Glib: XDG base directories can be accessed through
+the <code class="docutils literal notranslate"><span class="pre">g_get_user_cache_dir</span> <span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">g_get_user_data_dir</span> <span class="pre">()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">g_get_user_config_dir</span> <span class="pre">()</span></code> functions.</p></li>
+<li><p>Qt: XDG base directories can be accessed with the <a class="reference external" href="https://doc.qt.io/archives/qt-5.15/qstandardpaths.html">QStandardPaths
+Class</a>.</p></li>
+</ul>
+<p>However, applications that aren't using one of these toolkits can expect to
+find their XDG base directories in the following locations:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Base directory</p></th>
+<th class="head"><p>Usage</p></th>
+<th class="head"><p>Default location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>XDG_CONFIG_HOME</p></td>
+<td><p>User-specific configuration files</p></td>
+<td><p>~/.var/app/&lt;app-id&gt;/config</p></td>
+</tr>
+<tr class="row-odd"><td><p>XDG_DATA_HOME</p></td>
+<td><p>User-specific data</p></td>
+<td><p>~/.var/app/&lt;app-id&gt;/data</p></td>
+</tr>
+<tr class="row-even"><td><p>XDG_CACHE_HOME</p></td>
+<td><p>Non-essential user-specific data</p></td>
+<td><p>~/.var/app/&lt;app-id&gt;/cache</p></td>
+</tr>
+<tr class="row-odd"><td><p>XDG_STATE_HOME</p></td>
+<td><p>State data such as undo history</p></td>
+<td><p>~/.var/app/&lt;app-id&gt;/.local/state</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, GNOME Dictionary will store user-specific data in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">var</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">org</span><span class="o">.</span><span class="n">gnome</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gnome</span><span class="o">-</span><span class="n">dictionary</span>
+</pre></div>
+</div>
+<p>These environment variables are always set by Flatpak and override any host values.
+However, if access to directories on the host is needed, the <code class="docutils literal notranslate"><span class="pre">$HOST_XDG_CONFIG_HOME</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$HOST_XDG_DATA_HOME</span></code>, <code class="docutils literal notranslate"><span class="pre">$HOST_XDG_CACHE_HOME</span></code>, and <code class="docutils literal notranslate"><span class="pre">$HOST_XDG_STATE_HOME</span></code> environment
+variables will be set if they are also available on the host.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">$XDG_STATE_HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">$HOST_XDG_STATE_HOME</span></code> are only supported by Flatpak 1.13
+and later. If your application needs to work on earlier versions of Flatpak, you can use the
+<code class="docutils literal notranslate"><span class="pre">--persist=.local/state</span></code> and <code class="docutils literal notranslate"><span class="pre">--unset-env=XDG_STATE_HOME</span></code> finish args, ensuring
+the app will use the correct directory, even after Flatpak is later upgraded to version
+&gt;1.13.</p>
+<p>Also, note that applications can be configured to use non-default base directory
+locations (see <a class="reference internal" href="sandbox-permissions.html"><span class="doc">Sandbox Permissions</span></a>).</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="dependencies.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Dependencies</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="building-introduction.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Building Introduction</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Requirements &amp; Conventions</a><ul>
+<li><a class="reference internal" href="#expected-standards">Expected Standards</a><ul>
+<li><a class="reference internal" href="#application-ids">Application IDs</a></li>
+<li><a class="reference internal" href="#metainfo-files">MetaInfo files</a></li>
+<li><a class="reference internal" href="#application-icons">Application icons</a></li>
+<li><a class="reference internal" href="#desktop-files">Desktop files</a></li>
+<li><a class="reference internal" href="#d-bus-service-files">D-Bus service files</a></li>
+<li><a class="reference internal" href="#gnome-shell-search-providers">GNOME shell search providers</a></li>
+<li><a class="reference internal" href="#krunner-dbus-plugins">Krunner DBus plugins</a></li>
+<li><a class="reference internal" href="#mime-files">MIME files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#technical-conventions">Technical conventions</a><ul>
+<li><a class="reference internal" href="#d-bus">D-Bus</a></li>
+<li><a class="reference internal" href="#filesystem-layout">Filesystem layout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xdg-base-directories">XDG base directories</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=7d86a446"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>
