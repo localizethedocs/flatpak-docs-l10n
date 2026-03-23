@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-01-01 06:58:54 +0530",
-      "hash" : "efded352f48fd7a8e622de6a0ed017d88fe173c9",
-      "title" : "sandbox-permissions: Mention directories shared in sysfs"
+      "date" : "2026-02-26 23:01:55 +0530",
+      "hash" : "a2b80f538e69ebde7aeb6f9edf71c142306e217b",
+      "title" : "sandbox-permissions: Document --socket=inherit-wayland-socket"
     }
   },
   "type" : "branch",
