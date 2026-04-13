@@ -1,0 +1,906 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Module Sources" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.flatpak.org/en/module-sources.html" />
+<meta property="og:site_name" content="Flatpak" />
+<meta property="og:description" content="This page will go in depth on each source type with examples. Sources are copied or downloaded to the source directory before the build starts. The source directory lives under flatpak-builder&#x27..." />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="https://docs.flatpak.org/en/latest/_images/social_previews/summary_module-sources_4ee82983.png" />
+<meta property="og:image:alt" content="This page will go in depth on each source type with examples. Sources are copied or downloaded to the source directory before the build starts. The source directory lives under flatpak-builder&#x27..." />
+<meta name="description" content="This page will go in depth on each source type with examples. Sources are copied or downloaded to the source directory before the build starts. The source directory lives under flatpak-builder&#x27..." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="index" title="索引" href="genindex.html"><link rel="search" title="搜索" href="search.html"><link rel="next" title="Sandbox Permissions" href="sandbox-permissions.html"><link rel="prev" title="Manifests" href="manifests.html">
+        <link rel="canonical" href="https://projects.localizethedocs.org/flatpak-docs-l10n/module-sources.html">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.1.3 and Furo 2025.12.19 -->
+        <title>Module Sources - Flatpak 文档</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/xdg.css?v=d059aca2" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style>
+
+<script type="text/javascript" src="ltd-provenance.js"></script>
+<script type="text/javascript" src="ltd-current.js"></script>
+<script type="text/javascript" src="../../ltd-config.js"></script>
+<script type="text/javascript" src="../../ltd-flyout.js"></script>
+</head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Flatpak  文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Flatpak  文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Flatpak</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started.html">Getting Started</a><input aria-label="Toggle navigation of Getting Started" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic-concepts.html">Basic concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-flatpak.html">Using Flatpak</a></li>
+<li class="toctree-l2"><a class="reference internal" href="first-build.html">Building your first Flatpak</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="building.html">Building</a><input aria-label="Toggle navigation of Building" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building-introduction.html">Building Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">Requirements &amp; Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder.html">Flatpak Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manifests.html">Manifests</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Module Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sandbox-permissions.html">Sandbox Permissions</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="guides.html">Guides</a><input aria-label="Toggle navigation of Guides" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electron.html">Electron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dotnet.html">Dotnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qt.html">Qt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multiarch.html">Multiarch support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extension.html">Extensions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="publishing.html">Publishing</a><input aria-label="Toggle navigation of Publishing" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="repositories.html">Repositories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hosting-a-repository.html">Hosting a repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="single-file-bundles.html">Single-file bundles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usb-drives.html">USB Drives</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="desktop-integration.html">Desktop Integration</a><input aria-label="Toggle navigation of Desktop Integration" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="portals.html">Portal support in GTK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portals.html#portal-support-in-qt-and-kde">Portal support in Qt and KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flatpak-devel.html">Flatpak as a developer platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-and-tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference.html">Reference Documentation</a><input aria-label="Toggle navigation of Reference Documentation" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-command-reference.html">Flatpak Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flatpak-builder-command-reference.html">Flatpak Builder Command Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="available-runtimes.html">Available Runtimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="under-the-hood.html">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libflatpak-api-reference.html">libflatpak API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portal-api-reference.html">Portal API Reference</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/blob/master/docs/module-sources.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/flatpak/flatpak-docs/edit/master/docs/module-sources.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-sources">
+<h1>Module Sources<a class="headerlink" href="#module-sources" title="Link to this heading">🔗</a></h1>
+<p>This page will go in depth on each source type with examples.</p>
+<p>Sources are copied or downloaded to the source directory before the build
+starts. The source directory lives under flatpak-builder's state
+directory, which by default is located at <code class="docutils literal notranslate"><span class="pre">.flatpak-builder</span></code> on host,
+relative to the manifest root. The source directory for bzr, git and svn
+sources is at <code class="docutils literal notranslate"><span class="pre">.flatpak-builder/git,</span> <span class="pre">.flatpak-builder/bzr,</span> <span class="pre">.flatpak-builder/svn</span></code>
+respectively while <code class="docutils literal notranslate"><span class="pre">.flatpak-builder/downloads/&lt;checksum&gt;</span></code> is used
+for file and archive sources.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> property of a source determines how that source will be
+handled before or during build by <code class="docutils literal notranslate"><span class="pre">flatpak</span></code> or <code class="docutils literal notranslate"><span class="pre">flatpak-builder</span></code>.</p>
+<p>Most of the sources support <code class="docutils literal notranslate"><span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">url</span></code> property where <code class="docutils literal notranslate"><span class="pre">path</span></code>
+is relative to the root of manifest and <code class="docutils literal notranslate"><span class="pre">url</span></code> is a direct url to the
+source.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">url</span></code> property requires a checksum to be specified after
+using <code class="docutils literal notranslate"><span class="pre">sha256</span></code> or <code class="docutils literal notranslate"><span class="pre">sha512</span></code>.</p>
+<p>There are a few properties common to all source types <code class="docutils literal notranslate"><span class="pre">only-arches</span></code>,
+<code class="docutils literal notranslate"><span class="pre">skip-arches</span></code> and <code class="docutils literal notranslate"><span class="pre">dest</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">only-arches</span></code> and <code class="docutils literal notranslate"><span class="pre">skip-arches</span></code> are used to build the source only
+on the specified architecture or skip building it on the specified
+architecture respectively. This is often useful for binary packages.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">only-arches</span></code> or <code class="docutils literal notranslate"><span class="pre">skip-arches</span></code> are used to control if
+that particular source is downloaded on the specified architecture(s).
+If not specified, the default is to download on all architectures.</p>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo-1.0-x86_64.deb</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.deb</span>
+<span class="w">        </span><span class="nt">only-arches</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo-1.0-aarch64.deb</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.deb</span>
+<span class="w">        </span><span class="nt">only-arches</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dest</span></code> is used to indicate a directory inside the source directory
+where the given source will be placed:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coolapp</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archive</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo.tar.xz</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">834b06e423d360c97197e7abec99b623fdc5ed3a0c39b88d6467e499074585e1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/foo/bar.git</span>
+<span class="w">        </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3f9389edc6cdf3f78a6896d550c236860aed62b2</span>
+<span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;src/deps/bar&#39;</span>
+</pre></div>
+</div>
+<p>The contents of <code class="docutils literal notranslate"><span class="pre">foo.tar.xz</span></code> will be placed under
+<code class="docutils literal notranslate"><span class="pre">.flatpak-builder/build/coolapp/</span></code> and the contents of the <code class="docutils literal notranslate"><span class="pre">bar.git</span></code>
+repo will go under <code class="docutils literal notranslate"><span class="pre">.flatpak-builder/build/coolapp/src/deps/bar</span></code>.</p>
+<p>This is often useful to replace bundled dependencies inside sources
+with custom versions.</p>
+<section id="archive-sources">
+<h2>Archive sources<a class="headerlink" href="#archive-sources" title="Link to this heading">🔗</a></h2>
+<p>These are sources of <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">archive</span></code>. They are downloaded to the
+download directory and extracted into the build directory when the build
+starts.</p>
+<p>A typical example of using this is:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meson</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archive</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo-1.0.tar.xz</span>
+<span class="w">        </span><span class="nt">mirror-urls</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://mirror.example.com/foo-1.0.tar.xz</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26c9007c655483438d83f17070190fc4b6bccb8ff5efc30fcedbb7d162681a7f</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.tar.xz</span>
+<span class="w">        </span><span class="nt">strip-components</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mirror-urls</span></code> is a list of alternative urls that will be used for
+downloading, if the main <code class="docutils literal notranslate"><span class="pre">url</span></code> fails.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sha256</span></code> is the sha256 checksum of the downloaded file, supplied
+by upstream of the source or calculated using <code class="docutils literal notranslate"><span class="pre">sha256sum</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dest-filename</span></code> is not usually used for this source. It is used to
+rename the downloaded file. This can be useful if the buildsystem
+expects a certain name for the archive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strip-components</span></code> is the number of pathname components to strip
+during extraction. This defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code> if not specified.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># orginal archive
+.
+└── a
+    ├── b
+    │   ├── c
+    │   │   └── FILE
+    │   └── FILE
+    └── FILE
+
+# strip-components: 1
+.
+├── b
+│   ├── c
+│   │   └── FILE
+│   └── FILE
+├── FILE
+
+
+# strip-components: 2
+.
+├── c
+│   └── FILE
+├── FILE
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">flatpak-builder</span></code> supports
+the following archive types: <code class="docutils literal notranslate"><span class="pre">&quot;rpm&quot;,</span> <span class="pre">&quot;tar&quot;,</span> <span class="pre">&quot;tar-gzip&quot;,</span> <span class="pre">&quot;tar-compress&quot;,</span> <span class="pre">&quot;tar-bzip2&quot;,</span> <span class="pre">&quot;tar-lzip&quot;,</span> <span class="pre">&quot;tar-lzma&quot;,</span> <span class="pre">&quot;tar-lzop&quot;,</span> <span class="pre">&quot;tar-xz&quot;,</span> <span class="pre">&quot;tar-zst&quot;,</span> <span class="pre">&quot;zip&quot;,</span> <span class="pre">&quot;7z&quot;</span></code>
+The archive type is guessed from the suffix of the file basename.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rpm</span></code> is extracted with <code class="docutils literal notranslate"><span class="pre">rpm2cpio</span></code>, <code class="docutils literal notranslate"><span class="pre">zip</span></code> is extracted with <code class="docutils literal notranslate"><span class="pre">unzip</span></code>
+and <code class="docutils literal notranslate"><span class="pre">7z</span></code> is extracted with <code class="docutils literal notranslate"><span class="pre">7z</span></code>. The rest are extracted with
+<code class="docutils literal notranslate"><span class="pre">tar</span></code>. These should be present on host so that flatpak-builder can
+use them.The archive type is calculated from the suffix of the file
+basename.</p>
+<p>In case the correct archive type cannot be <cite>guessed</cite> from the filename
+<code class="docutils literal notranslate"><span class="pre">archive-type:</span> <span class="pre">str</span></code> can be used to manually specify the type where
+<code class="docutils literal notranslate"><span class="pre">str</span></code> is one of the above types.</p>
+</section>
+<section id="git-sources">
+<h2>Git sources<a class="headerlink" href="#git-sources" title="Link to this heading">🔗</a></h2>
+<p>These are sources of <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">git</span></code> and it requires <code class="docutils literal notranslate"><span class="pre">git</span></code> to be
+available on the host. A typical example of using this is:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meson</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/repo/foo.git</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;git tag&gt;</span>
+<span class="w">        </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;commit hash&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> is url of the git repository. The following schemes are
+usually used <code class="docutils literal notranslate"><span class="pre">http://</span></code>, <code class="docutils literal notranslate"><span class="pre">https://</span></code>, <code class="docutils literal notranslate"><span class="pre">git://</span></code>, <code class="docutils literal notranslate"><span class="pre">git+ssh://</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ssh://</span></code>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">file://</span></code> scheme for a git repository, do
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">protocol.file.allow</span> <span class="pre">always</span></code>.</p>
+</div>
+<ul>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">branch:</span> <span class="pre">branch_name</span></code> can also be used in place of a <code class="docutils literal notranslate"><span class="pre">tag</span></code> and
+<code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">commit</span></code> is the commit to use from the git repository.</p>
+<p>In case of a tag, this must be the commit, the tag points to
+(<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rev-list</span> <span class="pre">-n</span> <span class="pre">1</span> <span class="pre">$tag</span></code>). In case of a <code class="docutils literal notranslate"><span class="pre">branch</span></code>, it is verified
+that the branch points to this specific commit
+(<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">show-ref</span> <span class="pre">&quot;refs/heads/$branch&quot;</span></code>).</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>To ensure reproduciblity and avoid build failures, it is best to avoid
+using <code class="docutils literal notranslate"><span class="pre">branch</span></code> and always add a <code class="docutils literal notranslate"><span class="pre">commit</span></code> to a <code class="docutils literal notranslate"><span class="pre">tag</span></code>.</p>
+</div>
+<p>By default <code class="docutils literal notranslate"><span class="pre">flatpak-builder</span></code> will do a shallow-clone of the git
+repository and checkout submodules if any. <code class="docutils literal notranslate"><span class="pre">disable-shallow-clone:</span> <span class="pre">true</span></code>
+and <code class="docutils literal notranslate"><span class="pre">disable-submodules</span></code> can be used to override this behaviour.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span></code> source also supports using a local git repository with the
+<code class="docutils literal notranslate"><span class="pre">path</span></code> property.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Currently <code class="docutils literal notranslate"><span class="pre">flatpak-builder</span></code> does not support <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span></code>. It can
+be worked around with using <code class="docutils literal notranslate"><span class="pre">buildsystem:</span> <span class="pre">simple</span></code> and running
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">pull</span></code> in the <code class="docutils literal notranslate"><span class="pre">build-commands</span></code>.</p>
+</div>
+</section>
+<section id="file-sources">
+<h2>File sources<a class="headerlink" href="#file-sources" title="Link to this heading">🔗</a></h2>
+<p>These are sources of <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">file</span></code>. They are copied into the source
+directory without any modifications.</p>
+<p>Any arbitrary file type can be specified here along with
+<code class="docutils literal notranslate"><span class="pre">buildsystem:</span> <span class="pre">simple</span></code> to manually modify, build or install it
+within <code class="docutils literal notranslate"><span class="pre">build-commands</span></code>. This can be used in place of <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">archive</span></code>
+to manually extract an archive, uncompress squashfs filesystems
+(like snaps) etc. provided the tool being used is made available inside
+the sandbox.</p>
+<p>A typical example is:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm0644 org.example.foo.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bsdtar -Oxf foo.deb &#39;data.tar.xz&#39; | bsdtar -xf -</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv opt/ ${FLATPAK_DEST}/</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ln -s ${FLATPAK_DEST}/opt/executable ${FLATPAK_DEST}/bin/executable</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.deb</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo-v1.0.deb</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;sha256 checksum of foo.deb&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.example.foo.metainfo.xml</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unsquashfs</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XZ_SUPPORT=1 make -C squashfs-tools -j ${FLATPAK_BUILDER_N_JOBS} unsquashfs</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dpm755 -t &quot;${FLATPAK_DEST}/bin&quot; squashfs-tools/unsquashfs</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/plougher/squashfs-tools.git</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4.6.1</span>
+<span class="w">        </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">d8cb82d9840330f9344ec37b992595b5d7b44184</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unsquashfs -dest bar -quiet -no-progress squashed.snap</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv bar ${FLATPAK_DEST}</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ln -s ${FLATPAK_DEST}/bar/executable ${FLATPAK_DEST}/bin/executable</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">squashed.snap</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/squashed-1.0.snap</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;sha256 checksum of squashed-1.0.snap&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dest-filename</span></code> is typically used with this source type to make the
+filename <cite>predictable</cite> for the commands in the <code class="docutils literal notranslate"><span class="pre">build-commands</span></code> array.</p>
+</section>
+<section id="patch-sources">
+<h2>Patch sources<a class="headerlink" href="#patch-sources" title="Link to this heading">🔗</a></h2>
+<p>These are sources of <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">patch</span></code> used with patchfiles. This requires
+<code class="docutils literal notranslate"><span class="pre">patch</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">git</span></code> to be available on host. The typical
+usage is to create patchfiles and place them somewhere relative to the
+manifest root. The <code class="docutils literal notranslate"><span class="pre">path</span></code> property is the location of the file relative
+to the manifest.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmake-ninja</span>
+<span class="w">    </span><span class="nt">builddir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">config-opts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo.git</span>
+<span class="w">      </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.0.0</span>
+<span class="w">      </span><span class="nt">commit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">63c01f14391aef7d7691c7c63a610d47512147ed</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patches/test-patch.patch</span>
+</pre></div>
+</div>
+<p>Multiple patches can be specified with <code class="docutils literal notranslate"><span class="pre">paths</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patches/test1-patch.patch</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patches/test2-patch.patch</span>
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">patch</span> <span class="pre">-p</span> <span class="pre">1</span></code> is used, but it can be adjusted with
+<code class="docutils literal notranslate"><span class="pre">strip-components</span></code> and additional options can be passed with
+<code class="docutils literal notranslate"><span class="pre">options</span></code>.</p>
+<p>The default patchfiles generated with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">format-patch</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>
+do not need any additional options.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patches/test1-patch.patch</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patches/test2-patch.patch</span>
+<span class="w">  </span><span class="nt">options</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-d</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dir1</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">use-git:</span> <span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">use-git-am:</span> <span class="pre">true</span></code> can be used to use
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">apply</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">am</span></code> respectively instead of <code class="docutils literal notranslate"><span class="pre">patch</span></code>.</p>
+</section>
+<section id="shell-and-script-sources">
+<h2>Shell and Script sources<a class="headerlink" href="#shell-and-script-sources" title="Link to this heading">🔗</a></h2>
+<p>A shell source with <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">shell</span></code> is used to modify a source during
+extraction. <code class="docutils literal notranslate"><span class="pre">commands</span></code> takes in any shell commands.</p>
+<p>This is usually used to make quick modifications to sources but a patch
+should be used for any complex modification to make it fail safe.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archive</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo.tar.xz</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+<span class="w">        </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoreconf -vfi</span>
+</pre></div>
+</div>
+<p>A script source with <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">script</span></code> is used to create self-contained
+<code class="docutils literal notranslate"><span class="pre">/bin/sh</span></code> scripts. <code class="docutils literal notranslate"><span class="pre">commands</span></code> takes in any shell commands and
+<code class="docutils literal notranslate"><span class="pre">dest-filename</span></code> can be used to specify the name for the resultant
+file inside the source directory.</p>
+<p>This is often useful if the executable requires custom arguments
+to be passed before launch.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm755 run ${FLATPAK_DEST}/bin/run</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">archive</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo-1.0.tar.xz</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">842ab8e69c94e985ba188cc22848c0515e9fa114380adcc08572d3fb9cfa19db</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run</span>
+<span class="w">        </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">exec /app/foo/bin/foo_binary &quot;$@&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="extra-data">
+<h2>Extra Data<a class="headerlink" href="#extra-data" title="Link to this heading">🔗</a></h2>
+<p>Extra data is often used for proprietary applications to avoid
+redistribution by downloading the binary package provided by the original
+distributors during installation by the user. It may also be used for sources
+with very large file sizes (over several gigabytes) to avoid storing a
+huge amount of data in the ostree repository.</p>
+<p>Since the package is downloaded only when installing, the application
+metadata such as the desktop file, icon and the MetaInfo file must be
+installed beforehand so that appstream can compose them to generate
+catalogue data.</p>
+<p>When installing the Flatpak package containing an extra data source,
+Flatpak calls the <code class="docutils literal notranslate"><span class="pre">apply_extra</span></code> script which executes the command defined
+in it. The dependencies needed to run the commands in the script must be
+available in the sandbox.</p>
+<p>The following properties must be present for an <cite>extra-data</cite> source:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">extra-data</span></code> indicates that this is an extra-data source.
+Multiple such sources can exist.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> should be a direct link to the binary source package. This is
+downloaded by Flatpak when installing the Flatpak package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha256</span></code> should be its SHA-256 checksum of the above package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> should be the file size of the package in <cite>bytes</cite> (<code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">--bytes</span> <span class="pre">&lt;</span> <span class="pre">file</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code> can be anything to name the downloaded source package.</p></li>
+</ul>
+<p>The binary source packages are often specific to one architecture, so
+<code class="docutils literal notranslate"><span class="pre">only-arches</span></code> can be used to make the build specific to that
+architecture only.</p>
+<p>A typical extra-data manifest may look like:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-modules/lzo/lzo.json</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-modules/squashfs-tools/squashfs-tools.json</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dependency1</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dependency2</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 ${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 foo.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 foo.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ln -s ${FLATPAK_DEST}/extra/subdir/foo_binary ${FLATPAK_DEST}/bin/foo_binary</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm755 apply_extra ${FLATPAK_DEST}/bin/apply_extra</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra-data</span>
+<span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.snap</span>
+<span class="w">        </span><span class="nt">only-arches</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.org/foo_v1.2.snap</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">842ab8e69c94e985ba188cc22848c0515e9fa114380adcc08572d3fb9cfa19db</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">123101184</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.flatpak.foo.metainfo.xml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.desktop</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.svg</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply_extra</span>
+<span class="w">        </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unsquashfs -quiet -no-progress foo.snap</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mv squashfs-root/usr/lib/foo/* .</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm -r squashfs-root foo.snap</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">buildsystem</span></code> is <code class="docutils literal notranslate"><span class="pre">simple</span></code> as the module is manually installed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">apply_extra</span></code> script here requires
+<code class="docutils literal notranslate"><span class="pre">unsquashfs</span></code> to run, so that is built and installed.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Flatpak supports exporting icons, desktop files etc. from
+<code class="docutils literal notranslate"><span class="pre">/app/extra/export/share/</span></code> however when creating a Flatpak package
+for a software store like Flathub or when composing the metadata with
+appstreamcli, desktop files and icons must not be placed in
+<code class="docutils literal notranslate"><span class="pre">/app/extra/export/</span></code> and instead should go to the proper locations
+documented in <a class="reference internal" href="conventions.html"><span class="doc">Requirements &amp; Conventions</span></a>.</p>
+</div>
+<p>The icon, desktop file and Metainfo must be added as sources. The
+<code class="docutils literal notranslate"><span class="pre">path</span></code> indicates that they reside in the same directory relative to the
+manifest. The first three lines of the <code class="docutils literal notranslate"><span class="pre">build-commands</span></code> installs them
+so that <code class="docutils literal notranslate"><span class="pre">appstream-compose</span></code> can compose the metadata.</p>
+<p>The last line creates an empty symlink from <code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/extra/</span></code>
+to <code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/bin/</span></code> so that the executable is found in <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>
+inside the sandbox and can be used in the top-level <code class="docutils literal notranslate"><span class="pre">command:</span> <span class="pre">foo_binary</span></code>
+property. Instead of a symlink this also often a script like:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">exec</span><span class="w"> </span>/app/extra/subdir/foo_binary<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">subdir</span></code> directory comes from the contents of the extracted snap
+and how that is installed.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Note that variables like <code class="docutils literal notranslate"><span class="pre">$FLATPAK_DEST</span></code> are not available in the
+runtime sandbox or in the sandbox where <code class="docutils literal notranslate"><span class="pre">apply_extra</span></code> is executed
+when installing the Flatpak.</p>
+<p>Please avoid using them when creating the script in the manifest
+as this will be incorrectly expanded.</p>
+</div>
+<p>The commands needed to extract the snap are specified in the <code class="docutils literal notranslate"><span class="pre">apply_extra</span></code>
+script. These can be any shell commands that run when installing the
+Flatpak package but note that it won't have access to anything outside
+<code class="docutils literal notranslate"><span class="pre">/app/extra</span></code>. The script is run in a sandbox
+(equivalent to <code class="docutils literal notranslate"><span class="pre">flatpak</span> <span class="pre">run</span> <span class="pre">--sandbox</span></code>) and won't have network, dbus or
+any host access. The <code class="docutils literal notranslate"><span class="pre">apply_extra</span></code> can itself be a seperate script file
+too but must be installed as <code class="docutils literal notranslate"><span class="pre">${FLATPAK_DEST}/bin/apply_extra</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">unsquashfs</span> <span class="pre">-quiet</span> <span class="pre">-no-progress</span> <span class="pre">foo.snap</span></code> extracts the snap package
+into a directory called <code class="docutils literal notranslate"><span class="pre">squashfs-root</span></code>, then the contents of that
+direcory are moved to <code class="docutils literal notranslate"><span class="pre">/app/extra</span></code> and lastly <code class="docutils literal notranslate"><span class="pre">squashfs-root</span></code> and the
+snap package itself is cleaned up to save space.</p>
+<p>This is another example that can be used to extract Debian packages (<code class="docutils literal notranslate"><span class="pre">.deb</span></code>).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">  </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm755 apply_extra ${FLATPAK_DEST}/bin/apply_extra</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 -t ${FLATPAK_DEST}/share/metainfo/ ${FLATPAK_ID}.metainfo.xml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 -t ${FLATPAK_DEST}/share/applications/ ${FLATPAK_ID}.desktop</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm644 -t ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/ ${FLATPAK_ID}.svg</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ln -s ${FLATPAK_DEST}/extra/bin/foo_binary ${FLATPAK_DEST}/bin/foo_binary</span>
+
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">      </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply_extra</span>
+<span class="w">      </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bsdtar --to-stdout -xf foo.deb data.* | bsdtar -xf -</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm foo.deb</span>
+</pre></div>
+</div>
+<p>Flatpak extensions can also use extra-data sources in a similar manner.
+This is an example of an extension manifest utilising an extra-data
+source.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.foo.app.Plugins.audio</span>
+<span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.foo.app</span>
+<span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.freedesktop.Sdk//25.08</span>
+<span class="nt">build-extension</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">separate-locales</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install -Dm755 apply_extra -t $FLATPAK_DEST/bin/</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">script</span>
+<span class="w">        </span><span class="nt">dest-filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply_extra</span>
+<span class="w">        </span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bsdtar -xf foo.qdz --strip-components=3</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rm -f foo.qdz</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra-data</span>
+<span class="w">        </span><span class="nt">filename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.qdz</span>
+<span class="w">        </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.org/foo_v1.qdz</span>
+<span class="w">        </span><span class="nt">sha256</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2027ed7e5935612a38c3f7b751b6bd23cfb5b06d1a1e5f34907bc021b09de225</span>
+<span class="w">        </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">523360406</span>
+</pre></div>
+</div>
+<p>For more information on Flatpak extensions please see <a class="reference internal" href="extension.html"><span class="doc">Extensions</span></a>.</p>
+</section>
+<section id="directory-source">
+<h2>Directory source<a class="headerlink" href="#directory-source" title="Link to this heading">🔗</a></h2>
+<p>A directory source with <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">dir</span></code> is best suited for use in CI to
+build the latest changes and avoid downloading multiple times. These
+don't support any caching, so it will be rebuilt each time the
+application is being built.</p>
+<p>When submitting an application to software stores like Flathub, <code class="docutils literal notranslate"><span class="pre">dir</span></code>
+should be avoided altogether.</p>
+<p><code class="docutils literal notranslate"><span class="pre">path</span></code> should be the path of the local directory relative to the
+manifest root path, whose contents will be copied during build.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">buildsystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">simple</span>
+<span class="w">    </span><span class="nt">build-commands</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dir</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icons</span>
+</pre></div>
+</div>
+<p>Additonally there are <cite>bzr</cite>, <cite>svn</cite> and <cite>inline</cite> sources supported.
+<cite>bzr</cite> and <cite>svn</cite> requires the <a class="reference external" href="https://code.launchpad.net/bzr">bzr</a>
+and <a class="reference external" href="https://subversion.apache.org/">svn</a> commandline tools to be
+installed respectively. Please see
+<a class="reference internal" href="flatpak-builder-command-reference.html"><span class="doc">Flatpak Builder Command Reference</span></a> for them.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="sandbox-permissions.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sandbox Permissions</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="manifests.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Manifests</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Module Sources</a><ul>
+<li><a class="reference internal" href="#archive-sources">Archive sources</a></li>
+<li><a class="reference internal" href="#git-sources">Git sources</a></li>
+<li><a class="reference internal" href="#file-sources">File sources</a></li>
+<li><a class="reference internal" href="#patch-sources">Patch sources</a></li>
+<li><a class="reference internal" href="#shell-and-script-sources">Shell and Script sources</a></li>
+<li><a class="reference internal" href="#extra-data">Extra Data</a></li>
+<li><a class="reference internal" href="#directory-source">Directory source</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=7d86a446"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>
