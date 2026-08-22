@@ -16,9 +16,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2026-05-08 19:27:11 +0530",
-        "hash" : "2c645a34213d7937dddcaa7abcc538cb6a5df252",
-        "title" : "Update translations"
+        "date" : "2026-08-04 22:08:18 +0530",
+        "hash" : "a909960bca07dfba4630a1a43beb107eb1719cae",
+        "title" : "Correct meson options file name"
       }
     },
     "zh_TW" : 
@@ -26,9 +26,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2026-05-08 19:27:11 +0530",
-        "hash" : "2c645a34213d7937dddcaa7abcc538cb6a5df252",
-        "title" : "Update translations"
+        "date" : "2026-08-04 22:08:18 +0530",
+        "hash" : "a909960bca07dfba4630a1a43beb107eb1719cae",
+        "title" : "Correct meson options file name"
       }
     }
   },

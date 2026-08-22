@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-13 08:50+0000\n"
+"POT-Creation-Date: 2026-08-17 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr ""
 #: ../../../docs/single-file-bundles.rst:30
 msgid ""
 "$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
+"Dictionary --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo"
 msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:32

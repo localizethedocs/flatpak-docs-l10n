@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-21 08:43+0000\n"
+"POT-Creation-Date: 2026-08-17 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1178,10 +1178,21 @@ msgid ""
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:513
+msgid ""
+"``has-usb-device`` - True if the Flatpak version supports ``--device=usb``"
+msgstr ""
+
+#: ../../../docs/sandbox-permissions.rst:515
+msgid ""
+"``has-usb-portal`` - True if the current desktop session supports the USB "
+"Portal"
+msgstr ""
+
+#: ../../../docs/sandbox-permissions.rst:517
 msgid "``has-wayland`` - True if the current desktop session supports Wayland"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:516
+#: ../../../docs/sandbox-permissions.rst:520
 msgid ""
 "Multiple conditionals can be specified for the same grant, in which case the "
 "permission is granted if any condition matches. If no conditional rule "
@@ -1189,24 +1200,24 @@ msgid ""
 "allowed. Duplicate conditions are ignored."
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:523
+#: ../../../docs/sandbox-permissions.rst:527
 msgid "Examples"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:525
+#: ../../../docs/sandbox-permissions.rst:529
 msgid ""
 "If an application requires only access to ``input`` device permission, the "
 "following flags can be used to move away from ``--device=all`` to ``--"
 "device=input``::"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:529
+#: ../../../docs/sandbox-permissions.rst:533
 msgid ""
 "- --device-if=all:!has-input-device\n"
 "- --device=input"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:532
+#: ../../../docs/sandbox-permissions.rst:536
 msgid ""
 "This allows older Flatpak versions which do not understand the ``input`` "
 "device permission to function by having the broader ``all`` access. Newer "
@@ -1216,52 +1227,52 @@ msgid ""
 "device=input``."
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:540
+#: ../../../docs/sandbox-permissions.rst:544
 msgid ""
 "The following permissions can be used to restrict from ``--device=all`` to "
 "``--device=usb`` in a backwards compatible way if only access to ``usb`` is "
 "required::"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:544
+#: ../../../docs/sandbox-permissions.rst:548
 msgid ""
 "- --device-if=all:!has-usb-device\n"
 "- --device=usb"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:547
+#: ../../../docs/sandbox-permissions.rst:551
 msgid ""
 "The following permission can be used to restrict to ``--device=usb`` if the "
 "portal is available and falling back to ``--device=usb`` if not::"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:551
+#: ../../../docs/sandbox-permissions.rst:555
 msgid "- --device-if=usb:!has-usb-portal"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:553
+#: ../../../docs/sandbox-permissions.rst:557
 msgid ""
 "To explicitly deny a permission that might be granted through runtime "
 "metadata or overrides ``--nosocket=NAME, --unshare=NAME`` etc. can be used::"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:557
+#: ../../../docs/sandbox-permissions.rst:561
 msgid "- --nosocket=x11"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:559
+#: ../../../docs/sandbox-permissions.rst:563
 msgid ""
 "This denial can be combined with conditional grants to remove unconditional "
 "access while allowing conditional access::"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:562
+#: ../../../docs/sandbox-permissions.rst:566
 msgid ""
 "- --nosocket=x11\n"
 "- --socket-if=x11:!has-wayland"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:565
+#: ../../../docs/sandbox-permissions.rst:569
 msgid ""
 "This denies unconditional X11 access but allows X11 conditionally when "
 "Wayland is unavailable. Older Flatpak versions will see only the final X11 "
@@ -1269,17 +1280,17 @@ msgid ""
 "conditional logic and evaluates it at runtime."
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:571
+#: ../../../docs/sandbox-permissions.rst:575
 msgid "Footnotes"
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:572
+#: ../../../docs/sandbox-permissions.rst:576
 msgid ""
 "This is not necessarily required, but without it the X11 shared memory "
 "extension will not work, which is very bad for X11 performance."
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:574
+#: ../../../docs/sandbox-permissions.rst:578
 msgid ""
 "Giving network access also grants access to all host services listening on "
 "abstract Unix sockets (due to how network namespaces work), and these have "
@@ -1288,7 +1299,7 @@ msgid ""
 "distribution should disable these and just use regular sockets."
 msgstr ""
 
-#: ../../../docs/sandbox-permissions.rst:579
+#: ../../../docs/sandbox-permissions.rst:583
 msgid ""
 "``xdg-{cache, config, data}`` bind mounts the paths from host to the per-app "
 "sandbox directory. Inside the sandbox ``$XDG_CACHE_HOME``, "

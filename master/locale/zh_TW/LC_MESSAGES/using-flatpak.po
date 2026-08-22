@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-13 08:50+0000\n"
+"POT-Creation-Date: 2026-08-17 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,7 +177,7 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:100
 msgid ""
-"$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/"
+"$ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/"
 "flathub.flatpakrepo"
 msgstr ""
 
@@ -259,9 +259,9 @@ msgstr ""
 
 #: ../../../docs/using-flatpak.rst:145
 msgid ""
-"$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
+"$ flatpak install https://dl.flathub.org/repo/appstream/org.gimp.GIMP."
+"flatpakref"
 msgstr ""
-"$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref"
 
 #: ../../../docs/using-flatpak.rst:147
 msgid ""
@@ -392,3 +392,10 @@ msgstr ""
 #: ../../../docs/using-flatpak.rst:216
 msgid "$ flatpak history"
 msgstr ""
+
+#~ msgid ""
+#~ "$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP."
+#~ "flatpakref"
+#~ msgstr ""
+#~ "$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP."
+#~ "flatpakref"

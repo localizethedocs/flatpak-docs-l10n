@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-21 08:43+0000\n"
+"POT-Creation-Date: 2026-08-17 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,7 +193,7 @@ msgid ""
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:121
-msgid "The root ``meson-options.txt`` should have something like::"
+msgid "The root ``meson.options`` should have something like::"
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:123
@@ -514,9 +514,9 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:368
 msgid ""
-"`Electron Builder <https://www.electron.build/flatpak.html>`_ supports "
-"exporting single file Flatpak bundles. Please also see the Electron "
-"application packaging guide :doc:`electron`."
+"`Electron Builder <https://www.electron.build/flatpak/>`_ supports exporting "
+"single file Flatpak bundles. Please also see the Electron application "
+"packaging guide :doc:`electron`."
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:372

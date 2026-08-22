@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-13 08:50+0000\n"
+"POT-Creation-Date: 2026-08-17 10:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr ""
 #: ../../../docs/first-build.rst:96
 msgid ""
 "flatpak build-bundle repo hello.flatpak org.flatpak.Hello --runtime-"
-"repo=https://flathub.org/repo/flathub.flatpakrepo"
+"repo=https://dl.flathub.org/repo/flathub.flatpakrepo"
 msgstr ""
 
 #: ../../../docs/first-build.rst:100
