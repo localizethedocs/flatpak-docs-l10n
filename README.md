@@ -1,6 +1,6 @@
 <div align="center">
 <picture>
-  <img height="100" src="https://cdn.jsdelivr.net/gh/localizethedocs/static/mark/flatpak.svg">
+  <img height="100" src="https://cdn.jsdelivr.net/gh/localizethedocs/static/logo/flatpak.svg">
 </picture>
 </div>
 
