@@ -392,10 +392,3 @@ msgstr ""
 #: ../../../docs/using-flatpak.rst:216
 msgid "$ flatpak history"
 msgstr ""
-
-#~ msgid ""
-#~ "$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP."
-#~ "flatpakref"
-#~ msgstr ""
-#~ "$ flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP."
-#~ "flatpakref"

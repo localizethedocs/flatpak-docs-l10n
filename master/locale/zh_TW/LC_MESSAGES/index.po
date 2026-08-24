@@ -50,11 +50,3 @@ msgstr ""
 #: ../../../docs/index.rst:18
 msgid "Contents"
 msgstr "目次"
-
-#~ msgid ""
-#~ "If you are looking for information about how to use Flatpak to install "
-#~ "and run applications, please refer to `the Flatpak website <https://"
-#~ "flatpak.org>`_."
-#~ msgstr ""
-#~ "如果您想了解如何使用 Flatpak 安裝並執行應用程式，請參見 `Flatpak 網站 "
-#~ "<https://flatpak.org>`_。"

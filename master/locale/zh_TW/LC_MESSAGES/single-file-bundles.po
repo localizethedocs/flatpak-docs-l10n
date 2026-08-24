@@ -93,10 +93,3 @@ msgstr ""
 #: ../../../docs/single-file-bundles.rst:38
 msgid "$ flatpak install dictionary.flatpak"
 msgstr ""
-
-#~ msgid ""
-#~ "$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-#~ "Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
-#~ msgstr ""
-#~ "$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-#~ "Dictionary --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo"
