@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flatpak master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-17 10:05+0000\n"
+"POT-Creation-Date: 2026-09-07 15:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -297,7 +297,7 @@ msgstr ""
 
 #: ../../../docs/hosting-a-repository.rst:209
 msgid ""
-"`Create <https://www.gnupg.org/gph/en/manual/c14.html>`_ a new GPG key "
+"`Create <https://www.gnupg.org/gph/en/manual.html#INTRO>`_ a new GPG key "
 "locally, to sign the repository."
 msgstr ""
 
