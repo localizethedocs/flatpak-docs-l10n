@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017-2025, Flatpak Team. Licensed under Creative Commons Attribution 4.0 International License.
+# This file is distributed under the same license as the Flatpak package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flatpak master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-21 08:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../docs/under-the-hood.rst:2
+msgid "Under the Hood"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:4
+msgid ""
+"This page provides an overview of how Flatpak works internally. While it "
+"isn't necessary to be familiar with this in order to use Flatpak, some "
+"people might find it interesting. Knowing about Flatpak's architecture also "
+"helps to get a better understanding of how and why it works the way it does, "
+"from a user and application developer perspective."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:11
+msgid "\"Git for apps\""
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:13
+msgid ""
+"Flatpak is built on top of a technology called `OSTree <https://ostreedev."
+"github.io/ostree/introduction/>`_, which is influenced by and very similar "
+"to the Git version control system. Like Git, OSTree allows versioned data to "
+"be tracked and to be distributed between different repositories. However, "
+"where Git is designed to track source files, OSTree is designed to track "
+"binary files and other large data."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:20
+msgid ""
+"Internally, Flatpak therefore works in a similar way to Git, and many "
+"Flatpak concepts are analogous to Git concepts. Like Git, Flatpak uses "
+"repositories to store data, and it tracks the differences between versions."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:24
+msgid ""
+"With Flatpak, each application, runtime and extension is a branch in a "
+"repository. An identifier triple, such as ``com.company.App/x86_64/stable`` "
+"is a reference to that branch. The output of a Flatpak build process is a "
+"directory of files which is committed to one of these branches."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:29
+msgid ""
+"When an application is installed with Flatpak, it is pulled from the remote "
+"into a new branch in a local repository. Links are then generated which "
+"point from the right places in the filesystem to the application's files in "
+"the repository (these are `hard links <https://en.wikipedia.org/wiki/"
+"Hard_link>`_, which are fast to resolve and disk space efficient). In other "
+"words, every application that is installed is stored in a local version "
+"control repository, and is then mapped into the local filesystem."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:37
+msgid ""
+"Version tracking is therefore a core part of Flatpak's architecture, and "
+"this makes updating software to the latest version very efficient. "
+"Versioning also makes rollbacks possible, so it's easy to go back to a "
+"previous version, should that be required."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:42
+msgid ""
+"Storing applications in a local OSTree repository has other advantages. For "
+"example, it allows files that are stored on disk to be deduplicated, so the "
+"same file that belongs to multiple applications (or runtimes) is only stored "
+"once."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:47
+msgid ""
+"This `blog post <https://blogs.gnome.org/alexl/2017/10/02/on-application-"
+"sizes-and-bloat-in-flatpak/>`_ explains the underlying structure of a "
+"Flatpak repository in more detail."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:51
+msgid "Conditional permission system"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:53
+msgid ""
+"Since Flatpak 1.17.0, conditional permissions allow permissions to be "
+"granted only when certain runtime conditions are satisfied, with fallback to "
+"unconditional grants for compatibility with older versions."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:57
+msgid "Permissions are internally represented as:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:59
+msgid "unconditionally allowed or denied"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:60
+msgid ""
+"a reset flag indicating whether the current layer overrides rules from lower "
+"layers"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:62
+msgid "a set of conditional rules under which the permission may be allowed"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:64
+msgid "For example:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:66
+msgid ""
+"``--socket=NAME`` unconditionally allows the permission and resets any "
+"previously defined rules for that permission"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:68
+msgid ""
+"``--nosocket=NAME`` unconditionally denies the permission and resets any "
+"previously defined rules"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:70
+msgid ""
+"``--socket-if=NAME:CONDITION`` adds a conditional rule without resetting "
+"existing rules"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:73
+msgid "Conditions may be negated using ``!``."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:75
+msgid ""
+"Multiple conditional rules can be specified for the same permission. In this "
+"case, the permission is granted if any condition evaluates to true."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:78
+msgid ""
+"Duplicate conditions are ignored. The order of conditions does not affect "
+"evaluation."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:81
+msgid ""
+"If no conditional rules are present, the permission is granted only if it is "
+"unconditionally allowed."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:84
+msgid ""
+"If conditional rules are present, the permission is granted if any condition "
+"evaluates to true, and denied otherwise, unless it is also unconditionally "
+"allowed."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:88
+msgid ""
+"If an unconditional entry follows a conditional entry for the same grant in "
+"commandline flags, the earlier unconditional entry is treated as backwards "
+"compatibility fallback and does not affect the final permission state."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:93
+msgid "A ``--socket-if=NAME:CONDITION`` is written in the metadata as::"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:95
+msgid "sockets=NAME;if:NAME:CONDITION;"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:97
+msgid "Permissions are written to metadata using the following rules:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:99
+msgid "Unconditionally allowed permissions are written as ``NAME``"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:100
+msgid "Unconditionally denied permissions are written as ``!NAME``"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:101
+msgid "Conditionally allowed permissions are written as:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:103
+msgid "unconditional ``NAME`` entry for compat"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:104
+msgid "``if:NAME:CONDITION`` entries"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:106
+msgid ""
+"If the permission resets previously defined rules, an explicit ``!NAME`` "
+"entry is written first, followed by the unconditional ``NAME`` entry and "
+"then the ``if:NAME:CONDITION`` entries. This is omitted when saving an "
+"application's own metadata, as opposed to overrides."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:111
+msgid ""
+"When parsing metadata, a non-negated unconditional ``NAME`` entry appearing "
+"before a ``if:NAME:CONDITION`` entry is treated as a compatibility fallback "
+"and does not affect the final permission state. Eg. ``sockets=x11;if:x11:!"
+"has-wayland;`` is effectively treated as ``if:x11:!has-wayland`` in Flatpak "
+"versions supporting conditional permissions."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:119
+msgid "Underlying technologies"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:121
+msgid "Flatpak utilises a number of pre-existing technologies. These include:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:123
+msgid ""
+"The `bubblewrap <https://github.com/containers/bubblewrap>`_ utility from "
+"`Project Atomic <https://projectatomic.io/>`_, which lets unprivileged users "
+"set up and run containers, using kernel features such as:"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:127
+msgid "Namespaces"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:128
+msgid "Bind mounts"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:129
+msgid "Seccomp rules"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:131
+msgid ""
+"`systemd <https://www.freedesktop.org/wiki/Software/systemd/>`_ to set up "
+"cgroups for sandboxes"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:133
+msgid ""
+"`D-Bus <https://www.freedesktop.org/wiki/Software/dbus/>`_, a well-"
+"established way to provide high-level APIs to applications"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:135
+msgid ""
+"The `OSTree <https://ostreedev.github.io/ostree/>`__ system for versioning "
+"and distributing filesystem trees"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:137
+msgid ""
+"The OCI format from the `Open Container Initiative <https://opencontainers."
+"org/>`_, as an alternative to OSTree used by the `Fedora infrastructure "
+"<https://blog.fishsoup.net/2018/12/04/flatpaks-in-fedora-now-live/>`__"
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:141
+msgid "Flatpak can use either OSTree or OCI for single-file bundles."
+msgstr ""
+
+#: ../../../docs/under-the-hood.rst:142
+msgid ""
+"`Appstream <https://www.freedesktop.org/software/appstream/docs/>`_ "
+"metadata, to allow Flatpak applications to show up nicely in software center "
+"applications"
+msgstr ""
