@@ -75,11 +75,11 @@ msgstr ""
 
 #: ../../../docs/usb-drives.rst:31
 msgid ""
-"Ensure the origin remote has a collection ID set by using ``flatpak remotes -"
-"d`` and checking the \"Collection ID\" column. If not, configure one with e."
-"g. ``flatpak remote-modify --collection-id=org.flathub.Stable flathub``. If "
-"any dependencies come from other remotes, those will also need a collection "
-"ID configured."
+"Ensure the origin remote has a collection ID set by using ``flatpak remotes "
+"-d`` and checking the \"Collection ID\" column. If not, configure one with "
+"e.g. ``flatpak remote-modify --collection-id=org.flathub.Stable flathub``. "
+"If any dependencies come from other remotes, those will also need a "
+"collection ID configured."
 msgstr ""
 
 #: ../../../docs/usb-drives.rst:37

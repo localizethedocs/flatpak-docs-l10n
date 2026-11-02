@@ -170,16 +170,16 @@ msgstr ""
 
 #: ../../../docs/dotnet.rst:88
 msgid ""
-"For providing access to other things such as the network or filesystem, see :"
-"doc:`sandbox-permissions`"
+"For providing access to other things such as the network or filesystem, "
+"see :doc:`sandbox-permissions`"
 msgstr ""
 
 #: ../../../docs/dotnet.rst:91
 msgid ""
 "Copy and save the dotnet NuGet sources generator script ``flatpak-dotnet-"
-"generator.py`` from the `Flatpak Builder Tools repository <https://github."
-"com/flatpak/flatpak-builder-tools>`_, to the current folder, or run the "
-"following command to download it:"
+"generator.py`` from the `Flatpak Builder Tools repository <https://"
+"github.com/flatpak/flatpak-builder-tools>`_, to the current folder, or run "
+"the following command to download it:"
 msgstr ""
 
 #: ../../../docs/dotnet.rst:96

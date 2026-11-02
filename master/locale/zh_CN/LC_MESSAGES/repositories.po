@@ -114,14 +114,14 @@ msgstr ""
 msgid ""
 "``.flatpakref`` can be used to install applications from the command line as "
 "well as with graphical software installers. This is done with the standard "
-"``flatpak install`` command, which accepts both local and remote ``."
-"flatpakref`` files. For example::"
+"``flatpak install`` command, which accepts both local and remote "
+"``.flatpakref`` files. For example::"
 msgstr ""
 
 #: ../../../docs/repositories.rst:67
 msgid ""
-"$ flatpak install https://flathub.org/repo/appstream/fr.free.Homebank."
-"flatpakref"
+"$ flatpak install https://flathub.org/repo/appstream/"
+"fr.free.Homebank.flatpakref"
 msgstr ""
 
 #: ../../../docs/repositories.rst:69

@@ -320,8 +320,8 @@ msgstr ""
 #: ../../../docs/flatpak-devel.rst:220
 msgid ""
 "Finally icons can be placed in ``data/icons/hicolor/{scalable, symbolic}/"
-"apps``. Two icons should be provided ``org.example.coolapp.svg`` and ``org."
-"example.coolapp.Devel.svg``. The meson.build should have"
+"apps``. Two icons should be provided ``org.example.coolapp.svg`` and "
+"``org.example.coolapp.Devel.svg``. The meson.build should have"
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:224
@@ -355,8 +355,8 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:249
 msgid ""
-"Any dbus service file if present should be handled. The ``org.example."
-"coolapp.service.in`` should have ``Name=@appid@``"
+"Any dbus service file if present should be handled. The "
+"``org.example.coolapp.service.in`` should have ``Name=@appid@``"
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:252
@@ -374,8 +374,8 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:264
 msgid ""
-"The same pattern can be used for search provider files if present. The ``org."
-"example.coolapp.service.ini.in`` should look like"
+"The same pattern can be used for search provider files if present. The "
+"``org.example.coolapp.service.ini.in`` should look like"
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:267
@@ -450,8 +450,9 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:324
 msgid ""
-"Finally there must be two manifests for Devel and stable - ``org.example."
-"coolapp.Devel.yaml`` and ``org.example.coolapp.yaml`` respectively."
+"Finally there must be two manifests for Devel and stable - "
+"``org.example.coolapp.Devel.yaml`` and ``org.example.coolapp.yaml`` "
+"respectively."
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:327
@@ -531,9 +532,9 @@ msgstr ""
 #: ../../../docs/flatpak-devel.rst:378
 msgid ""
 "`Freedesktop SDK <https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/wikis/"
-"Freedesktop-SDK-Flatpak-repository>`_ and `GNOME Nightly <https://nightly."
-"gnome.org/>`_ hosts nightly versions of the ``org.freedesktop.Platform`` and "
-"``org.gnome.Platform`` runtimes and SDKs."
+"Freedesktop-SDK-Flatpak-repository>`_ and `GNOME Nightly <https://"
+"nightly.gnome.org/>`_ hosts nightly versions of the "
+"``org.freedesktop.Platform`` and ``org.gnome.Platform`` runtimes and SDKs."
 msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:383
@@ -552,7 +553,7 @@ msgstr ""
 
 #: ../../../docs/flatpak-devel.rst:391
 msgid ""
-"`Flathub hosts <https://github.com/flathub?q=org.freedesktop.Sdk."
-"Extension&type=all&language=&sort=>`_ extensions for lots of tooling and "
-"languages that can be used to build applications."
+"`Flathub hosts <https://github.com/flathub?"
+"q=org.freedesktop.Sdk.Extension&type=all&language=&sort=>`_ extensions for "
+"lots of tooling and languages that can be used to build applications."
 msgstr ""

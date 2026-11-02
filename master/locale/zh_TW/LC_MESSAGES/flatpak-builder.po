@@ -23,8 +23,8 @@ msgstr "Flatpak 建置器"
 
 #: ../../../docs/flatpak-builder.rst:4
 msgid ""
-"``flatpak-builder`` has already been introduced in :doc:`first-build` and :"
-"doc:`building-introduction`. It is packaged by most of the popular "
+"``flatpak-builder`` has already been introduced in :doc:`first-build` "
+"and :doc:`building-introduction`. It is packaged by most of the popular "
 "distributions and there is also a flatpak-builder `Flatpak package <https://"
 "flathub.org/apps/org.flatpak.Builder>`_ on Flathub (this may contain Flathub "
 "specific downstream modifications)."

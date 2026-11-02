@@ -36,12 +36,12 @@ msgstr ""
 
 #: ../../../docs/under-the-hood.rst:13
 msgid ""
-"Flatpak is built on top of a technology called `OSTree <https://ostreedev."
-"github.io/ostree/introduction/>`_, which is influenced by and very similar "
-"to the Git version control system. Like Git, OSTree allows versioned data to "
-"be tracked and to be distributed between different repositories. However, "
-"where Git is designed to track source files, OSTree is designed to track "
-"binary files and other large data."
+"Flatpak is built on top of a technology called `OSTree <https://"
+"ostreedev.github.io/ostree/introduction/>`_, which is influenced by and very "
+"similar to the Git version control system. Like Git, OSTree allows versioned "
+"data to be tracked and to be distributed between different repositories. "
+"However, where Git is designed to track source files, OSTree is designed to "
+"track binary files and other large data."
 msgstr ""
 
 #: ../../../docs/under-the-hood.rst:20
@@ -276,9 +276,10 @@ msgstr ""
 
 #: ../../../docs/under-the-hood.rst:137
 msgid ""
-"The OCI format from the `Open Container Initiative <https://opencontainers."
-"org/>`_, as an alternative to OSTree used by the `Fedora infrastructure "
-"<https://blog.fishsoup.net/2018/12/04/flatpaks-in-fedora-now-live/>`__"
+"The OCI format from the `Open Container Initiative <https://"
+"opencontainers.org/>`_, as an alternative to OSTree used by the `Fedora "
+"infrastructure <https://blog.fishsoup.net/2018/12/04/flatpaks-in-fedora-now-"
+"live/>`__"
 msgstr ""
 
 #: ../../../docs/under-the-hood.rst:141

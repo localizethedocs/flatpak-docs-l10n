@@ -44,9 +44,9 @@ msgstr ""
 #: ../../../docs/first-build.rst:17
 msgid ""
 "Please also install ``flatpak-builder`` from your distribution. There is "
-"also a flatpak-builder `Flatpak package <https://flathub.org/apps/org."
-"flatpak.Builder>`_ on Flathub (this may contain Flathub specific downstream "
-"modifications)."
+"also a flatpak-builder `Flatpak package <https://flathub.org/apps/"
+"org.flatpak.Builder>`_ on Flathub (this may contain Flathub specific "
+"downstream modifications)."
 msgstr ""
 
 #: ../../../docs/first-build.rst:21
@@ -117,8 +117,8 @@ msgid ""
 "manifest! The `install -Dm755 <https://www.gnu.org/software/coreutils/manual/"
 "html_node/install-invocation.html>`_ command will create a file containing "
 "our hello world script in ``/app/bin/hello`` with `execution permissions "
-"<https://www.gnu.org/software/coreutils/manual/html_node/Numeric-Modes."
-"html>`_ inside the sandbox."
+"<https://www.gnu.org/software/coreutils/manual/html_node/Numeric-"
+"Modes.html>`_ inside the sandbox."
 msgstr ""
 
 #: ../../../docs/first-build.rst:65

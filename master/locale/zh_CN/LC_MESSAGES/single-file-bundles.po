@@ -58,8 +58,8 @@ msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:26
 msgid ""
-"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary"
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak "
+"org.gnome.Dictionary"
 msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:28
@@ -68,8 +68,9 @@ msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:30
 msgid ""
-"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo"
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak "
+"org.gnome.Dictionary --runtime-repo=https://dl.flathub.org/repo/"
+"flathub.flatpakrepo"
 msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:32

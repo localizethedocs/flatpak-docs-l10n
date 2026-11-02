@@ -160,15 +160,15 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:83
 msgid ""
-"To use StatusNotifier, you must at least have the ``--talk-name=org.kde."
-"StatusNotifierWatcher`` permission to register an item."
+"To use StatusNotifier, you must at least have the ``--talk-"
+"name=org.kde.StatusNotifierWatcher`` permission to register an item."
 msgstr ""
 
 #: ../../../docs/desktop-integration.rst:86
 msgid ""
 "Depending on the exact implementation of StatusNotifier that your "
-"application is using, it may need session bus ownership of ``org.kde."
-"StatusNotifierItem-$PID-$ITEM_ID``."
+"application is using, it may need session bus ownership of "
+"``org.kde.StatusNotifierItem-$PID-$ITEM_ID``."
 msgstr ""
 
 #: ../../../docs/desktop-integration.rst:89
@@ -290,8 +290,8 @@ msgstr ""
 #: ../../../docs/desktop-integration.rst:161
 msgid ""
 "The theming system requires Flatpak 0.8.4+ and applications using up-to-date "
-"``org.gnome.Platform`` 3.24+, ``org.freedesktop.Platform`` 1.6+, or ``org."
-"kde.Platform`` 5.9+."
+"``org.gnome.Platform`` 3.24+, ``org.freedesktop.Platform`` 1.6+, or "
+"``org.kde.Platform`` 5.9+."
 msgstr ""
 
 #: ../../../docs/desktop-integration.rst:166
@@ -349,8 +349,9 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:196
 msgid ""
-"On Wayland, starting from the 5.15-22.08+ and 6.5+ branches of the ``org.kde."
-"Platform`` runtime, ``org.kde.WaylandDecoration.QAdwaitaDecorations`` and "
+"On Wayland, starting from the 5.15-22.08+ and 6.5+ branches of the "
+"``org.kde.Platform`` runtime, "
+"``org.kde.WaylandDecoration.QAdwaitaDecorations`` and "
 "``org.kde.WaylandDecoration.QGnomePlatform-decoration`` need to be "
 "installed. Please see the upstream `usage <https://github.com/FedoraQt/"
 "QAdwaitaDecorations?tab=readme-ov-file#usage>`_ instructions as well."
@@ -362,8 +363,8 @@ msgstr ""
 
 #: ../../../docs/desktop-integration.rst:204
 msgid ""
-"For older runtimes, ``org.kde.PlatformTheme.QGnomePlatform`` and ``org.kde."
-"WaylandDecoration.QGnomePlatform-decoration`` need to be installed."
+"For older runtimes, ``org.kde.PlatformTheme.QGnomePlatform`` and "
+"``org.kde.WaylandDecoration.QGnomePlatform-decoration`` need to be installed."
 msgstr ""
 
 #: ../../../docs/desktop-integration.rst:209

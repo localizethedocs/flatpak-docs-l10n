@@ -50,9 +50,9 @@ msgstr ""
 #: ../../../docs/building-introduction.rst:22
 msgid ""
 "It is packaged by several distributions and there is also a `Flatpak package "
-"<https://flathub.org/apps/org.flatpak.Builder>`_ called ``org.flatpak."
-"Builder`` available for it on Flathub (this may contain Flathub specific "
-"downstream modifications)."
+"<https://flathub.org/apps/org.flatpak.Builder>`_ called "
+"``org.flatpak.Builder`` available for it on Flathub (this may contain "
+"Flathub specific downstream modifications)."
 msgstr ""
 
 #: ../../../docs/building-introduction.rst:27

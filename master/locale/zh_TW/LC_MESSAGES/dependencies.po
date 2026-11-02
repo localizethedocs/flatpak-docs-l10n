@@ -50,11 +50,11 @@ msgstr ""
 
 #: ../../../docs/dependencies.rst:21
 msgid ""
-"An overview of the runtimes that are available can be found in the :doc:"
-"`available-runtimes` page. There are deliberately only a small number of "
-"runtimes to choose from. Typically, runtimes are picked on the basis of "
-"which dependencies an application requires. If a runtime exists that "
-"provides libraries that you plan on using, this is usually the correct "
+"An overview of the runtimes that are available can be found in "
+"the :doc:`available-runtimes` page. There are deliberately only a small "
+"number of runtimes to choose from. Typically, runtimes are picked on the "
+"basis of which dependencies an application requires. If a runtime exists "
+"that provides libraries that you plan on using, this is usually the correct "
 "runtime to use!"
 msgstr ""
 
@@ -198,9 +198,9 @@ msgstr ""
 msgid ""
 "By convention, extension points follow the ID of the application or runtime "
 "in question, followed by a generic term for the extension. For example, the "
-"OBS Studio flatpak may define an extension point ``com.obsproject.Studio."
-"Plugin``, where \"Plugin\" is the generic term prefixed by the application "
-"ID."
+"OBS Studio flatpak may define an extension point "
+"``com.obsproject.Studio.Plugin``, where \"Plugin\" is the generic term "
+"prefixed by the application ID."
 msgstr ""
 
 #: ../../../docs/dependencies.rst:115
@@ -212,8 +212,8 @@ msgstr ""
 #: ../../../docs/dependencies.rst:118
 msgid ""
 "Any extension now choosing to be loaded inside the OBS Studio flatpak must "
-"prefix their ID by ``com.obsproject.Studio.Plugin`` for example ``com."
-"obsproject.Studio.Plugin.Gstreamer``."
+"prefix their ID by ``com.obsproject.Studio.Plugin`` for example "
+"``com.obsproject.Studio.Plugin.Gstreamer``."
 msgstr ""
 
 #: ../../../docs/dependencies.rst:122

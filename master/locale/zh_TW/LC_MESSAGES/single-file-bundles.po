@@ -60,11 +60,11 @@ msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:26
 msgid ""
-"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary"
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak "
+"org.gnome.Dictionary"
 msgstr ""
-"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary"
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak "
+"org.gnome.Dictionary"
 
 #: ../../../docs/single-file-bundles.rst:28
 msgid "You can also set a runtime repo in the bundle::"
@@ -72,8 +72,9 @@ msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:30
 msgid ""
-"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak org.gnome."
-"Dictionary --runtime-repo=https://dl.flathub.org/repo/flathub.flatpakrepo"
+"$ flatpak build-bundle ~/repositories/apps dictionary.flatpak "
+"org.gnome.Dictionary --runtime-repo=https://dl.flathub.org/repo/"
+"flathub.flatpakrepo"
 msgstr ""
 
 #: ../../../docs/single-file-bundles.rst:32

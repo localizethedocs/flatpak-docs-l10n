@@ -154,8 +154,8 @@ msgstr ""
 #: ../../../docs/multiarch.rst:98
 msgid ""
 "Finally, you need to make the dynamic library loader know the paths to 32-"
-"bit libraries. In order to do this, you can install a ``/app/etc/ld.so."
-"conf`` file with contents like this:"
+"bit libraries. In order to do this, you can install a ``/app/etc/"
+"ld.so.conf`` file with contents like this:"
 msgstr ""
 
 #: ../../../docs/multiarch.rst:102
@@ -202,8 +202,8 @@ msgid ""
 "The section above describes how to run 32-bit programs that are already "
 "built. This section will describe the process of building 32-bit components "
 "yourself to ship them with the application. It assumes that you are already "
-"familiar with building (single-arch) flatpaks. If not, please refer to :doc:"
-"`flatpak-builder` guide first."
+"familiar with building (single-arch) flatpaks. If not, please refer "
+"to :doc:`flatpak-builder` guide first."
 msgstr ""
 
 #: ../../../docs/multiarch.rst:140

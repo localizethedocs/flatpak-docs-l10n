@@ -88,8 +88,8 @@ msgstr ""
 #: ../../../docs/introduction.rst:33
 msgid ""
 "Flatpak's only technical requirements are that applications follow a small "
-"number of Freedesktop standards to enable desktop integration (see :doc:"
-"`conventions`)."
+"number of Freedesktop standards to enable desktop integration "
+"(see :doc:`conventions`)."
 msgstr ""
 
 #: ../../../docs/introduction.rst:38

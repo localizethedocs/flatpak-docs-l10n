@@ -221,8 +221,8 @@ msgstr ""
 #: ../../../docs/manifests.rst:127
 msgid ""
 "cleanup-commands:\n"
-"  - 'find /app/bin -mindepth 1 -maxdepth 1  -name 'rpm*' ! -name 'rpm2cpio' -"
-"delete'"
+"  - 'find /app/bin -mindepth 1 -maxdepth 1  -name 'rpm*' ! -name 'rpm2cpio' "
+"-delete'"
 msgstr ""
 
 #: ../../../docs/manifests.rst:130
@@ -451,9 +451,10 @@ msgstr ""
 #: ../../../docs/manifests.rst:269
 msgid ""
 "Each of the above buildsystem sets up the installation prefix, libdir etc. "
-"and runs a series of commands to configure (``meson setup``, or ``./autogen."
-"sh, ./configure`` or ``cmake``), build, install (``ninja install, make "
-"install`` etc.) and optionally run tests (``make check, ninja test`` etc.)."
+"and runs a series of commands to configure (``meson setup``, or ``./"
+"autogen.sh, ./configure`` or ``cmake``), build, install (``ninja install, "
+"make install`` etc.) and optionally run tests (``make check, ninja test`` "
+"etc.)."
 msgstr ""
 
 #: ../../../docs/manifests.rst:275

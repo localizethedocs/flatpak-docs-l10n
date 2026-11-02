@@ -68,8 +68,8 @@ msgstr ""
 msgid ""
 "Most applications will need access to some of these resources in order to be "
 "useful. This is primarily done during the finishing build stage, which can "
-"be configured through the ``finish-args`` section of the manifest file (see :"
-"doc:`manifests`)."
+"be configured through the ``finish-args`` section of the manifest file "
+"(see :doc:`manifests`)."
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:27
@@ -199,8 +199,8 @@ msgstr ""
 #: ../../../docs/sandbox-permissions.rst:89
 msgid ""
 "``--socket=cups`` - Talk to the CUPS printing system. ``$CUPS_SERVER`` or "
-"server defined in CUPS's ``client.conf``. Falls back to ``/var/run/cups/cups."
-"sock``."
+"server defined in CUPS's ``client.conf``. Falls back to ``/var/run/cups/"
+"cups.sock``."
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:92
@@ -267,8 +267,8 @@ msgid ""
 "``$FLATPAK_ID``, subnames of it and ``org.mpris.MediaPlayer2.$FLATPAK_ID`` "
 "for `MPRIS <https://www.freedesktop.org/wiki/Specifications/mpris-spec/>`_. "
 "Furthermore, it is only allowed to talk to names matching those patterns, "
-"the bus itself ``org.freedesktop.DBus`` and portal APIs of the form ``org."
-"freedesktop.portal.*``."
+"the bus itself ``org.freedesktop.DBus`` and portal APIs of the form "
+"``org.freedesktop.portal.*``."
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:134
@@ -291,9 +291,9 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:145
 msgid ""
-"Any ownership beyond what is granted by default ie. own namespace and ``org."
-"mpris.MediaPlayer2.$FLATPAK_ID`` is typically unnecessary although there can "
-"be exceptions."
+"Any ownership beyond what is granted by default ie. own namespace and "
+"``org.mpris.MediaPlayer2.$FLATPAK_ID`` is typically unnecessary although "
+"there can be exceptions."
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:149
@@ -968,8 +968,8 @@ msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:387
 msgid ""
-"As of now this glib version is included in ``org.freedesktop."
-"Platform//19.08`` and ``org.gnome.Platform//3.34`` and newer."
+"As of now this glib version is included in ``org.freedesktop.Platform//"
+"19.08`` and ``org.gnome.Platform//3.34`` and newer."
 msgstr ""
 
 #: ../../../docs/sandbox-permissions.rst:390

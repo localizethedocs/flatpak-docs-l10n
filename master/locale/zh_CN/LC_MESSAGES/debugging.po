@@ -203,9 +203,9 @@ msgstr ""
 #: ../../../docs/debugging.rst:103
 msgid ""
 "If an application crashed and the system has coredumps and `systemd-coredump "
-"<https://www.freedesktop.org/software/systemd/man/latest/systemd-coredump."
-"html>`_ enabled, a coredump will be logged. Get the ``PID`` from that "
-"coredump::"
+"<https://www.freedesktop.org/software/systemd/man/latest/systemd-"
+"coredump.html>`_ enabled, a coredump will be logged. Get the ``PID`` from "
+"that coredump::"
 msgstr ""
 
 #: ../../../docs/debugging.rst:107
@@ -274,9 +274,9 @@ msgid ""
 "the same sandox. For example, some debugging commands such as `dotnet-dump "
 "<https://learn.microsoft.com/en-us/dotnet/core/diagnostics/dotnet-dump>`_ "
 "expect to be given an identifier for a running process that it will connect "
-"to for debugging. This essentially requires multiple instances of the :ref:"
-"`debugging:Debug shell`, one to run the app, and one for running the "
-"debugging tool."
+"to for debugging. This essentially requires multiple instances of "
+"the :ref:`debugging:Debug shell`, one to run the app, and one for running "
+"the debugging tool."
 msgstr ""
 
 #: ../../../docs/debugging.rst:146
